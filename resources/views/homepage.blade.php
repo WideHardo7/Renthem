@@ -63,7 +63,7 @@
       </div>
       <div class="col-lg-6 col-sm-9", id="faq">                
         <h3><b>FAQ</b></h3>
-               @if($faqs->total() > 0)
+               @if(@isset($faqs))
             <ul id="faq-singola">
                 @foreach ($faqs as $faq)
                     <li>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Catalog;
-use App\Models\Resources\Faq;
+use App\Models\FaqGetter;
 
 class PublicController extends Controller {
 
@@ -12,7 +12,7 @@ class PublicController extends Controller {
     
     public function __construct() {
         $this->_catalogModel = new Catalog;
-        $this->faqu = new Faq;       
+        $this->faqu = new FaqGetter();       
     }
 
     public function showCatalog1() {
@@ -71,9 +71,9 @@ class PublicController extends Controller {
     }
     
     public function viewFaqPage(){
-        $faq = Faq::paginate(5);
+        $faq = $this->faqu->getAllFaqs();
 
-        return view('homepage')->with('faq', $faq);
+        return view('homepage')->with('faqs', $faq);
     }
 
 }
