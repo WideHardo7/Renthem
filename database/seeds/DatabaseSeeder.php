@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder {
              'telefono' => '3182201389',
              'username' => 'lariolario',
              'password' => 'Njpwskf4',
-             'role' => 'locatario',
+             'role' => 'admin',
              'created_at' => date("Y-m-d H:i:s"),
              'updated_at' => date("Y-m-d H:i:s")],
             
