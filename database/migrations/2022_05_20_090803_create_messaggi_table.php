@@ -27,6 +27,7 @@ class CreateMessaggiTable extends Migration
             
             $table->unsignedBigInteger('IDannuncio')->nullable();
             $table->foreign('IDannuncio')->references('AnnuncioId')->on('annunci');
+            $table->timestamps();
             
         });
     }

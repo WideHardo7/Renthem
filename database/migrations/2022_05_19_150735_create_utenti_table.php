@@ -25,6 +25,7 @@ class CreateUtentiTable extends Migration
             $table->string('username', config('strings.utente.username'))->unique();
             $table->string('password');
             $table->set('role', ['locatore', 'locatario', 'admin']);
+            $table->timestamps();
         });
     }
 

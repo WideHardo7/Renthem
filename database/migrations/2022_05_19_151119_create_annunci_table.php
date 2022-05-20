@@ -31,7 +31,7 @@ class CreateAnnunciTable extends Migration
             $table->date('data-fine-disponibilita');           
             $table->string('servizi-inclusi',500);
             $table->integer('eta-minima');
-            $table->string('genere-richiesto',10);
+            $table->set('genere-richiesto',['maschio','femmina'])->nullable();
             $table->boolean('assegnato')->nullable(); 
             $table->date('data-assegnazione')->nullable();           
             $table->string('immagine',200)->nullable();            
@@ -42,6 +42,7 @@ class CreateAnnunciTable extends Migration
             $table->boolean('A-presenza-cucina')->nullable();
             $table->boolean('A-presenza-locale-ricreativo')->nullable();
             $table->set('A-servizi-disponibili', [ 'parcheggio', 'ascensore' , 'guardiano'])->nullable();
+            $table->timestamps();
         });
     }
 
