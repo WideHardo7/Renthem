@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Catalog;
+use App\Models\Resources\Faq;
 
 class PublicController extends Controller {
 
     protected $_catalogModel;
+    protected $faqu;
     
     public function __construct() {
         $this->_catalogModel = new Catalog;
+        $this->faqu = new Faq;       
     }
 
     public function showCatalog1() {
@@ -65,6 +68,12 @@ class PublicController extends Controller {
                         ->with('selectedTopCat', $selTopCat)
                         ->with('subCategories', $subCats)
                         ->with('products', $prods);
+    }
+    
+    public function viewFaqPage(){
+        $faq = Faq::paginate(5);
+
+        return view('homepage')->with('faq', $faq);
     }
 
 }

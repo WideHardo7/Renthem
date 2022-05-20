@@ -63,7 +63,17 @@
       </div>
       <div class="col-lg-6 col-sm-9", id="faq">                
         <h3><b>FAQ</b></h3>
-                
+               @if($faqs->total() > 0)
+            <ul id="faq-singola">
+                @foreach ($faqs as $faq)
+                    <li>
+                        <h2 id="faq-domanda">{!! $faq->domanda !!}
+                        </h2>
+                        <div id="faq-risposta">{!! $faq->risposta !!}</div>
+                    </li>
+                @endforeach
+            </ul>
+                @endif
       </div>
         
     </div>
