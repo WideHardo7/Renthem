@@ -10,15 +10,16 @@
   | contains the "web" middleware group. Now create something great!
   |
  */
+Route::get('/', function () {
+    return view('homepage');
+});
 
+/*
 Route::get('/selTopCat/{topCatId}/selCat/{catId}', 'PublicController@showCatalog3')
         ->name('catalog3');
 
 Route::get('/selTopCat/{topCatId}', 'PublicController@showCatalog2')
         ->name('catalog2');
-
-Route::get('/', 'PublicController@showCatalog1')
-        ->name('catalog1');
 
 Route::get('/admin/newproduct', 'AdminController@addProduct')
         ->name('newproduct');
@@ -52,6 +53,8 @@ Route::view('/where', 'where')
 
 Route::view('/who', 'who')
         ->name('who');
+ * 
+ */
 
 // Rotte inserite dal comando artisan "ui vue --auth" 
 // Auth::routes();
