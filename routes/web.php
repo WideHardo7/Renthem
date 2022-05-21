@@ -12,6 +12,8 @@
  */
 Route::get('/','PublicController@viewFaqPage' );
 
+Route::get('/Alloggi', return view() );
+
 
 /*
 Route::get('/selTopCat/{topCatId}/selCat/{catId}', 'PublicController@showCatalog3')
