@@ -26,7 +26,7 @@
             
             <div id="page">                
                     <div id="home">
-                        @yield('homepage')
+                        @yield('homepage') 
                         <div style="clear: both;">&nbsp;</div>
                     </div>                
             </div>
