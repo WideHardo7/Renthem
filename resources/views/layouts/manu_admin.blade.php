@@ -6,7 +6,7 @@
 
               <ul class="pull-right">
                   <li><a href=""><b>Alloggi</b></a></li>
-                <li><a href=""><b>Faq</b></a></li> 
+                <li><a href=""><b>Gestione Faq</b></a></li> 
                 <li><a href=""><b>Statistiche</b></a></li> 
               </ul>
 
