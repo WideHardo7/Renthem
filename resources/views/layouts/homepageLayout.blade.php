@@ -33,7 +33,7 @@
             <!-- end #content -->
             
             
-            <div id="page">                
+            <div id="login">                
                     <div id="home">
                         @yield('login')
                         <div style="clear: both;">&nbsp;</div>

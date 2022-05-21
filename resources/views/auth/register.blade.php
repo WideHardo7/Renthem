@@ -3,6 +3,11 @@
 
 
 @section('Registrazione')
+<div class="spacer">
+<div class="row" >
+        
+    <div class="col-lg-5"></div>
+    <div class="col-lg-7" >
 	<div class="container">
 		<form action="" method="POST" class="login-email">
             <p class="login-text" style="font-size: 2rem; font-weight: 800;">Registrazione</p>
@@ -63,4 +68,8 @@
 			<p class="login-register-text">Possiedi già un'account? <a href="login">Accedi qui</a>.</p>
 		</form>
 	</div>
+    </div>
+</div>
+    </div>
+
 @endsection
