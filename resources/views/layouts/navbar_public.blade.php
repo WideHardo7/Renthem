@@ -43,7 +43,7 @@
                 <li><a href="<?php echo "index.php"; ?>#aboutContatti">Contatti</a></li>
                 <li><a href="<?php echo "index.php"; ?>#aboutContatti">About Us</a></li>         
                 <li><a href="<?php echo "index.php"; ?>#faq">FAQ</a></li>
-                <li><a href="">Login</a></li>
+                <li><a href="login">Login</a></li>
               </ul>
             </div>
             <!-- #Nav Ends -->

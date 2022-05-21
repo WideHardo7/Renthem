@@ -32,6 +32,21 @@
             </div>
             <!-- end #content -->
             
+            
+            <div id="page">                
+                    <div id="home">
+                        @yield('login')
+                        <div style="clear: both;">&nbsp;</div>
+                    </div>                
+            </div>
+            
+            <div id="page">                
+            <div id="home">
+                        @yield('Registrazione')
+                        <div style="clear: both;">&nbsp;</div>
+                    </div>                
+            </div>
+            
             <div id="footer">
                 @include('layouts/footer')
             </div>

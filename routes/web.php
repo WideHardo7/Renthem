@@ -11,6 +11,15 @@
   |
  */
 
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')
+        ->name('register');
+
+
+
+
+
 
 // ROUTES LIVELLO 1
 

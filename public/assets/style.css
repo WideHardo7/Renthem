@@ -32,11 +32,17 @@ a.more:hover{background: #64a30a;text-decoration: none;}
 
 table{background-color: #fff;}
 
-.btn{border-radius: 5px; font-family: din; outline: none;}
+#pulsante{border: 4px solid #DEDEDE; border-radius: 11px; font-size:15px;}
+#pulsante:hover{font-size:17px;}
+.btn{border-radius: 5px; font-family: din; outline: none; color:green;}
 .btn-success{ background: #72b70f;border:1px solid #72b70f;padding:6px 20px; font-size:16px; width: 100%; }
 .btn-primary{ background: #64a30a;border:none;width: 100%;border-radius: 20px;}
 .btn-info{background: #333;border:4px solid #ddd;padding: 3px 20px; font-size:20px; border-radius: 20px;  }
 
+#input-1{padding-right:15px;}
+#input-2{padding-right:10px;}
+#input-1, #input-2, #input-3{display: inline-block;}
+#input-5{margin-top:-30px;}
 .thumbnail{ background-color:#fff;}
 
 .header {padding: 20px 0;}

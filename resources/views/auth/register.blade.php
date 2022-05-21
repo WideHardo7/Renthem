@@ -1,88 +1,66 @@
-@extends('layouts.public')
+@extends('layouts.homepageLayout')
 
-@section('title', 'Registrazione')
 
-@section('content')
-<div class="static">
-    <h3>Registrazione</h3>
-    <p>Utilizza questa form per registrarti al sito</p>
 
-    <div class="container-contact">
-        <div class="wrap-contact1">
-            {{ Form::open(array('route' => 'register', 'class' => 'contact-form')) }}
-
-            <div  class="wrap-input">
-                {{ Form::label('name', 'Nome', ['class' => 'label-input']) }}
-                {{ Form::text('name', '', ['class' => 'input', 'id' => 'name']) }}
-                @if ($errors->first('name'))
-                <ul class="errors">
-                    @foreach ($errors->get('name') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
-
-            <div  class="wrap-input">
-                {{ Form::label('surname', 'Cognome', ['class' => 'label-input']) }}
-                {{ Form::text('surname', '', ['class' => 'input', 'id' => 'surname']) }}
-                @if ($errors->first('surname'))
-                <ul class="errors">
-                    @foreach ($errors->get('surname') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
+@section('Registrazione')
+	<div class="container">
+		<form action="" method="POST" class="login-email">
+            <p class="login-text" style="font-size: 2rem; font-weight: 800;">Registrazione</p>
             
-             <div  class="wrap-input">
-                {{ Form::label('email', 'Email', ['class' => 'label-input']) }}
-                {{ Form::text('email', '', ['class' => 'input','id' => 'email']) }}
-                @if ($errors->first('email'))
-                <ul class="errors">
-                    @foreach ($errors->get('email') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
+                        <fieldset>
+                        <div id='input-1'>
+                            
+                            <p>Sei uno studente o un gestore?</p></div>
+                            <div id='input-2'><input type="radio" id='locatore' name="ruolo" value="Locatore">
+                            <label for="locatore">Studente</label>
+                            </div>
+                            <div id='input-3'><input type="radio" id='locatario' name="ruolo" value="Locatario">
+                            <label for="locatario">Gestore</label></div>
+                            </fieldset>
+                            
             
-             <div  class="wrap-input">
-                {{ Form::label('username', 'Nome Utente', ['class' => 'label-input']) }}
-                {{ Form::text('username', '', ['class' => 'input','id' => 'username']) }}
-                @if ($errors->first('username'))
-                <ul class="errors">
-                    @foreach ($errors->get('username') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
+			<div class="input-group">
+				<input type="text" placeholder="Nome" name="nome" value="" required>
+			</div>
+			<div class="input-group">
+				<input type="text" placeholder="Cognome" name="cognome" value="" required>
+			</div>
             
-             <div  class="wrap-input">
-                {{ Form::label('password', 'Password', ['class' => 'label-input']) }}
-                {{ Form::password('password', ['class' => 'input', 'id' => 'password']) }}
-                @if ($errors->first('password'))
-                <ul class="errors">
-                    @foreach ($errors->get('password') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
-
-            <div  class="wrap-input">
-                {{ Form::label('password-confirm', 'Conferma password', ['class' => 'label-input']) }}
-                {{ Form::password('password_confirmation', ['class' => 'input', 'id' => 'password-confirm']) }}
-            </div>
+                        <div class="input-group">
+                                
+                            <div id="input-4"><p>Data di nascita</p></div>
+                            <div id="input-5"><input type="date" placeholder="Data di nascita" name="datanascita" value="" required></div>
+			</div>
             
-            <div class="container-form-btn">                
-                {{ Form::submit('Registra', ['class' => 'form-btn1']) }}
-            </div>
+                        <div class="input-group">
+                        <div id="input-4"><p>Genere</p></div>
+                        <div id="input-5"> <select required><option>Maschio</option><option>Femmina</option></select> </div>
+                        </div>
+                 
             
-            {{ Form::close() }}
-        </div>
-    </div>
-
-</div>
+                        <div class="input-group">
+				<input type="text" placeholder="Telefono" name="telefono" value="" required>
+			</div>
+            
+                        <div class="input-group">
+				<input type="email" placeholder="Email" name="email" value="" required>
+                        </div>
+                        <div class="input-group">
+				<input type="text" placeholder="Username" name="username" value="" required>
+			</div>
+			
+                        <div class="input-group">
+				<input type="password" placeholder="Password" name="password" value="" required>
+			</div>
+            
+                        <div class="input-group">
+				<input type="password" placeholder="Conferma Password" name="cpassword" value="" required>
+			</div>
+            
+			<div class="input-group">
+                            <button name="submit" id='pulsante'><a href="">Registrati</a></button>
+			</div>
+			<p class="login-register-text">Possiedi già un'account? <a href="login">Accedi qui</a>.</p>
+		</form>
+	</div>
 @endsection
