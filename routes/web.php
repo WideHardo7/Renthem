@@ -12,7 +12,10 @@
  */
 Route::get('/','PublicController@viewFaqPage' );
 
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')
+        ->name('register');
 /*
 Route::get('/selTopCat/{topCatId}/selCat/{catId}', 'PublicController@showCatalog3')
         ->name('catalog3');
