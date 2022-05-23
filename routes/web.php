@@ -23,9 +23,9 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')
 
 // ROUTES LIVELLO 1
 
-   Route::get('/','PublicController@viewFaqPage' ) -> name('homelvl1');
+ Route::get('/','PublicController@viewFaqPage' ) -> name('homelvl1');
 
- Route::get('/Alloggi', 'PublicController@showAlloggi' )->name('alloggipub');
+ Route::get('/Alloggi', 'PublicController@showAlloggi' ) -> name('alloggipub');
 
 // Route::get('/Alloggi/SchedaAlloggio/{Annuncioid}',controller here)->name('scheda');
 

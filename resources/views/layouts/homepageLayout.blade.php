@@ -7,6 +7,7 @@
         <meta name="author" content="Gruppo 16">
         <meta name="description" content="Sito della Renthem">
         <meta name="keywords" content="case, appartamenti, affitto, camere, studenti">
+        @extends('layouts.stylelayout')
         
         <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" >
         <title>Renthem | @yield('title','HomePage')</title>
