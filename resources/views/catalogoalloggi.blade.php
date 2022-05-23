@@ -71,7 +71,8 @@
      <!-- properties -->
       <div class="col-lg-4 col-sm-6">
       <div class="properties">
-        <div class="image-holder"><img src="images/properties/5.jpg" class="img-responsive" alt="properties">
+        <div class="image-holder"><img src="{{ asset('images/properties/' . $ad->immagine) }}" class="img-responsive" alt="properties">
+             <div class="status sold">Sold</div>
           
         </div>
         <h4><a href="">posto letto</a></h4>
