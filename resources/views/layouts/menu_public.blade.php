@@ -1,6 +1,6 @@
 <div class="container">
 
-<!-- Header Starts -->
+<!-- home Starts -->
 <div class="header">
 <a href=""><img src="images/logo_1.png" alt="Realestate"></a>
 
