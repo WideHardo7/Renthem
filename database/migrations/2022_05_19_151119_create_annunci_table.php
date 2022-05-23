@@ -32,7 +32,7 @@ class CreateAnnunciTable extends Migration
             $table->string('servizi-inclusi',500);
             $table->integer('eta-minima');
             $table->set('genere-richiesto',['maschio','femmina'])->nullable();
-            $table->boolean('assegnato')->nullable(); 
+            $table->boolean('assegnato'); 
             $table->date('data-assegnazione')->nullable();           
             $table->string('immagine',200)->nullable();            
             $table->integer('C-numero-posti-letto')->nullable();
