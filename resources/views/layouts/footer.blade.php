@@ -7,10 +7,10 @@
             <div class="col-lg-6 col-sm-6">
                
                     <h4>Follow us</h4>
-                    <a href="https://www.facebook.com/"><img src="images/facebook.png" alt="facebook"></a>
-                    <a href="https://www.twitter.com/"><img src="images/twitter.png" alt="twitter"></a>
-                    <a href="https://it.linkedin.com/"><img src="images/linkedin.png" alt="linkedin"></a>
-                    <a href="https://www.instagram.com/"><img src="images/instagram.png" alt="instagram"></a>
+                    <a href="https://www.facebook.com/"><img src="{{asset('images/facebook.png')}}" alt="facebook"></a>
+                    <a href="https://www.twitter.com/"><img src="{{asset('images/twitter.png')}}" alt="twitter"></a>
+                    <a href="https://it.linkedin.com/"><img src="{{asset('images/linkedin.png')}}" alt="linkedin"></a>
+                    <a href="https://www.instagram.com/"><img src="{{asset('images/instagram.png')}}" alt="instagram"></a>
             </div>
 
              <div class="col-lg-6 col-sm-6">
@@ -25,8 +25,8 @@
 
 
 </div></div>
-</body>
-</html>
+
+
 
 
 

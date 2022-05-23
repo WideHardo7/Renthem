@@ -1,7 +1,7 @@
 <div class="container">
 
-<!-- Header Starts -->
-<div class="header">
+<!-- menu Starts -->
+<div class="menu">
 <a href=""><img src="images/logo_1.png" alt="Realestate"></a>
 
               <ul class="pull-right">
@@ -12,5 +12,4 @@
               </ul>
 
 </div>
-<!-- #Header Starts -->
 </div>

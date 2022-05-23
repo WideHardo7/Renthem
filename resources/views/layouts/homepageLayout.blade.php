@@ -6,24 +6,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Gruppo 16">
         <meta name="description" content="Sito della Renthem">
-        <meta name="keywords" content="case, appartamenti, affitto, camere, studenti">
-        @extends('layouts.stylelayout')
-        
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" >
+        <meta name="keywords" content="case, appartamenti, affitto, camere, studenti">      
         <title>Renthem | @yield('title','HomePage')</title>
-    </head>
+        @include('layouts.stylelayout') 
+    </head>    
     <body>
         <div id="wrapper">
             
             <div id="navbar">
                 @include('layouts/navbar_public')
             </div>
-            <!-- end #header -->
+            <!-- end navbar -->
             
             <div id="menu">
                 @include('layouts/menu_public')
             </div>
-            <!-- end #menu -->
+            <!-- end menu -->
             
             <div id="page">                
                     <div id="home">
@@ -31,7 +29,7 @@
                         <div style="clear: both;">&nbsp;</div>
                     </div>                
             </div>
-            <!-- end #content -->
+            <!-- end content -->
             
             
             <div id="login">                
@@ -40,18 +38,19 @@
                         <div style="clear: both;">&nbsp;</div>
                     </div>                
             </div>
+            <!-- end login -->
             
             <div id="page">                
             <div id="home">
                         @yield('Registrazione')
                         <div style="clear: both;">&nbsp;</div>
                     </div>                
-            </div>
+            </div> 
             
             <div id="footer">
                 @include('layouts/footer')
             </div>
-            <!-- end #footer -->
+            <!-- end footer -->
         </div>
     </body>
 </html>
