@@ -1,4 +1,4 @@
-!-- navbar Starts -->
+<!-- navbar Starts -->
 <div class="navbar-wrapper">
 
         <div class="navbar-inverse" role="navigation">

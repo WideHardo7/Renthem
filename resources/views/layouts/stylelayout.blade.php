@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
 
-       <link rel="stylesheet" href="/css/app.css"> 
-        <script src="/js/app.js"></script>
+   <link rel="stylesheet" href="/css/app.css"> 
+   <script src="/js/app.js"></script>
 
-        <link href="{{ asset('assets/style.css') }}" rel="stylesheet">
+   <link href="{{ asset('assets/style.css') }}" rel="stylesheet">
    <script src="{{ asset('assets/js/app.js') }}" defer></script>
    <link href="{{ asset('assets/css/owl.carousel.css') }}" rel="stylesheet">
    <link href="{{ asset('assets/css/owl.theme.default.css') }}" rel="stylesheet">
@@ -30,4 +26,3 @@
     <script type="text/javascript" src="assets/slitslider/js/jquery.slitslider.js"></script>
 <!-- slitslider -->
 
-</head>
