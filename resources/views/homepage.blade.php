@@ -67,8 +67,8 @@
             <ul id="faq-singola">
                 @foreach ($faqs as $faq)
                     <li>
-                        <h2 id="faq-domanda">{!! $faq->domanda !!}
-                        </h2>
+                        <h4 id="faq-domanda">{!! $faq->domanda !!}
+                        </h4>
                         <div id="faq-risposta">{!! $faq->risposta !!}</div>
                     </li>
                 @endforeach
