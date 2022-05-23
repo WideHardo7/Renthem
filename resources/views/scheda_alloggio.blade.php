@@ -1,27 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>        
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="author" content="Gruppo 16">
-        <meta name="description" content="Sito della Renthem">
-        <meta name="keywords" content="case, appartamenti, affitto, camere, studenti">
-        <title>Annuncio</title>
-        @extends('layouts.stylelayout')       
-    </head>
-    <body>
-        <div id="navbar">
-                @include('layouts/navbar_public')
-            </div>
-            <!-- end #header -->
-            
-            <div id="menu">
-                @include('layouts/menu_public')
-            </div>
+@extends('layouts.schedannuncioSingolo_layout')
+@section('title', 'Dettaglio Alloggio')
+@section('scheda')
+
 <div class="inside-banner">
-  
+  <div class="container"> 
+      <span class="pull-right"></span>
+    <h2>Specifiche Alloggio</h2>
 </div>
 </div>
+
 <!-- banner -->
 
 
@@ -74,6 +61,5 @@
       </div>
       </div>        
   </div>
-</div>  
- </body>
-</html>
+</div> 
+@endsection

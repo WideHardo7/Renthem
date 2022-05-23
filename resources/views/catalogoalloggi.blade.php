@@ -72,10 +72,14 @@
       <div class="col-lg-4 col-sm-6">
       <div class="properties">
         <div class="image-holder"><img src="{{ asset('images/properties/' . $ad->immagine) }}" class="img-responsive" alt="properties">
-             <div class="status sold">Sold</div>
+            @if($ad->assegnato)
+             <div class="status sold">Non Disponibile</div>
+             @endif
           
         </div>
-        <h4><a href="">posto letto</a></h4>
+       <h4>{{$ad->tipologia}}</h4>
+        <p class="price">{{$ad->importo}}€</p>
+        <a class="btn btn-primary" href="property-detail.php">DETTAGLIO</a>
         
       </div>
       </div>
