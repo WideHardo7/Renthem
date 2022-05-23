@@ -88,4 +88,8 @@ class PublicController extends Controller {
         
     }
 
+    public function schedaAlloggio($Annuncioid){
+        $alloggio= $this->annunci->getAnnuncioById($Annuncioid);
+        return view('annuncioSingolo')->with('ann', $alloggio);
+    }
 }

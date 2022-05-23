@@ -11,4 +11,11 @@ class Alloggi{
         //return $annunci->paginate($paged);
     }
     
+    public function getAllAnnunci(){
+        return Annuncio::all();
+    }
+    
+    public function getAnnuncioById($Id){
+        return Annuncio::where('Annuncioid', '=', $Id)->get();
+    }
 }
