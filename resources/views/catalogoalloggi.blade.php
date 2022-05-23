@@ -79,7 +79,7 @@
         </div>
        <h4>{{$ad->tipologia}}</h4>
         <p class="price">{{$ad->importo}}€</p>
-        <a class="btn btn-primary" href="property-detail.php">DETTAGLIO</a>
+        <a class="btn btn-primary" href="{{route('scheda',[$ad->AnnuncioId])}}">DETTAGLIO</a>
         
       </div>
       </div>
