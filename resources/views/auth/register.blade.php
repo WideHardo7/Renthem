@@ -65,7 +65,7 @@
 			<div class="input-group">
                             <button name="submit" id='pulsante'><a href="">Registrati</a></button>
 			</div>
-			<p class="login-register-text">Possiedi già un'account? <a href="login">Accedi qui</a>.</p>
+			<p class="login-register-text">Possiedi già un'account? <a href="{{route('login')}}">Accedi qui</a>.</p>
 		</form>
 	</div>
     </div>

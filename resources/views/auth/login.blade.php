@@ -20,7 +20,7 @@
 			<div class="input-group">
                             <button name="submit" id="pulsante"><a href="">Login</a></button>
 			</div>
-			<p class="login-register-text">Non hai un account? <a href="register">Registrati qua</a>.</p>
+			<p class="login-register-text">Non hai un account? <a href="{{route('register')}}">Registrati qua</a>.</p>
 		</form>
 	</div>
 </div>

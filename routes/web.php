@@ -11,9 +11,9 @@
   |
  */
 
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')
+Route::get('/register', 'Auth\RegisterController@showRegistrationForm')
         ->name('register');
 
 
