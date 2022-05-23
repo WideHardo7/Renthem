@@ -4,15 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Catalog;
 use App\Models\FaqGetter;
+use App\Models\Alloggi;
 
 class PublicController extends Controller {
 
     protected $_catalogModel;
     protected $faqu;
-    
+    protected $annunci;
+
+
     public function __construct() {
         $this->_catalogModel = new Catalog;
-        $this->faqu = new FaqGetter();       
+        $this->faqu = new FaqGetter();    
+        $this->annunci= new Alloggi();
     }
 
     public function showCatalog1() {
@@ -74,6 +78,14 @@ class PublicController extends Controller {
         $faq = $this->faqu->getAllFaqs();
 
         return view('homepage')->with('faqs', $faq);
+    }
+    public function showAlloggi(){
+        $alloggio= $this->annunci->getAnnunciobyPage(3);
+        
+        return view('catalogoalloggi')
+               ->with('ads', $alloggio);
+        
+        
     }
 
 }

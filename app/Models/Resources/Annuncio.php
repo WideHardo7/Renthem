@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Annuncio extends Model
 {
-    protected $table = 'faq';
+    protected $table = 'annunci';
     protected $primaryKey = 'FaqId';
     protected $guarded = ['FaqId'];
     public $timestamps = true;

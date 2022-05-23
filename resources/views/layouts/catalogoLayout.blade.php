@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>        
@@ -8,9 +7,21 @@
         <meta name="description" content="Sito della Renthem">
         <meta name="keywords" content="case, appartamenti, affitto, camere, studenti">
         
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" >
-        <title>Renthem | @yield('title','HomePage')</title>
-    </head>
+        @extends('layouts.stylelayout')
+        
+        
+<!--        
+   <script src="{{ asset('js/app.js') }}" defer></script>
+   <link href="{{ asset('css/owl.carousel.css') }}" rel="stylesheet">
+   <link href="{{ asset('css/owl.theme.default.css') }}" rel="stylesheet">
+   <link href="{{ asset('style.css') }}" rel="stylesheet">
+    -->    
+           
+   
+</head>
+        
+        <title>Renthem | @yield('title','Catalogo Alloggi')</title>
+    
     <body>
         <div id="wrapper">
             
@@ -26,26 +37,11 @@
             
             <div id="page">                
                     <div id="home">
-                        @yield('homepage') 
+                        @yield('catalogo')
                         <div style="clear: both;">&nbsp;</div>
                     </div>                
             </div>
             <!-- end #content -->
-            
-            
-            <div id="login">                
-                    <div id="home">
-                        @yield('login')
-                        <div style="clear: both;">&nbsp;</div>
-                    </div>                
-            </div>
-            
-            <div id="page">                
-            <div id="home">
-                        @yield('Registrazione')
-                        <div style="clear: both;">&nbsp;</div>
-                    </div>                
-            </div>
             
             <div id="footer">
                 @include('layouts/footer')

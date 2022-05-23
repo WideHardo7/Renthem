@@ -1,5 +1,5 @@
 @extends('layouts.homepageLayout')
-
+@section('title', 'HomePage')
 @section('homepage')
 <div class="homepage">
     

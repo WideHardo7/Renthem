@@ -25,7 +25,7 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')
 
    Route::get('/','PublicController@viewFaqPage' ) -> name('homelvl1');
 
-// Route::get('/Alloggi', controller here )->name('alloggipub');
+ Route::get('/Alloggi', 'PublicController@showAlloggi' )->name('alloggipub');
 
 // Route::get('/Alloggi/SchedaAlloggio/{Annuncioid}',controller here)->name('scheda');
 
