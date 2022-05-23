@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Annuncio extends Model
 {
     protected $table = 'annunci';
-    protected $primaryKey = 'FaqId';
-    protected $guarded = ['FaqId'];
+    protected $primaryKey = 'AnnuncioId';
+    protected $guarded = ['AnnuncioId'];
     public $timestamps = true;
     /**
      * The attributes that are mass assignable.
@@ -16,7 +16,7 @@ class Annuncio extends Model
      * @var array
      */
     protected $fillable = [
-        'domanda', 'risposta'
+        'IDproprietario', 'citta','zona-quartiere','indirizzo','descrizione',
     ];
     
 }

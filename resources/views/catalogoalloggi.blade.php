@@ -17,8 +17,9 @@
 <div class="properties-listing spacer">
 
 <div class="row">
+   
 <div class="col-lg-3 col-sm-4 ">
-
+<!-- 
   <div class="search-form"><h4><span class="glyphicon glyphicon-search"></span> Cerca per</h4>
     <div class="row">
           <div class="col-lg-12">
@@ -59,7 +60,7 @@
 
 
 
-
+-->
 </div>
 
 <div class="col-lg-9 col-sm-8">

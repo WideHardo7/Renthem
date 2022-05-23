@@ -80,7 +80,7 @@ class PublicController extends Controller {
         return view('homepage')->with('faqs', $faq);
     }
     public function showAlloggi(){
-        $alloggio= $this->annunci->getAnnunciobyPage(3);
+        $alloggio= $this->annunci->getAnnunciobyPage(5);
         
         return view('catalogoalloggi')
                ->with('ads', $alloggio);
