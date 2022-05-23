@@ -6,7 +6,7 @@
 
               <ul class="pull-right">
                   <li><a href="{{route('alloggipub')}}"><b>Alloggi</b></a></li>
-                <li><a href="login"><b>Crea Annuncio</b></a></li>                        
+                <li><a href="{{route('login')}}"><b>Crea Annuncio</b></a></li>                        
               </ul>
 
 </div>
