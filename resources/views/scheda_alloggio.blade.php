@@ -16,9 +16,11 @@
     <div class="Tipo appartamento opostoletto"> 
         <h3><b>{{$ann->tipologia}} in Zona: {{$ann->zona_quartiere}}</b></h3>
     </div>
+    
     <div class="property-images">
           <img src="{{ asset('images/properties/' . $ann->immagine) }}" alt="Realestate">
-        </div> 
+        </div>
+     
 </div>
    
 <div class="container">
