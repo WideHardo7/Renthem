@@ -87,13 +87,13 @@
           <h4><p>Pensi che sia l'appartamento giusto per te? 
                   Allora opziona subito l'offerta!</p></h4>
      <div class="row">
-         <div class"col-lg-4 col-sm-4">  &nbsp;</div>
-           <div class="col-lg-4 col-sm-4">
+        
+           <div class="col-lg-4 col-sm-4 offset-4">
                
               
                <button type="submit" class="btn btn-primary" name="Submit">Opziona Offerta</button>
           </div>
-          <div class"col-lg-4 col-sm-4"></div>
+          
      </div>
            </div>
           
