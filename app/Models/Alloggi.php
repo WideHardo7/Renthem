@@ -16,6 +16,6 @@ class Alloggi{
     }
     
     public function getAnnuncioById($Id){
-        return Annuncio::where('Annuncioid', $Id)->get();
+        return Annuncio::where('AnnuncioId',$Id)->first();
     }
 }
