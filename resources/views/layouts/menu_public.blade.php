@@ -2,7 +2,7 @@
 
 <!-- home Starts -->
 <div class="header">
-<a href=""><img src="{{asset('images/logo_1.png')}}" alt="Realestate"></a>
+<a href="{{route('homelvl1')}}"><img src="{{asset('images/logo_1.png')}}" alt="Realestate"></a>
 
               <ul class="pull-right">
                   <li><a href="{{route('alloggipub')}}"><b>Alloggi</b></a></li>
