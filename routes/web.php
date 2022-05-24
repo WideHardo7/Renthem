@@ -11,15 +11,6 @@
   |
  */
 
-Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
-
-Route::get('/register', 'Auth\RegisterController@showRegistrationForm')
-        ->name('register');
-
-
-
-
-
 
 // ROUTES LIVELLO 1
 
@@ -29,15 +20,13 @@ Route::get('/register', 'Auth\RegisterController@showRegistrationForm')
 
  Route::get('/Alloggi/SchedaAlloggio/{Annuncioid}', 'PublicController@schedaAlloggio') -> name('scheda');
 
-// Route::get('login', 'Auth\LoginController@showLoginForm')
-//        ->name('login');
+ Route::get('login', 'Auth\LoginController@showLoginForm') ->name('login');       
 
-// Route::post('login', 'Auth\LoginController@login');
+ Route::post('login', 'Auth\LoginController@login');
    
-// Route::get('register', 'Auth\RegisterController@showRegistrationForm')
-//        ->name('register');
+ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');       
 
-// Route::post('register', 'Auth\RegisterController@register');*/
+ Route::post('register', 'Auth\RegisterController@register');
 
 
 
