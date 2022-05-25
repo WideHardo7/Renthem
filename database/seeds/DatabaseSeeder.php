@@ -12,8 +12,8 @@ class DatabaseSeeder extends Seeder {
 
     public function run() {
         
-        DB::table('utenti')->insert([
-            ['UserId' => '1',
+        DB::table('users')->insert([
+            [
              'nome' => 'lore',
              'cognome' => 'lore',               
              'data_nascita' => date("Y-m-d H:i:s"),
@@ -21,12 +21,12 @@ class DatabaseSeeder extends Seeder {
              'email' => 'lore@lore.it',
              'telefono' => '3980901389',
              'username' => 'lorelore',
-             'password' => 'Njpwskf4',
+             'password' => Hash::make('Njpwskf4'),
              'role' => 'locatore',
              'created_at' => date("Y-m-d H:i:s"),
              'updated_at' => date("Y-m-d H:i:s")],
             
-            ['UserId' => '2',
+            [
              'nome' => 'lario',
              'cognome' => 'lario',               
              'data_nascita' => date("Y-m-d H:i:s"),
@@ -34,12 +34,12 @@ class DatabaseSeeder extends Seeder {
              'email' => 'lario@lario.it',
              'telefono' => '3182201389',
              'username' => 'lariolario',
-             'password' => 'Njpwskf4',
-             'role' => 'admin',
+             'password' => Hash::make('Njpwskf4'),
+             'role' => 'locatario',
              'created_at' => date("Y-m-d H:i:s"),
              'updated_at' => date("Y-m-d H:i:s")],
             
-            ['UserId' => '3',
+            [
              'nome' => 'admin',
              'cognome' => 'admin',               
              'data_nascita' => date("Y-m-d H:i:s"),
@@ -47,8 +47,8 @@ class DatabaseSeeder extends Seeder {
              'email' => 'admin@admin.it',
              'telefono' => '3280912439',
              'username' => 'adminadmin',
-             'password' => 'Njpwskf4',
-             'role' => 'locatore',
+             'password' => Hash::make('Njpwskf4'),
+             'role' => 'admin',
              'created_at' => date("Y-m-d H:i:s"),
              'updated_at' => date("Y-m-d H:i:s")],
         ]);
@@ -402,20 +402,20 @@ class DatabaseSeeder extends Seeder {
              'updated_at' => date("Y-m-d H:i:s")],
             
             ['FaqId' => '2',
-             'domanda' => 'lore',
-             'risposta' => 'lore',               
+             'domanda' => 'Come faccio ad opzionare un offerta?',
+             'risposta' => 'Per opzionare un offerta desiderata è necessario registrarsi come locatario/studente ed accedere nella scheda alloggio desiderata ed infine cliccare il pulsante "opziona offerta" ',               
              'created_at' => date("Y-m-d H:i:s"),
              'updated_at' => date("Y-m-d H:i:s")],
             
             ['FaqId' => '3',
-             'domanda' => 'lore',
-             'risposta' => 'lore',               
+             'domanda' => 'Come faccio a filtrare le offerte?',
+             'risposta' => 'Registrandosi come loatario/studente si accede alla funzionalità di filtraggio',               
              'created_at' => date("Y-m-d H:i:s"),
              'updated_at' => date("Y-m-d H:i:s")],
             
             ['FaqId' => '4',
-             'domanda' => 'lore',
-             'risposta' => 'lore',               
+             'domanda' => 'Chi siete?',
+             'risposta' => 'Renthem',               
              'created_at' => date("Y-m-d H:i:s"),
              'updated_at' => date("Y-m-d H:i:s")],
         ]);

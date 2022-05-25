@@ -18,7 +18,7 @@ class CreateAnnunciTable extends Migration
             $table->bigIncrements('AnnuncioId');
             
             $table->unsignedBigInteger('IDproprietario');            
-            $table->foreign('IDproprietario')->references('UserId')->on('utenti');
+            $table->foreign('IDproprietario')->references('Id')->on('users');
             
             $table->string('citta',50);
             $table->string('zona_quartiere',50)->nullable();

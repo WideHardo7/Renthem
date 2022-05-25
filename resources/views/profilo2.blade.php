@@ -46,7 +46,13 @@
         <div class="row">
             <br>
                        <div class="col-lg-2 col-sm-2 col-lg-offset-0 col-sm-offset-3">
-                            <button type="submit" class="btn btn-primary" name="Submit">Logout</button>
+                           @auth
+                                    <button title="Esci dal sito" class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</button>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                           @endauth
+                           <!-- <button type="submit" class="btn btn-primary" name="Submit">Logout</button>-->
                         </div>
           
                  </div>

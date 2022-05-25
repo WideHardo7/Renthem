@@ -29,7 +29,7 @@ class RegisterController extends Controller
      * @var string
      */
     
-    //protected $redirectTo = '/home';
+    
     protected $redirectTo = '/';
 
     /**
@@ -54,12 +54,13 @@ class RegisterController extends Controller
             'nome' => ['required', 'string', 'max:255'],
             'cognome' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'username' => ['required', 'string', 'min:8', 'unique:users'],
+            'username' => ['required', 'string', 'min:6', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'telefono' => ['required', 'string', 'max:20'],
-            'datanascita' => ['required','timestamp'],
-            'genere' => ['string'],
-            'ruolo' => ['required', 'string', 'min:8', 'confirmed'],
+            'datanascita' => ['required','date'],
+            'role' => ['required','string'],
+            
+           
             
         ]);
     }
@@ -73,9 +74,13 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'surname' => $data['surname'],
+            'nome' => $data['nome'],
+            'cognome' => $data['cognome'],
             'email' => $data['email'],
+            'data_nascita'=> $data['datanascita'],
+             'telefono' => $data['telefono'],
+            'genere'=> $data['genere'],
+            'role' => $data['role'],
             'username' => $data['username'],
             'password' => Hash::make($data['password']),
         ]);

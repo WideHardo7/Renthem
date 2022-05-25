@@ -39,7 +39,7 @@
 
 // Route::post('/Profilo/Modifica', controller here) -> name('profilo.store');
    
-// Route::post('logout', 'Auth\LoginController@logout') -> name('logout'); 
+Route::post('logout', 'Auth\LoginController@logout') -> name('logout'); 
 
 // Route::get('/Chat',controller here) -> name(chat);   
 
@@ -53,9 +53,11 @@
    
    
 // ROUTES LIVELLO 2   
- Route::get('/locatore/' , 'LocatoreController@ViewHomeLv2') ->name('homeLv2');
+ Route::get('/locatore' , 'LocatoreController@ViewHomeLv2') ->name('homeLv2')
+         ->middleware('can:isLocatore');
   
- Route::get('/locatore/home',  'LocatoreController@ViewHomeLv2' ) -> name('homeLv2');
+ //Route::get('/locatore/home',  'LocatoreController@ViewHomeLv2' ) -> name('homeLv2')->middleware('can:isLocatore');
+         
  
  Route::get('/locatore/alloggi',  'LocatoreController@ViewAlloggiLv2' ) -> name('alloggipub2');
  

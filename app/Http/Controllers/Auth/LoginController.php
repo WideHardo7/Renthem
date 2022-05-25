@@ -24,7 +24,7 @@ use AuthenticatesUsers;
      *
      * @var string
      */
-//    protected $redirectTo = '/home';
+//    protected $redirectTo = '/';
 
     /**
      * Override:: definisce la homepage per i diversi utenti.
@@ -36,7 +36,9 @@ use AuthenticatesUsers;
         switch ($role) {
             case 'admin': return '/admin';
                 break;
-            case 'user': return '/user';
+            case 'locatore': return '/locatore';
+                break;
+            case 'locatario': return '/locatario';
                 break;
             default: return '/';
         };
