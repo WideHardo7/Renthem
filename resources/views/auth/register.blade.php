@@ -9,7 +9,7 @@
 <div class="row" >
         
     <div class="col-lg-7 col-lg-offset-5" >
-	
+	<div class="container">
 		{{ Form::open(array('route' => 'register', 'class' => 'contact-form')) }}
             <p class="login-text" style="font-size: 2rem; font-weight: 800;">Registrazione</p>
             
@@ -19,14 +19,14 @@
                             <p>Sei uno studente o un gestore?</p></div>
                             <div id='input-2'>
                                 
-                                {{ Form::radio('ruolo', 'Locatore', ['class' => 'input', 'id' => 'locatore']) }}
-                                {{ Form::label('ruolo', 'Gestore', ['class' => 'label-input']) }}
+                                {{ Form::radio('role', 'locatore', ['class' => 'input', 'id' => 'locatore']) }}
+                                {{ Form::label('locatore', 'Gestore', ['class' => 'label-input']) }}
                             <!--    <input type="radio" id='locatore' name="ruolo" value="Locatore"> 
                             <label for="locatore">Studente</label> -->
                             </div>
                             <div id='input-3'>
-                                {{ Form::radio('ruolo', 'Locatario', ['class' => 'input', 'id' => 'locatario']) }}
-                                {{ Form::label('ruolo', 'Studente', ['class' => 'label-input']) }}
+                                {{ Form::radio('role', 'locatario', ['class' => 'input', 'id' => 'locatario']) }}
+                                {{ Form::label('locatario', 'Studente', ['class' => 'label-input']) }}
                             <!--<input type="radio" id='locatario' name="ruolo" value="Locatario">
                             <label for="locatario">Gestore</label></div> -->
                             </fieldset>
@@ -140,7 +140,7 @@
 			</div>
 			<p class="login-register-text">Possiedi già un'account? <a href="{{route('login')}}">Accedi qui</a>.</p>
 		 {{ Form::close() }}
-	
+	</div>
     </div>
 </div>
     </div>
