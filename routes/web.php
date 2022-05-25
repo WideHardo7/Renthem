@@ -27,8 +27,10 @@
  Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');       
 
  Route::post('register', 'Auth\RegisterController@register');
-
-
+ 
+ Route::get('nuovoAnnuncio', 'LocatoreController@showNuovoAnnuncioForm')->name('nuovoAnnuncio'); 
+ 
+ Route::post('nuovoAnnuncio', 'LocatoreController@insertAnnuncio');
 
 
 // ROUTES IN COMUNE (MAYBE)
