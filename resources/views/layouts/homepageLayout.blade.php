@@ -30,7 +30,7 @@
             <div id="page">                
                     <div id="home">
                         @yield('homepage') 
-                        <div style="clear: both;">&nbsp;</div>
+            <!--           <div style="clear: both;">&nbsp;</div> -->
                     </div>                
             </div>
             <!-- end content -->
@@ -39,21 +39,21 @@
             <div id="profilo">                
                     <div id="profilo">
                         @yield('profilo')
-                        <div style="clear: both;">&nbsp;</div>
+            <!--             <div style="clear: both;">&nbsp;</div> -->
                     </div>                
             </div>
             
             <div id="profilo">                
                     <div id="profilo">
                         @yield('login')
-                        <div style="clear: both;">&nbsp;</div>
+            <!--             <div style="clear: both;">&nbsp;</div> -->
                     </div>                
             </div>
             
               <div id="page">                
                     <div id="home">
                         @yield('CreaAnnuncio') 
-                        <div style="clear: both;">&nbsp;</div>
+             <!--            <div style="clear: both;">&nbsp;</div> -->
                     </div>                
             </div>                
             
