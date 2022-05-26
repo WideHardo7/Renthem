@@ -2,61 +2,70 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Catalog;
 use App\Models\FaqGetter;
 use App\Models\Alloggi;
- 
-use App\Models\Admin;//new
-use App\Models\Resources\Annuncio;//new
-use App\Http\Requests\nuovoAnnuncioRequest;//new
+use App\Models\Locatore;
 
-class LocatoreController extends Controller {
 
-    protected $_catalogModel;
+class LocatoreController extends Controller
+{
+    
+    
     protected $faqu;
     protected $annunci;
-    
-    protected $_locatoreModel;//new
+    protected $dati;
+    protected $locatore;
 
     public function __construct() {
-        $this->_catalogModel = new Catalog;
+        
         $this->faqu = new FaqGetter();    
         $this->annunci= new Alloggi();
-    }  
+        $this->locatore= new Locatore(); 
+    }
     
-    public function viewFaqPage(){
+    
+     public function ViewHomeLv2(){
         $faq = $this->faqu->getAllFaqs();
 
-        return view('homepage')->with('faqs', $faq);
+        return view('homepage2')->with('faqs', $faq);
     }
-    public function showAlloggi(){
+    
+        public function ViewAlloggiLv2(){
         $alloggio= $this->annunci->getAnnunciobyPage(6);
         
-        return view('catalogoalloggi')
-               ->with('ads', $alloggio);                
+        return view('catalogoalloggi2')
+               ->with('ads', $alloggio);            
     }
-
-    public function schedaAlloggio($Annuncioid){
+    
+        public function schedaAlloggio2($Annuncioid){
         
         $alloggio= $this->annunci->getAnnuncioById($Annuncioid);
-        return view('scheda_alloggio')->with('ann', $alloggio);
+        return view('scheda_alloggio2')->with('ann', $alloggio);
     }
     
     
+         public function ViewProfiloLv2(){
+    
+        return view('profilo2');                        
+    }
     
     //new
-    public function showNuovoAnnuncioForm($Annuncioid){
+    public function showNuovoAnnuncioForm(){
         
-        $alloggio= $this->annunci->getAnnuncioById($Annuncioid);
-        return view('scheda_alloggio')->with('ann', $alloggio);
+        $tipoAlloggio= $this->locatore->getTipoAlloggio();
+        return view('product.nuovo_annuncio')
+               ->with('tipologia',$tipoAlloggio);      
     }
     
-     public function insertAnnuncio($Annuncioid){
-        
-        $alloggio= $this->annunci->getAnnuncioById($Annuncioid);
-        return view('scheda_alloggio')->with('ann', $alloggio);
-    }
     
+    public function insertAnnuncio(){
+                
+    }
     
     
 }
+
+
+
