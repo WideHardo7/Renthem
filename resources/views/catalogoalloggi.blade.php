@@ -78,9 +78,9 @@
              @endif
           
         </div>
-       <h4>{{$ad->tipologia}}</h4>
+          <h4><a>{{$ad->tipologia}}</a></h4>
         <p class="price">{{$ad->importo}}€</p>
-        <a class="btn btn-primary" href="{{route('scheda',[$ad->AnnuncioId])}}">DETTAGLIO</a>
+        <a class="btn btn-primary bottoni_ancore" href="{{route('scheda',[$ad->AnnuncioId])}}">DETTAGLIO</a>
         
       </div>
       </div>
