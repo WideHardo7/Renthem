@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('nome');
             $table->string('cognome');
-            $table->timestamp('data_nascita');
+            $table->date('data_nascita');
             $table->set('genere', ['Maschio','Femmina'])->nullable();
             $table->string('email');
              $table->string('telefono');

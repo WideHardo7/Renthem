@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder {
             [
              'nome' => 'lore',
              'cognome' => 'lore',               
-             'data_nascita' => date("Y-m-d H:i:s"),
+             'data_nascita' => date("Y-m-d"),
              'genere' => 'maschio',
              'email' => 'lore@lore.it',
              'telefono' => '3980901389',
@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder {
             [
              'nome' => 'lario',
              'cognome' => 'lario',               
-             'data_nascita' => date("Y-m-d H:i:s"),
+             'data_nascita' => date("Y-m-d"),
              'genere' => 'maschio',
              'email' => 'lario@lario.it',
              'telefono' => '3182201389',
@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder {
             [
              'nome' => 'admin',
              'cognome' => 'admin',               
-             'data_nascita' => date("Y-m-d H:i:s"),
+             'data_nascita' => date("Y-m-d"),
              'genere' => 'maschio',
              'email' => 'admin@admin.it',
              'telefono' => '3280912439',
