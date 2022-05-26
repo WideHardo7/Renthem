@@ -18,12 +18,12 @@ class CreateMessaggiTable extends Migration
             $table->bigIncrements('ID')->index();
             
             $table->unsignedBigInteger('IDmittente')->nullable();
-            $table->foreign('IDmittente')->references('UserId')->on('utenti');
+            $table->foreign('IDmittente')->references('id')->on('users');
             
             $table->unsignedBigInteger('IDdestinatario')->nullable();
-            $table->foreign('IDdestinatario')->references('UserId')->on('utenti');
+            $table->foreign('IDdestinatario')->references('id')->on('users');
             
-            $table->string('contenuto',200, config('strings.messaggi.contenuto'));
+            $table->string('contenuto',200);
             
             $table->unsignedBigInteger('IDannuncio')->nullable();
             $table->foreign('IDannuncio')->references('AnnuncioId')->on('annunci');

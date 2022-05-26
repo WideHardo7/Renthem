@@ -24,7 +24,7 @@ use AuthenticatesUsers;
      *
      * @var string
      */
-//    protected $redirectTo = '/home';
+//    protected $redirectTo = '/';
 
     /**
      * Override:: definisce la homepage per i diversi utenti.
@@ -34,9 +34,11 @@ use AuthenticatesUsers;
     protected function redirectTo() {        
         $role = auth()->user()->role;
         switch ($role) {
-            case 'admin': return '/admin';
+            case 'admin': return '/Profilo';
                 break;
-            case 'user': return '/user';
+            case 'locatore': return '/Profilo';
+                break;
+            case 'locatario': return '/Profilo';
                 break;
             default: return '/';
         };

@@ -18,4 +18,12 @@ class Alloggi{
     public function getAnnuncioById($Id){
         return Annuncio::where('AnnuncioId',$Id)->first();
     }
+    
+    public function sortService($idAnnuncio){
+        $alloggio= Annuncio::where('AnnuncioId',$idAnnuncio)->first();
+    /*$servizi= $alloggio->where(function ($query) use ($catId) {
+                        $query->whereIn('parId', $catId);)
+           
+    }*/ 
+    }
 }

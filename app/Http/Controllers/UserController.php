@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 class userController extends Controller {
 
     public function __construct() {
-        $this->middleware('auth');
+        $this->middleware('can:isUser');
     }
 
     public function index() {
-        return view('user');
+        return view('profilo');
     }
 
 }

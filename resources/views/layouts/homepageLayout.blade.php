@@ -9,6 +9,10 @@
         <meta name="keywords" content="case, appartamenti, affitto, camere, studenti">      
         <title>Renthem | @yield('title','HomePage')</title>
         @include('layouts.stylelayout') 
+        @show
+        @section('scripts')
+        @show
+  
     </head>    
     <body>
         <div id="wrapper">
@@ -30,22 +34,28 @@
                     </div>                
             </div>
             <!-- end content -->
+                     
             
+            <div id="profilo">                
+                    <div id="profilo">
+                        @yield('profilo')
+                        <div style="clear: both;">&nbsp;</div>
+                    </div>                
+            </div>
             
-            <div id="login">                
-                    <div id="home">
+            <div id="profilo">                
+                    <div id="profilo">
                         @yield('login')
                         <div style="clear: both;">&nbsp;</div>
                     </div>                
             </div>
-            <!-- end login -->
             
-            <div id="page">                
-            <div id="home">
-                        @yield('Registrazione')
+              <div id="page">                
+                    <div id="home">
+                        @yield('CreaAnnuncio') 
                         <div style="clear: both;">&nbsp;</div>
                     </div>                
-            </div> 
+            </div>                
             
             <div id="footer">
                 @include('layouts/footer')
