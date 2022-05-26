@@ -33,11 +33,11 @@ class RegisterController extends Controller
     protected function redirectTo() {        
         $role = auth()->user()->role;
         switch ($role) {
-            case 'admin': return '/admin';
+            case 'admin': return '/Profilo';
                 break;
-            case 'locatore': return '/locatore';
+            case 'locatore': return '/Profilo';
                 break;
-            case 'locatario': return '/locatario';
+            case 'locatario': return '/Profilo';
                 break;
             default: return '/';
         };

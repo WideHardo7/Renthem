@@ -11,7 +11,12 @@
                 <li><a href="{{route('homelvl1')}}#aboutContatti">Contatti</a></li>
                 <li><a href="{{route('homelvl1')}}#aboutContatti">About Us</a></li>         
                 <li><a href="{{route('homelvl1')}}#faq">FAQ</a></li>
+                @guest
                 <li><a href="{{route('login')}}">Login</a></li>
+                @endguest
+                @can('isUser')
+                <li><a href="{{route('profilo')}}">Profilo</a></li>
+                @endcan
               </ul>
             </div>
             <!-- #Nav Ends -->

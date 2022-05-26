@@ -19,6 +19,7 @@ class LocatarioController extends Controller
         
         $this->faqu = new FaqGetter();    
         $this->annunci= new Alloggi();
+        $this->middleware('can:isLocatario');
     }
     
     
