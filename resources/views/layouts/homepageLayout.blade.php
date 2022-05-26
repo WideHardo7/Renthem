@@ -34,6 +34,13 @@
             
         
             
+            <div id="profilo">                
+                    <div id="profilo">
+                        @yield('profilo')
+                        <div style="clear: both;">&nbsp;</div>
+                    </div>                
+            </div>
+            
             <div id="footer">
                 @include('layouts/footer')
             </div>

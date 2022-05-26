@@ -18,7 +18,7 @@ class CreateAnnunciTable extends Migration
             $table->bigIncrements('AnnuncioId');
             
             $table->unsignedBigInteger('IDproprietario');            
-            $table->foreign('IDproprietario')->references('UserId')->on('utenti');
+            $table->foreign('IDproprietario')->references('Id')->on('users');
             
             $table->string('citta',50);
             $table->string('zona_quartiere',50)->nullable();
@@ -42,7 +42,7 @@ class CreateAnnunciTable extends Migration
             $table->integer('A_numero_posti_letto')->nullable();
             $table->boolean('A_presenza_cucina')->nullable();
             $table->boolean('A_presenza_locale_ricreativo')->nullable();
-            $table->set('A_servizi_disponibili', [ 'parcheggio', 'ascensore' , 'guardiano'])->nullable();
+            $table->string('A_servizi_disponibili')->nullable();
             $table->timestamps();
         });
     }

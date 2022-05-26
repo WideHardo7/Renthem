@@ -22,6 +22,8 @@ class LocatoreController extends Controller
         
         $this->faqu = new FaqGetter();    
         $this->annunci= new Alloggi();
+        $this->middleware('can:isLocatore');
+        
         $this->locatore= new Locatore(); 
     }
     

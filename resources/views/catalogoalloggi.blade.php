@@ -19,7 +19,7 @@
 <div class="row">
    
 <div class="col-lg-3 col-sm-4 ">
-<!-- 
+@can('isLocatario')
   <div class="search-form"><h4><span class="glyphicon glyphicon-search"></span> Cerca per</h4>
     <div class="row">
           <div class="col-lg-12">
@@ -60,8 +60,9 @@
 
 
 
--->
+@endcan
 </div>
+    
 
 <div class="col-lg-9 col-sm-8">
 
@@ -77,9 +78,9 @@
              @endif
           
         </div>
-       <h4>{{$ad->tipologia}}</h4>
+          <h4><a>{{$ad->tipologia}}</a></h4>
         <p class="price">{{$ad->importo}}€</p>
-        <a class="btn btn-primary" href="{{route('scheda',[$ad->AnnuncioId])}}">DETTAGLIO</a>
+        <a class="btn btn-primary bottoni_ancore" href="{{route('scheda',[$ad->AnnuncioId])}}">DETTAGLIO</a>
         
       </div>
       </div>
