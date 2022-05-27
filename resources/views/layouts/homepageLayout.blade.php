@@ -9,6 +9,10 @@
         <meta name="keywords" content="case, appartamenti, affitto, camere, studenti">      
         <title>Renthem | @yield('title','HomePage')</title>
         @include('layouts.stylelayout') 
+        @show
+        @section('scripts')
+        @show
+  
     </head>    
     <body>
         <div id="wrapper">
@@ -26,33 +30,32 @@
             <div id="page">                
                     <div id="home">
                         @yield('homepage') 
-                        <div style="clear: both;">&nbsp;</div>
+            <!--           <div style="clear: both;">&nbsp;</div> -->
                     </div>                
             </div>
             <!-- end content -->
-            
-            
-            <div id="login">                
-                    <div id="home">
-                        @yield('login')
-                        <div style="clear: both;">&nbsp;</div>
-                    </div>                
-            </div>
-            <!-- end login -->
-            
-            <div id="page">                
-            <div id="home">
-                        @yield('Registrazione')
-                        <div style="clear: both;">&nbsp;</div>
-                    </div>                
-            </div> 
+                     
             
             <div id="profilo">                
                     <div id="profilo">
                         @yield('profilo')
-                        <div style="clear: both;">&nbsp;</div>
+            <!--             <div style="clear: both;">&nbsp;</div> -->
                     </div>                
             </div>
+            
+            <div id="profilo">                
+                    <div id="profilo">
+                        @yield('login')
+            <!--             <div style="clear: both;">&nbsp;</div> -->
+                    </div>                
+            </div>
+            
+              <div id="page">                
+                    <div id="home">
+                        @yield('CreaAnnuncio') 
+             <!--            <div style="clear: both;">&nbsp;</div> -->
+                    </div>                
+            </div>                
             
             <div id="footer">
                 @include('layouts/footer')

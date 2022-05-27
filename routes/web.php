@@ -27,8 +27,10 @@
  Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');       
 
  Route::post('register', 'Auth\RegisterController@register');
-
-
+ 
+ Route::get('nuovoAnnuncio', 'LocatoreController@showNuovoAnnuncioForm')->name('nuovoAnnuncio'); 
+ 
+ Route::post('nuovoAnnuncio', 'LocatoreController@insertAnnuncio')->name('insertAnnuncio');
 
 
 // ROUTES IN COMUNE (MAYBE)
@@ -93,6 +95,7 @@ Route::post('logout', 'Auth\LoginController@logout') -> name('logout');
    
    
 // ROUTES LIVELLO 4
+
 
   
 // Route::get('/', controller here ) -> name('homelvl4');   

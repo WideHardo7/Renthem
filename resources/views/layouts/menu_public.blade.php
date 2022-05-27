@@ -15,7 +15,7 @@
                 
                  <!--ancore per locatore -->
                  @can('isLocatore') 
-                <li><a href=""><b>Crea Annuncio</b></a></li> 
+                <li><a href="{{route('nuovoAnnuncio')}}"><b>Crea Annuncio</b></a></li> 
                  <li><a href=""><b>Gestione Annunci</b></a></li> 
                 @endcan
                 
