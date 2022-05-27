@@ -31,14 +31,18 @@
  Route::get('nuovoAnnuncio', 'LocatoreController@showNuovoAnnuncioForm')->name('nuovoAnnuncio'); 
  
  Route::post('nuovoAnnuncio', 'LocatoreController@insertAnnuncio')->name('insertAnnuncio');
+ 
+  Route::get('GestioneAlloggi', 'LocatoreController@showAnnunci')->name('viewAnnunci');
 
 
 // ROUTES IN COMUNE (MAYBE)
     
  Route::get('/Profilo', 'UserController@index') -> name('profilo');
    
-// Route::get('/Profilo/Modifica', controller here) -> name('profilo');  
+ Route::get('/Profilo/Modifica' , 'UserController@ViewEditProfilo') -> name('viewmodprof');  
 
+ Route::post('/Profilo/Modifica', 'UserController@EditUtente')->name('editutente');
+ 
 // Route::post('/Profilo/Modifica', controller here) -> name('profilo.store');
    
 Route::post('logout', 'Auth\LoginController@logout') -> name('logout'); 

@@ -12,4 +12,13 @@ class userController extends Controller {
         return view('profilo');
     }
 
+    public function ViewEditProfilo(){
+        return view('product/modifica_profilo');
+    }
+    
+    public function EditUtente(){
+        
+        
+    }    
+    
 }

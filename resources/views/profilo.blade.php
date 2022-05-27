@@ -16,29 +16,34 @@
 <div class="properties-listing spacer">
 
 <div class="row">
-   
+        <div id="descrprof">
         <div class="property-info">
             <h3><p class="price"><b> Benvenuto {{ Auth::user()->nome }} {{ Auth::user()->cognome }}</b></p></h3> 
-        </div>
-
+            <h4>In questa sezione puoi visualizzare e modificare tutti i dati inerenti al tuo profilo utente. </h4>
+        </div></div>
+                <div id="immprof">                
+                <img src="images/immagineprofilo.jpg" width="width" height="height" alt="alt"/>
+               </div>
+        
+    
     <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span><b>Informazioni del profilo utente</b></h4> 
         
-        <h5><p><ins>Nome:</ins> {{ Auth::user()->nome }}</p></h5>
+        <h5><p><b>Nome:</b> {{ Auth::user()->nome }}</p></h5>
      
-        <h5><p><ins>Cognome:</ins> {{ Auth::user()->cognome }}</p></h5>  
+        <h5><p><b>Cognome:</b> {{ Auth::user()->cognome }}</p></h5>  
         
-        <h5><p><ins>Data di nascita:</ins>{{ Auth::user()->data_nascita }}</p></h5> 
+        <h5><p><b>Data di nascita:</b>{{ Auth::user()->data_nascita }}</p></h5> 
         
-        <h5><p><ins>Telefono:</ins> {{ Auth::user()->telefono }}</p></h5>
+        <h5><p><b>Telefono:</b> {{ Auth::user()->telefono }}</p></h5>
         
-        <h5><p><ins>Email:</ins> {{ Auth::user()->email }}</p></h5>
+        <h5><p><b>Email:</b> {{ Auth::user()->email }}</p></h5>
         
-        <h5><p><ins>Username:</ins> {{ Auth::user()->username }}</p></h5>
+        <h5><p><b>Username:</b> {{ Auth::user()->username }}</p></h5>
         
                 <div class="row">
         
                        <div class="col-lg-2 col-sm-2 col-lg-offset-0 col-sm-offset-3">
-                            <button type="submit" class="btn btn-primary" name="Submit">Modifica Profilo</button>
+                           <button type="submit" class="btn btn-primary" name="Submit"><a class="btn btn-primary" href="{{ route('viewmodprof') }}">Modifica Profilo</a></button>
                         </div>
           
                  </div>
@@ -58,9 +63,9 @@
                  </div>
         
 </div>
-</div>
-</div>
-</div>
 
+</div>
+</div>
+</div>
 
 @endsection

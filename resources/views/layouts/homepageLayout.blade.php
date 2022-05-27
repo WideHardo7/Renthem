@@ -55,7 +55,13 @@
                         @yield('CreaAnnuncio') 
              <!--            <div style="clear: both;">&nbsp;</div> -->
                     </div>                
-            </div>                
+            </div>  
+              <div id="page">                
+                    <div id="home">
+                        @yield('gestAlloggi') 
+             <!--            <div style="clear: both;">&nbsp;</div> -->
+                    </div>                
+            </div>            
             
             <div id="footer">
                 @include('layouts/footer')
