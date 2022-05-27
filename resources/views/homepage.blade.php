@@ -18,7 +18,7 @@
         cursor: pointer;
     }
 </style>
-@endsection('homeScripts')
+@endsection
 
 
 @section('homepage')

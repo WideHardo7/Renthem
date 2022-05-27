@@ -24,7 +24,12 @@
 <!-- Owl stylesheet -->
     <link rel="stylesheet" href="{{asset('assets/owl-carousel/owl.theme.css')}}">
     <script src="{{asset('assets/owl-carousel/owl.carousel.js')}}"></script>
+    
 <!-- Owl stylesheet -->
+<style>
+    .biancati{color: #FFF;
+    text-decoration: none !important;}
+</style>
 
 
 

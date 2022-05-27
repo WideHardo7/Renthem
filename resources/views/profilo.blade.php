@@ -44,7 +44,7 @@
                     @can('isLoreLario')
         
                        <div class="col-lg-2 col-sm-2 col-lg-offset-0 col-sm-offset-3">
-                           <button type="submit" class="btn btn-primary" name="Submit"><a class="btn btn-primary" href="{{ route('viewmodprof') }}">Modifica Profilo</a></button>
+                           <button type="submit" class="btn btn-primary" name="Submit"><a class='biancati' href="{{ route('viewmodprof') }}">Modifica Profilo</a></button>
                         </div>
                     @endcan
           
