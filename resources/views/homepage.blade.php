@@ -1,5 +1,26 @@
 @extends('layouts.homepageLayout')
 @section('title', 'HomePage')
+
+@section('homeScripts')
+@parent
+<script src="{{ asset('js/functions.js') }}" ></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+
+<script>
+    
+    $(document).ready(function () {
+    $(".prova").on("click", function(e){
+    $(this).find($(".nascosto")).toggle();
+    });
+});
+    
+
+
+
+</script>
+@endsection('homeScripts')
+
+
 @section('homepage')
 <div class="homepage">
     
@@ -64,15 +85,14 @@
       <div class="col-lg-6 col-sm-9", id="faq">                
         <h3><b>FAQ</b></h3>
                @if(@isset($faqs))
-            <ul id="faq-singola">
+            <div id="faq-singola">
                 @foreach ($faqs as $faq)
-                    <li>
-                        <h4 id="faq-domanda">{!! $faq->domanda !!}
-                        </h4>
-                        <div id="faq-risposta">{!! $faq->risposta !!}</div>
-                    </li>
+                <div class="prova">
+                        <h4 id="faq-domanda">{!! $faq->domanda !!}</h4>
+                        <div id="faq-risposta" class="nascosto" hidden>{!! $faq->risposta !!} <br></div>
+                </div>
                 @endforeach
-            </ul>
+            </div>
                 @endif
       </div>
         

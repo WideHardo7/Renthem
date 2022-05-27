@@ -66,6 +66,9 @@ class LocatoreController extends Controller
                 
     }
     
+        public function showAnnunci(){
+           return view('listaAlloggi');
+    }
     
 }
 
