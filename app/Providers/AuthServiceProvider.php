@@ -40,7 +40,9 @@ class AuthServiceProvider extends ServiceProvider
          Gate::define('isLoreLario', function ($user) {
             return $user->hasRole(['locatore','locatario']);
         });
-        
+         Gate::define('isAnybutlario', function ($user) {
+            return $user->hasRole(['admin','locatore']);
+        });
         
     }
 }
