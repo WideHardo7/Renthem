@@ -89,8 +89,7 @@
                 @foreach ($faqs as $faq)
                 <div class="prova">        
                     <h4 id="faq-domanda"><a><b>{!! $faq->domanda !!}</b></a></h4>
-                        <div id="faq-risposta" class="nascosto" hidden>{!! $faq->risposta !!} </div>
-                        
+                    <div id="faq-risposta" class="nascosto" hidden>{!! $faq->risposta !!} </div>                       
                 </div>
                 @endforeach
             </div>
