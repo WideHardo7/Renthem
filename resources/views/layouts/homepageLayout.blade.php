@@ -9,10 +9,15 @@
         <meta name="keywords" content="case, appartamenti, affitto, camere, studenti">      
         <title>Renthem | @yield('title','HomePage')</title>
         @include('layouts.stylelayout') 
+        
         @show
         @section('scripts')
         @show
-  
+        
+        
+        @yield('homeScripts')
+        
+        
     </head>    
     <body>
         <div id="wrapper">
@@ -49,6 +54,7 @@
             <!--             <div style="clear: both;">&nbsp;</div> -->
                     </div>                
             </div>
+            
             <div id="profilo">                
                     <div id="profilo">
                         @yield('login')
