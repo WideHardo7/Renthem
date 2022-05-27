@@ -15,28 +15,35 @@ $(document).ready(function () {
             test = "Postoletto";
             $(".desc").hide();
             $("#" + test).show();
+            $("#" + test).children().find($(":input")).prop("disabled", false);
+            $("#Appartamento").children().find($(":input")).prop("disabled", true);
 
         } else if (test === "Appartamento") {
             test = "Appartamento";
             $(".desc").hide();
             $("#" + test).show();
+            $("#" + test).children().find($(":input")).prop("disabled", false);
+            $("#Postoletto").children().find($(":input")).prop("disabled", true);
         }
     });
 });
 
-$(document).ready(function(){$('option').mousedown(function(e) {
-    e.preventDefault();
-    var originalScrollTop = $(this).parent().scrollTop();
-    console.log(originalScrollTop);
-    $(this).prop('selected', $(this).prop('selected') ? false : true);
-    var self = this;
-    $(this).parent().focus();
-    setTimeout(function() {
-        $(self).parent().scrollTop(originalScrollTop);
-    }, 0);
+$(document).ready(function () {
+    $('option').mousedown(function (e) {
+        if(!($(this).parent().attr("disabled"))){
+        e.preventDefault();
+        var originalScrollTop = $(this).parent().scrollTop();
+        console.log(originalScrollTop);
+        $(this).prop('selected', $(this).prop('selected') ? false : true);
+        var self = this;
+        $(this).parent().focus();
+        setTimeout(function () {
+            $(self).parent().scrollTop(originalScrollTop);
+        }, 0);
 
-    return false;
-});}
+        return false;};
+    });
+}
 );
 
 </script>
@@ -45,11 +52,7 @@ $(document).ready(function(){$('option').mousedown(function(e) {
     .desc {
         display: none;
     }
-    
-    select-toggle{
-        height:500px;
-        width: 200px;
-    }
+
 </style>
 
 
@@ -139,27 +142,28 @@ $(document).ready(function(){$('option').mousedown(function(e) {
                         <div class='col-lg-6'>
                             <div class='desc', id='Appartamento'>
                                 <h4><b><ins>Caratteristiche Appartamento</ins></b></h4>
-                                
-                                <div class="wrap-input">
-                                {{ Form::label('Sup', 'Superficie appartamento in mq') }}
-                                {{ Form::text('Sup', '', ['class' => 'input', 'id' => 'Sup', 'placeholder'=>'es: 78']) }}                           
 
                                 <div class="wrap-input">
-                                {{ Form::label('ncamere', 'N° camere' )}}
-                                {{ Form::text('ncamere', '', ['placeholder'=>'es: 3']) }}                           
-
-                            </div>
-                                
+                                    {{ Form::label('Sup', 'Superficie appartamento in mq') }}
+                                    {{ Form::text('Sup', '', ['class' => 'input', 'id' => 'Sup', 'placeholder'=>'es: 78']) }}                           
+                                </div>
                                 <div class="wrap-input">
-                                {{ Form::label('npostolettoTot', 'N° Posti letto totali')}}
-                                {{ Form::text('npostolettoTot', '', ['placeholder'=>'es: 4']) }}                           
+                                    {{ Form::label('ncamere', 'N° camere' )}}
+                                    {{ Form::text('ncamere', '', ['placeholder'=>'es: 3']) }}                           
+
+                                </div>
 
                                 <div class="wrap-input">
-                                {{ Form::label('servizi_inclusi', 'Servizi Inclusi')}}
-                                 
-                                {{ Form::select('servizi_inclusi', array('i1' => 'Wi-fi', 'i2' => 'Parcheggio',
+                                    {{ Form::label('npostolettoTot', 'N° Posti letto totali')}}
+                                    {{ Form::text('npostolettoTot', '', ['placeholder'=>'es: 4']) }}                           
+                                </div>
+                                <div class="wrap-input">
+                                    {{ Form::label('servizi_inclusi', 'Servizi Inclusi')}}
+
+                                    {{ Form::select('servizi_inclusi', array('i1' => 'Wi-fi', 'i2' => 'Parcheggio',
                                                                          'i3' => 'Climatizzatore','i4' => 'Ascensore',
-                                                                         'i5' => 'Giardino' ), ['class' => 'form-control', 'multiple'])}}
+                                                                         'i5' => 'Giardino' ),null, array('class' => 'form-control', 'multiple'=>'multiple',
+                                                                         'disabled'=>true))}}
 
                                 </div>
 
@@ -171,12 +175,13 @@ $(document).ready(function(){$('option').mousedown(function(e) {
                                                                          'i6' => 'Mansarda','i7' => 'Garage',
                                                                          'i8' => 'Lavanderia'),null,
                                                                             array('multiple'=>'multiple','id'=>'locali_presenti',
-                                                                                    'class'=>'select-toggle'))}}
+                                                                                    'class'=>'form-control',
+                                                                                    'disabled'=>true))}}
 
                                 </div>
 
 
-                                
+
 
                             </div>
 
@@ -184,31 +189,33 @@ $(document).ready(function(){$('option').mousedown(function(e) {
                             <div class="desc", id='Postoletto'>
                                 <h4><b><ins>Caratteristiche Posto Letto</ins></b></h4>
 
-                                  <div class="wrap-input">
-                                {{ Form::label('Sup', 'Superficie camera in mq') }}
-                                {{ Form::text('Sup', '', ['class' => 'input', 'id' => 'Sup', 'placeholder'=>'es: 16']) }}                           
-
-                            </div>
-                                
                                 <div class="wrap-input">
-                                {{ Form::label('ncamere', 'N° Posti letto nella stessa camera' )}}
-                                {{ Form::text('ncamere', '', ['placeholder'=>'es: 2']) }}                           
+                                    {{ Form::label('Sup', 'Superficie camera in mq') }}
+                                    {{ Form::text('Sup', '', ['class' => 'input', 'id' => 'Sup', 'placeholder'=>'es: 16']) }}                           
 
-                            </div>
-                                
-                                <div class="wrap-input">
-                                {{ Form::label('npostolettoTot', 'N° Posti letto totale nel alloggio')}}
-                                {{ Form::text('npostolettoTot', '', ['placeholder'=>'es: 4']) }}                           
+                                </div>
 
                                 <div class="wrap-input">
-                                {{ Form::label('servizi_inclusi', 'Servizi Inclusi')}}
-                                 
-                                {{ Form::select('servizi_inclusi', array('i1' => 'Wi-fi', 'i2' => 'Bagno in camera',
+                                    {{ Form::label('ncamere', 'N° Posti letto nella stessa camera' )}}
+                                    {{ Form::text('ncamere', '', ['placeholder'=>'es: 2']) }}                           
+
+                                </div>
+
+                                <div class="wrap-input">
+                                    {{ Form::label('npostolettoTot', 'N° Posti letto totale nel alloggio')}}
+                                    {{ Form::text('npostolettoTot', '', ['placeholder'=>'es: 4']) }}                           
+                                </div>
+                                <div class="wrap-input">
+                                    {{ Form::label('servizi_inclusi', 'Servizi Inclusi')}}
+
+                                    {{ Form::select('servizi_inclusi', array('i1' => 'Wi-fi', 'i2' => 'Bagno in camera',
                                                                          'i3' => 'Climatizzatore','i4' => 'Minibar',
-                                                                         'i5' => 'Angolo studio' ), ['class' => 'form-control', 'multiple'])}}
-                                
-                            </div>
-                                
+                                                                         'i5' => 'Angolo studio' ),null,
+                                                                 array('class' => 'form-control', 'multiple'=>'multiple',
+                                                                        'disabled'=>true ))}}
+
+                                </div>
+
                             </div>           
                         </div>    
                     </div>

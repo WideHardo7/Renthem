@@ -51,6 +51,45 @@ class DatabaseSeeder extends Seeder {
              'role' => 'admin',
              'created_at' => date("Y-m-d H:i:s"),
              'updated_at' => date("Y-m-d H:i:s")],
+            
+            [
+             'nome' => 'mario',
+             'cognome' => 'mario',               
+             'data_nascita' => date("Y-m-d"),
+             'genere' => 'maschio',
+             'email' => 'lario@lario.it',
+             'telefono' => '3182201389',
+             'username' => 'mariomario',
+             'password' => Hash::make('mariomario'),
+             'role' => 'locatario',
+             'created_at' => date("Y-m-d H:i:s"),
+             'updated_at' => date("Y-m-d H:i:s")],
+            
+            [
+             'nome' => 'catore',
+             'cognome' => 'catore',               
+             'data_nascita' => date("Y-m-d"),
+             'genere' => 'maschio',
+             'email' => 'lario@lario.it',
+             'telefono' => '3182201389',
+             'username' => 'catore',
+             'password' => Hash::make('catore'),
+             'role' => 'locatore',
+             'created_at' => date("Y-m-d H:i:s"),
+             'updated_at' => date("Y-m-d H:i:s")],
+            
+            [
+             'nome' => 'min',
+             'cognome' => 'admin',               
+             'data_nascita' => date("Y-m-d"),
+             'genere' => 'maschio',
+             'email' => 'lario@lario.it',
+             'telefono' => '3182201389',
+             'username' => 'minmin',
+             'password' => Hash::make('minmin'),
+             'role' => 'admin',
+             'created_at' => date("Y-m-d H:i:s"),
+             'updated_at' => date("Y-m-d H:i:s")],
         ]);
 
         DB::table('annunci')->insert([
