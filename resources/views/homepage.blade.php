@@ -4,7 +4,6 @@
 @section('homeScripts')
 @parent
 <script src="{{ asset('js/functions.js') }}" ></script>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
 
 <script>
     
@@ -15,8 +14,8 @@
 });
 </script>
 <style>
-    .h4{
-        cursor:pointer;
+    .prova{
+        cursor: pointer;
     }
 </style>
 @endsection('homeScripts')
@@ -88,8 +87,8 @@
                @if(@isset($faqs))
             <div id="faq-singola">
                 @foreach ($faqs as $faq)
-                <div class="prova">
-                        <div id="faq-domanda">{!! $faq->domanda !!}</div>
+                <div class="prova">        
+                    <h4 id="faq-domanda"><a><b>{!! $faq->domanda !!}</b></a></h4>
                         <div id="faq-risposta" class="nascosto" hidden>{!! $faq->risposta !!} </div>
                         
                 </div>
