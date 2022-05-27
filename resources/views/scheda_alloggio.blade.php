@@ -74,7 +74,7 @@
          </div>          
       </div>
         
-          
+       @can('isLocatario')   
       <div class="col-lg-6 col-sm-6">
           <div class="contatta">
               <h5><span class="glyphicon glyphicon-envelope"></span>Per ulteriori informazioni  contatta il gestore dell'alloggio</h5>
@@ -85,6 +85,7 @@
                  <button type="submit" class="btn btn-primary" name="Submit">Invia Messaggio</button>
               </form>
           </div>
+          
           <hr><br>
           <h4><p>Pensi che sia l'appartamento giusto per te? 
                   Allora opziona subito l'offerta!</p></h4>
@@ -97,6 +98,7 @@
                         </div>
           
                  </div>
+          @endcan
            
       </div>
       </div>
