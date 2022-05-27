@@ -45,6 +45,12 @@
             
             <div id="profilo">                
                     <div id="profilo">
+                        @yield('Registrazione')
+            <!--             <div style="clear: both;">&nbsp;</div> -->
+                    </div>                
+            </div>
+            <div id="profilo">                
+                    <div id="profilo">
                         @yield('login')
             <!--             <div style="clear: both;">&nbsp;</div> -->
                     </div>                
