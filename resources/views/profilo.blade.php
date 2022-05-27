@@ -22,7 +22,7 @@
             <h4>In questa sezione puoi visualizzare e modificare tutti i dati inerenti al tuo profilo utente. </h4>
         </div></div>
                 <div id="immprof">                
-                <img src="images/immagineprofilo.jpg" width="width" height="height" alt="alt"/>
+                <img src="{{asset('images/immagineprofilo.jpg')}}" width="width" height="height" alt="alt"/>
                </div>
         
     
@@ -41,10 +41,12 @@
         <h5><p><b>Username:</b> {{ Auth::user()->username }}</p></h5>
         
                 <div class="row">
+                    @can('isLoreLario')
         
                        <div class="col-lg-2 col-sm-2 col-lg-offset-0 col-sm-offset-3">
                            <button type="submit" class="btn btn-primary" name="Submit"><a class="btn btn-primary" href="{{ route('viewmodprof') }}">Modifica Profilo</a></button>
                         </div>
+                    @endcan
           
                  </div>
         
