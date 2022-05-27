@@ -15,17 +15,22 @@ $(document).ready(function () {
             test = "Postoletto";
             $(".desc").hide();
             $("#" + test).show();
+            $("#" + test).children().find($(":input")).prop("disabled", false);
+            $("#Appartamento").children().find($(":input")).prop("disabled", true);
 
         } else if (test === "Appartamento") {
             test = "Appartamento";
             $(".desc").hide();
             $("#" + test).show();
+            $("#" + test).children().find($(":input")).prop("disabled", false);
+            $("#Postoletto").children().find($(":input")).prop("disabled", true);
         }
     });
 });
 
 $(document).ready(function () {
     $('option').mousedown(function (e) {
+        if(!($(this).parent().attr("disabled"))){
         e.preventDefault();
         var originalScrollTop = $(this).parent().scrollTop();
         console.log(originalScrollTop);
@@ -36,7 +41,7 @@ $(document).ready(function () {
             $(self).parent().scrollTop(originalScrollTop);
         }, 0);
 
-        return false;
+        return false;};
     });
 }
 );
@@ -47,6 +52,7 @@ $(document).ready(function () {
     .desc {
         display: none;
     }
+
 </style>
 
 
@@ -141,86 +147,90 @@ $(document).ready(function () {
                                     {{ Form::label('Sup', 'Superficie appartamento in mq') }}
                                     {{ Form::text('Sup', '', ['class' => 'input', 'id' => 'Sup', 'placeholder'=>'es: 78']) }}                           
                                 </div>
-                                    <div class="wrap-input">
-                                        {{ Form::label('ncamere', 'N° camere' )}}
-                                        {{ Form::text('ncamere', '', ['placeholder'=>'es: 3']) }}                           
+                                <div class="wrap-input">
+                                    {{ Form::label('ncamere', 'N° camere' )}}
+                                    {{ Form::text('ncamere', '', ['placeholder'=>'es: 3']) }}                           
 
-                                    </div>
+                                </div>
 
-                                    <div class="wrap-input">
-                                        {{ Form::label('npostolettoTot', 'N° Posti letto totali')}}
-                                        {{ Form::text('npostolettoTot', '', ['placeholder'=>'es: 4']) }}                           
-                                    </div>
-                                        <div class="wrap-input">
-                                            {{ Form::label('servizi_inclusi', 'Servizi Inclusi')}}
+                                <div class="wrap-input">
+                                    {{ Form::label('npostolettoTot', 'N° Posti letto totali')}}
+                                    {{ Form::text('npostolettoTot', '', ['placeholder'=>'es: 4']) }}                           
+                                </div>
+                                <div class="wrap-input">
+                                    {{ Form::label('servizi_inclusi', 'Servizi Inclusi')}}
 
-                                            {{ Form::select('servizi_inclusi', array('i1' => 'Wi-fi', 'i2' => 'Parcheggio',
+                                    {{ Form::select('servizi_inclusi', array('i1' => 'Wi-fi', 'i2' => 'Parcheggio',
                                                                          'i3' => 'Climatizzatore','i4' => 'Ascensore',
-                                                                         'i5' => 'Giardino' ),null, array('class' => 'form-control', 'multiple'=>'multiple'))}}
+                                                                         'i5' => 'Giardino' ),null, array('class' => 'form-control', 'multiple'=>'multiple',
+                                                                         'disabled'=>true))}}
 
-                                        </div>
+                                </div>
 
-                                        <div class="wrap-input">
-                                            {{ Form::label('locali_presenti', 'Locali Presenti')}}
+                                <div class="wrap-input">
+                                    {{ Form::label('locali_presenti', 'Locali Presenti')}}
 
-                                            {{ Form::select('locali_presenti',array('i1' => 'Cucina', 'i2' => 'Studio',
+                                    {{ Form::select('locali_presenti',array('i1' => 'Cucina', 'i2' => 'Studio',
                                                                          'i3' => 'Bagno doppio','i4' => 'bagno singolo','i5' => 'Sala multiuso',
                                                                          'i6' => 'Mansarda','i7' => 'Garage',
                                                                          'i8' => 'Lavanderia'),null,
                                                                             array('multiple'=>'multiple','id'=>'locali_presenti',
-                                                                                    'class'=>'form-control'))}}
+                                                                                    'class'=>'form-control',
+                                                                                    'disabled'=>true))}}
 
-                                        </div>
-
-
-
-
-                                    </div>
-
-
-                                    <div class="desc", id='Postoletto'>
-                                        <h4><b><ins>Caratteristiche Posto Letto</ins></b></h4>
-                                    
-                                        <div class="wrap-input">
-                                            {{ Form::label('Sup', 'Superficie camera in mq') }}
-                                            {{ Form::text('Sup', '', ['class' => 'input', 'id' => 'Sup', 'placeholder'=>'es: 16']) }}                           
-
-                                        </div>
-
-                                        <div class="wrap-input">
-                                            {{ Form::label('ncamere', 'N° Posti letto nella stessa camera' )}}
-                                            {{ Form::text('ncamere', '', ['placeholder'=>'es: 2']) }}                           
-
-                                        </div>
-
-                                        <div class="wrap-input">
-                                            {{ Form::label('npostolettoTot', 'N° Posti letto totale nel alloggio')}}
-                                            {{ Form::text('npostolettoTot', '', ['placeholder'=>'es: 4']) }}                           
-                                        </div>
-                                            <div class="wrap-input">
-                                                {{ Form::label('servizi_inclusi', 'Servizi Inclusi')}}
-
-                                                {{ Form::select('servizi_inclusi', array('i1' => 'Wi-fi', 'i2' => 'Bagno in camera',
-                                                                         'i3' => 'Climatizzatore','i4' => 'Minibar',
-                                                                         'i5' => 'Angolo studio' ),null, array('class' => 'form-control', 'multiple'=>'multiple'))}}
-
-                                            </div>
-
-                                        </div>           
-                                    </div>    
                                 </div>
 
-                                <div class="spacer">
 
 
 
-                                    <div class="input-group">
-                                        {{ Form::submit('Crea Nuovo Annuncio', ['class' => 'form-btn1', 'id'=>'pulsante']) }}
-                                    </div></div>
-                                {{ Form::close() }}
                             </div>
-                        </div>
-                    </div>    
 
 
-                    @endsection
+                            <div class="desc", id='Postoletto'>
+                                <h4><b><ins>Caratteristiche Posto Letto</ins></b></h4>
+
+                                <div class="wrap-input">
+                                    {{ Form::label('Sup', 'Superficie camera in mq') }}
+                                    {{ Form::text('Sup', '', ['class' => 'input', 'id' => 'Sup', 'placeholder'=>'es: 16']) }}                           
+
+                                </div>
+
+                                <div class="wrap-input">
+                                    {{ Form::label('ncamere', 'N° Posti letto nella stessa camera' )}}
+                                    {{ Form::text('ncamere', '', ['placeholder'=>'es: 2']) }}                           
+
+                                </div>
+
+                                <div class="wrap-input">
+                                    {{ Form::label('npostolettoTot', 'N° Posti letto totale nel alloggio')}}
+                                    {{ Form::text('npostolettoTot', '', ['placeholder'=>'es: 4']) }}                           
+                                </div>
+                                <div class="wrap-input">
+                                    {{ Form::label('servizi_inclusi', 'Servizi Inclusi')}}
+
+                                    {{ Form::select('servizi_inclusi', array('i1' => 'Wi-fi', 'i2' => 'Bagno in camera',
+                                                                         'i3' => 'Climatizzatore','i4' => 'Minibar',
+                                                                         'i5' => 'Angolo studio' ),null,
+                                                                 array('class' => 'form-control', 'multiple'=>'multiple',
+                                                                        'disabled'=>true ))}}
+
+                                </div>
+
+                            </div>           
+                        </div>    
+                    </div>
+
+                    <div class="spacer">
+
+
+
+                        <div class="input-group">
+                            {{ Form::submit('Crea Nuovo Annuncio', ['class' => 'form-btn1', 'id'=>'pulsante']) }}
+                        </div></div>
+                    {{ Form::close() }}
+                </div>
+            </div>
+        </div>    
+
+
+        @endsection
