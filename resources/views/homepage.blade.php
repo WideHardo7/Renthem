@@ -13,11 +13,12 @@
     $(this).find($(".nascosto")).toggle();
     });
 });
-    
-
-
-
 </script>
+<style>
+    .h4{
+        cursor:pointer;
+    }
+</style>
 @endsection('homeScripts')
 
 
@@ -88,8 +89,9 @@
             <div id="faq-singola">
                 @foreach ($faqs as $faq)
                 <div class="prova">
-                        <h4 id="faq-domanda">{!! $faq->domanda !!}</h4>
-                        <div id="faq-risposta" class="nascosto" hidden>{!! $faq->risposta !!} <br></div>
+                        <div id="faq-domanda">{!! $faq->domanda !!}</div>
+                        <div id="faq-risposta" class="nascosto" hidden>{!! $faq->risposta !!} </div>
+                        
                 </div>
                 @endforeach
             </div>
