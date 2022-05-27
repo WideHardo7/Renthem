@@ -4,7 +4,6 @@
 @section('homeScripts')
 @parent
 <script src="{{ asset('js/functions.js') }}" ></script>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
 
 <script>
     
@@ -13,11 +12,12 @@
     $(this).find($(".nascosto")).toggle();
     });
 });
-    
-
-
-
 </script>
+<style>
+    .prova{
+        cursor: pointer;
+    }
+</style>
 @endsection('homeScripts')
 
 
