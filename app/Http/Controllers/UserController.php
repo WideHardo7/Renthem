@@ -18,15 +18,21 @@ class userController extends Controller {
 
     public function ViewEditProfilo(){
         return view('product/modifica_profilo');
+        
     }
     
-    public function EditUtente(){
+    public function Verifica(ModificaProfiloRequest $request){
+              
+    }
+
+
+    public function EditUtente(ModificaProfiloRequest $request){
         $result = collect(request()->all())->filter(function($request){
             return is_string($request)&&!empty($request)||is_array($request)&&count($request);
         });
         $user=Auth::user();
         $user->update($result->all());
-        return redirect()->action('UserController@index');
+        return response()->json(['redirect' => route('profilo')]);
        
     }    
     
