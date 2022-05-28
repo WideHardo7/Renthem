@@ -6,12 +6,16 @@
 <script src="{{ asset('js/functions.js') }}" ></script>
 
 <script>
-    
-    $(document).ready(function () {
+    function visualizza(id){
+    var faqrispid= "faq-risposta["+id+"]";
+    var hfaq= document.getElementById(faqrispid);
+    hfaq.hidden= (hfaq.hidden)? false:true;
+    }
+/*    $(document).ready(function () {
     $(".prova").on("click", function(e){
     $(this).find($(".nascosto")).toggle();
     });
-});
+});*/
 </script>
 <style>
     .prova{
@@ -88,8 +92,8 @@
             <div id="faq-singola">
                 @foreach ($faqs as $faq)
                 <div class="prova">        
-                    <h4 id="faq-domanda"><a><b>{!! $faq->domanda !!}</b></a></h4>
-                    <div id="faq-risposta" class="nascosto" hidden>{!! $faq->risposta !!} </div>                       
+                    <h4 id="faq-domanda[{!!$faq->FaqId!!}]"><a id="faq-a[{!!$faq->FaqId!!}]" onclick="visualizza({!!$faq->FaqId!!})"><b>{!! $faq->domanda !!}</b></a></h4>
+                    <div id="faq-risposta[{!!$faq->FaqId!!}]" class="nascosto" hidden>{!! $faq->risposta !!} </div>                       
                 </div>
                 @endforeach
             </div>

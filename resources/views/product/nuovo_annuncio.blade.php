@@ -41,7 +41,6 @@ $(document).ready(function () {
         setTimeout(function () {
             $(self).parent().scrollTop(originalScrollTop);
         }, 0);
-
         return false;};
     });
 }
@@ -53,7 +52,6 @@ $(document).ready(function () {
     .desc {
         display: none;
     }
-
 </style>
 
 
