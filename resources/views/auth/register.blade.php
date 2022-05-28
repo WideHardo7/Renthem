@@ -9,7 +9,7 @@
 <div class="row" >
         
     <div class="col-lg-7 col-lg-offset-5" >
-	<div class="container">
+	
 		{{ Form::open(array('route' => 'register', 'class' => 'contact-form')) }}
             <p class="login-text" style="font-size: 2rem; font-weight: 800;">Registrazione</p>
             
@@ -140,7 +140,7 @@
 			</div>
 			<p class="login-register-text">Possiedi già un'account? <a href="{{route('login')}}">Accedi qui</a>.</p>
 		 {{ Form::close() }}
-	</div>
+	
     </div>
 </div>
     </div>
