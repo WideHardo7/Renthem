@@ -41,7 +41,7 @@ $(function () {
         <div class="input-group">
             <div class="input-inline">
                 {{ Form::label ('nome', 'Nome:  ')  }}
-                {{ Form::text ('nome', '',['class'=>'input',id'=>'nome']) }}
+                {{ Form::text ('nome', '',['class'=>'input','id'=>'nome']) }}
                 @if ($errors->first('nome'))
                     <ul class="errors">
                         @foreach ($errors->get('nome') as $message)
@@ -127,7 +127,7 @@ $(function () {
         
         
         {{ Form::reset('Annulla modifiche', ['class' => 'button btn-form']) }}
-        {{ Form::submit('Aggiorna profilo utente', ['class' => 'button btn-form']) }}     
+        {{ Form::submit('Aggiorna profilo utente', ['class' => 'button btn-form', 'id' => 'sub-btn']) }}     
     {{ Form::close() }}
     
 

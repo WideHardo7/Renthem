@@ -20,7 +20,7 @@ class userController extends Controller {
         return view('product/modifica_profilo');
     }
     
-    public function EditUtente(){
+    public function EditUtente(ModificaProfiloRequest $request){
         $result = collect(request()->all())->filter(function($request){
             return is_string($request)&&!empty($request)||is_array($request)&&count($request);
         });
