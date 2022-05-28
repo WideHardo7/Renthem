@@ -1,5 +1,28 @@
 @extends('layouts.homepageLayout')
 @section('title', 'Modifica profilo utente')
+
+@section('MProfiloscripts')
+
+@parent
+<script src="{{ asset('js/functions.js') }}" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(function () {
+    var actionUrl = "{{ route('editutente') }}";
+    var formId = 'modProfilo';
+    $(":input").on('blur', function (event) {
+        var formElementId = $(this).attr('id');
+        doElemValidation(formElementId, actionUrl, formId);
+    });
+    $("#modProfilo").on('submit', function (event) {
+        event.preventDefault();
+        doFormValidation(actionUrl, formId);
+    });
+});
+</script>
+
+@endsection
+
 @section('profilo')
 
 <!-- banner -->
@@ -13,13 +36,12 @@
 
 <div class="container">
     
-    {{ Form::open (array('route' => 'editutente', 'class' => 'contact-form', 'id'=>'form Annuncio' , 'method' => 'POST')) }}  
-        
+    {{ Form::open (array('route' => 'editutente', 'class' => 'contact-form', 'id'=>'modProfilo')) }}  
         <br><br>
         <div class="input-group">
             <div class="input-inline">
                 {{ Form::label ('nome', 'Nome:  ')  }}
-                {{ Form::text ('nome', '', ['max-length' => config(''), 'required']) }}
+                {{ Form::text ('nome', '', ['max-length' => config('')]) }}
                 @if ($errors->first('nome'))
                     <ul class="errors">
                         @foreach ($errors->get('nome') as $message)
@@ -33,7 +55,7 @@
         <div class="input-group">
             <div class="input-inline">
                 {{ Form::label ('cognome', 'Cognome:  ')  }}
-                {{ Form::text ('cognome', '', ['max-length' => config(''), 'required']) }}
+                {{ Form::text ('cognome', '', ['max-length' => config('')]) }}
                 @if ($errors->first('cognome'))
                     <ul class="errors">
                         @foreach ($errors->get('cognome') as $message)
@@ -47,10 +69,10 @@
         <div class="input-group">
             <div class="input-inline">
                 {{ Form::label ('data', 'Data di nascita:  ')  }}
-                {{ Form::date('data','',['class' => 'input', 'id' => 'datanascita']) }}
-                @if ($errors->first('data'))
+                {{ Form::date('data_nascita','',['class' => 'input', 'id' => 'datanascita']) }}
+                @if ($errors->first('data_nascita'))
                     <ul class="errors">
-                        @foreach ($errors->get('data') as $message)
+                        @foreach ($errors->get('data_nascita') as $message)
                         <li>{{ $message }}</li>
                         @endforeach
                     </ul>
@@ -61,7 +83,7 @@
         <div class="input-group">
             <div class="input-inline">
                 {{ Form::label ('telefono', 'Telefono:  ')  }}
-                {{ Form::text ('telefono', '', ['max-length' => config(''), 'required']) }}
+                {{ Form::text ('telefono', '', ['max-length' => config('')]) }}
                 @if ($errors->first('telefono'))
                     <ul class="errors">
                         @foreach ($errors->get('telefono') as $message)
@@ -75,7 +97,7 @@
         <div class="input-group">
             <div class="input-inline">
                 {{ Form::label ('email', 'E-Mail:  ')  }}
-                {{ Form::text ('email', '', ['max-length' => config(''), 'required']) }}
+                {{ Form::text ('email', '', ['max-length' => config('')]) }}
                 @if ($errors->first('email'))
                     <ul class="errors">
                         @foreach ($errors->get('email') as $message)

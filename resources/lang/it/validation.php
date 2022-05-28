@@ -144,6 +144,14 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'datanascita'=>'Data di nascita'
+    ],
+    
+    'values' => [
+        'datanascita' => [
+            'today' => 'oggi',
+        ]
+    ]
 
 ];

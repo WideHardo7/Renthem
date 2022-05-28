@@ -47,8 +47,8 @@
                     <p class="login-register-text">Non hai un account? <a href="{{route('register')}}">Registrati qua</a>.</p>
 		
                 {{ Form::close() }}
+       </div>
 	</div>
-</div>
 
 </div>
 </div>
