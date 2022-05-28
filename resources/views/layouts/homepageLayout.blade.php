@@ -14,6 +14,7 @@
         @section('scripts')
         @show
         
+        @yield('MProfiloscripts')
         
         @yield('homeScripts')
         

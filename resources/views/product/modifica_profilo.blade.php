@@ -41,7 +41,7 @@ $(function () {
         <div class="input-group">
             <div class="input-inline">
                 {{ Form::label ('nome', 'Nome:  ')  }}
-                {{ Form::text ('nome', '', ['max-length' => config('')]) }}
+                {{ Form::text ('nome', '',['class'=>'input',id'=>'nome']) }}
                 @if ($errors->first('nome'))
                     <ul class="errors">
                         @foreach ($errors->get('nome') as $message)
@@ -55,7 +55,7 @@ $(function () {
         <div class="input-group">
             <div class="input-inline">
                 {{ Form::label ('cognome', 'Cognome:  ')  }}
-                {{ Form::text ('cognome', '', ['max-length' => config('')]) }}
+                {{ Form::text ('cognome', '',['class'=>'input' , 'id'=>'cognome']) }}
                 @if ($errors->first('cognome'))
                     <ul class="errors">
                         @foreach ($errors->get('cognome') as $message)
@@ -69,7 +69,7 @@ $(function () {
         <div class="input-group">
             <div class="input-inline">
                 {{ Form::label ('data', 'Data di nascita:  ')  }}
-                {{ Form::date('data_nascita','',['class' => 'input', 'id' => 'datanascita']) }}
+                {{ Form::date('data_nascita','',['class' => 'input', 'id' => 'data_nascita']) }}
                 @if ($errors->first('data_nascita'))
                     <ul class="errors">
                         @foreach ($errors->get('data_nascita') as $message)
@@ -83,7 +83,7 @@ $(function () {
         <div class="input-group">
             <div class="input-inline">
                 {{ Form::label ('telefono', 'Telefono:  ')  }}
-                {{ Form::text ('telefono', '', ['max-length' => config('')]) }}
+                {{ Form::text ('telefono',"",[ 'class'=>'input','id'=>'telefono']) }}
                 @if ($errors->first('telefono'))
                     <ul class="errors">
                         @foreach ($errors->get('telefono') as $message)
@@ -97,7 +97,7 @@ $(function () {
         <div class="input-group">
             <div class="input-inline">
                 {{ Form::label ('email', 'E-Mail:  ')  }}
-                {{ Form::text ('email', '', ['max-length' => config('')]) }}
+                {{ Form::text ('email', '',['class'=>'input','id'=>'email']) }}
                 @if ($errors->first('email'))
                     <ul class="errors">
                         @foreach ($errors->get('email') as $message)
