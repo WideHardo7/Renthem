@@ -29,13 +29,13 @@ class NewProductRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'nome' => ['string', 'max:255'],
-            'cognome' => ['string', 'max:255'],
-            'email' => ['string', 'email', 'max:255', 'unique:users'],
-            'username' => ['string', 'min:6', 'unique:users'],
-            'password' => ['string', 'min:8', 'confirmed'],
-            'telefono' => ['numeric', 'max:20'],
-            'data_nascita' => ['date','before:today'],
+            'nome' => 'string'|'max:20',
+            'cognome' => 'string|max:20',
+            'email' => 'string'| 'email'|'max:40'| 'unique:users',
+            'username' => 'string'|'min:6'|'unique:users',
+            'password' => 'string'| 'min:8'| 'confirmed',
+            'telefono' => 'numeric'|'max:20',
+            'data_nascita' => 'date'|'before:today',
         ];
     }
     
