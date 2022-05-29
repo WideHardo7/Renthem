@@ -67,7 +67,9 @@ class LocatoreController extends Controller
     }
     
         public function showAnnunci(){
-           return view('listaAlloggi');
+           $alloggio= $this->annunci->getAnnunciobyPage(6);
+           return view('listaAlloggi')
+           ->with('ads', $alloggio);
     }
     
 }
