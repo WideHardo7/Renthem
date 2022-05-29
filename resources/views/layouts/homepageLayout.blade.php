@@ -9,16 +9,13 @@
         <meta name="keywords" content="case, appartamenti, affitto, camere, studenti">      
         <title>Renthem | @yield('title','HomePage')</title>
         @include('layouts.stylelayout') 
-        
         @show
         @section('scripts')
         @show
-        @show
         @section('MProfiloscripts')
+        @show     
+        @section('homeScripts')
         @show
-        
-        @yield('homeScripts')
-        
         
     </head>    
     <body>
