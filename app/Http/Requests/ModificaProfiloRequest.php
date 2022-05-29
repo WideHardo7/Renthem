@@ -9,7 +9,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 use Symfony\Component\HttpFoundation\Response;
 
-class NewProductRequest extends FormRequest {
+class ModificaProfiloRequest extends FormRequest {
 
     /**
      * Determine if the user is authorized to make this request.
@@ -29,13 +29,13 @@ class NewProductRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'nome' => 'string'|'max:20',
-            'cognome' => 'string'|'max:20',
-            'email' => 'string'| 'email'|'max:40'| 'unique:users',
-            'username' => 'string'|'min:6'|'unique:users',
-            'password' => 'string'| 'min:8'| 'confirmed',
-            'telefono' => 'numeric'|'max:20',
-            'data_nascita' => 'date'|'before:today',
+            'nome' => 'string|max:20',
+            'cognome' => 'string|max:20',
+            'email' => 'string|email|max:40|unique:users',
+            'username' => 'string|min:6|unique:users',
+            'password' => 'string| min:8| confirmed',
+            'telefono' => 'numeric|max:20',
+            'data_nascita' => 'date|before:today',
         ];
     }
     

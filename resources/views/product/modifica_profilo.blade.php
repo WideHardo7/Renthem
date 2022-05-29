@@ -4,7 +4,7 @@
 @section('MProfiloscripts')
 
 @parent
-<script src="{{ asset('js/functions.js') }}" ></script>
+<script src="{{ asset('assets/js/functions.js') }}" ></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 $(function () {
@@ -42,13 +42,7 @@ $(function () {
             <div class="input-inline">
                 {{ Form::label ('nome', 'Nome:  ')  }}
                 {{ Form::text ('nome', '',['class'=>'input','id'=>'nome']) }}
-        <!--        @if ($errors->first('nome'))
-                    <ul class="errors">
-                        @foreach ($errors->get('nome') as $message)
-                        <li>{{ $message }}</li>
-                        @endforeach
-                    </ul>
-                @endif -->
+        
             </div>
         </div> 
         
@@ -80,18 +74,13 @@ $(function () {
             </div>
         </div>
         
-        <div class="input-group">
-            <div class="input-inline">
+        <div class="wrap-input">
+            
                 {{ Form::label ('telefono', 'Telefono:  ')  }}
                 {{ Form::text ('telefono',"",[ 'class'=>'input','id'=>'telefono']) }}
-       <!--        @if ($errors->first('telefono'))
-                    <ul class="errors">
-                        @foreach ($errors->get('telefono') as $message)
-                        <li>{{ $message }}</li>
-                        @endforeach
-                    </ul>
-                @endif -->
-            </div>
+                
+       
+            
         </div> 
         
         <div class="input-group">
@@ -127,7 +116,7 @@ $(function () {
         
         
         {{ Form::reset('Annulla modifiche', ['class' => 'button btn-form']) }}
-        {{ Form::submit('Aggiorna profilo utente', ['class' => 'button btn-form', 'id'=>'sub-btn']) }}     
+        {{ Form::submit('Aggiorna profilo utente', ['class' => 'form-btn1', 'id'=>'sub-btn']) }}     
     {{ Form::close() }}
     
 
