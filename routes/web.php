@@ -101,7 +101,8 @@ Route::post('logout', 'Auth\LoginController@logout') -> name('logout');
    
 // ROUTES LIVELLO 4
 
-
+ Route::get('/GestioneFaq', 'AdminController@ViewEditFaq') -> name('viewEditFaq');
+ Route::post('/GestioneFaq', 'AdminController@EditFaq') -> name('EditFaq');
   
 // Route::get('/', controller here ) -> name('homelvl4');   
 
