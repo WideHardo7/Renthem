@@ -30,7 +30,7 @@
  
  Route::get('nuovoAnnuncio', 'LocatoreController@showNuovoAnnuncioForm')->name('nuovoAnnuncio'); 
  
- Route::post('nuovoAnnuncio', 'LocatoreController@insertAnnuncio')->name('insertAnnuncio');
+ Route::post('insertAnnuncio', 'LocatoreController@insertAnnuncio')->name('insertAnnuncio');
  
   Route::get('GestioneAlloggi', 'LocatoreController@showAnnunci')->name('viewAnnunci');
 

@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Models\Catalog;
 use App\Models\FaqGetter;
-use App\Models\Alloggi;
-use App\Models\Locatore;
+use App\Models\Resources\Annuncio;
+use App\Http\Requests\NuovoAnnuncioRequest;
+use App\Models\locatore;
+use App\User;
+use Auth;
 
 
 class LocatoreController extends Controller
@@ -21,7 +25,7 @@ class LocatoreController extends Controller
     public function __construct() {
         
         $this->faqu = new FaqGetter();    
-        $this->annunci= new Alloggi();
+        $this->annunci= new Annuncio();
         $this->middleware('can:isLocatore');
         
         $this->locatore= new Locatore(); 
@@ -54,18 +58,47 @@ class LocatoreController extends Controller
     }
     
     //new
-    public function showNuovoAnnuncioForm(){
+    
+    public function showNuovoAnnuncioForm(){              
+        return view('product.nuovo_annuncio');                    
+    }
+    
+    
+    public function insertAnnuncio(NuovoAnnuncioRequest $request){
+                if ($request->hasFile('immagine')) {
+            $image = $request->file('immagine');
+            $imageName = $image->getClientOriginalName();
+        } else {
+            $imageName = NULL;
+        }
+
+        $annuncio = new Annuncio;
+        $annuncio->fill($request->validated());
+        $annuncio->immagine = $imageName;
+        $annuncio->IDproprietario = Auth::user()->id;
+        $annuncio->data_inizio_disponibilita = '2002-12-11';
+        $annuncio->data_fine_disponibilita = '2003-11-11';
+        $annuncio->assegnato = false;
         
-        $tipoAlloggio= $this->locatore->getTipoAlloggio();
-        return view('product.nuovo_annuncio')
-               ->with('tipologia',$tipoAlloggio);      
+        
+        $array[]=($request->input('servizi_inlcusi'));
+        LOG::info('array:', $array);
+        
+        $stringa= implode(' ',$array);               
+   
+        $annuncio->servizi_inclusi = $stringa;       
+        $annuncio->save();
+        
+        
+        //sposto immaggine nella cartella public/images/NuoviAlloggi
+        if (!is_null($imageName)) {
+            $destinationPath = public_path() . '/images/NuoviAlloggi';
+            $image->move($destinationPath, $imageName);
+        };
+
+        return response()->json(['redirect' => route('homelvl1')]);
     }
-    
-    
-    public function insertAnnuncio(){
-                
-    }
-    
+       
         public function showAnnunci(){
            $alloggio= $this->annunci->getAnnunciobyPage(6);
            return view('listaAlloggi')
