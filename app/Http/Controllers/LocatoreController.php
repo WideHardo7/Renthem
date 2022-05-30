@@ -73,20 +73,18 @@ class LocatoreController extends Controller
         }
 
         $annuncio = new Annuncio;
+        
+        
+        
         $annuncio->fill($request->validated());
         $annuncio->immagine = $imageName;
         $annuncio->IDproprietario = Auth::user()->id;
         $annuncio->data_inizio_disponibilita = '2002-12-11';
         $annuncio->data_fine_disponibilita = '2003-11-11';
         $annuncio->assegnato = false;
-        
-        
-        $array[]=($request->input('servizi_inlcusi'));
-        LOG::info('array:', $array);
-        
-        $stringa= implode(' ',$array);               
-   
-        $annuncio->servizi_inclusi = $stringa;       
+        $array=$request->servizi_inclusi;
+        $stringa= implode(' ',$array);  
+        $annuncio->servizi_inclusi = $stringa;
         $annuncio->save();
         
         

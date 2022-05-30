@@ -43,8 +43,6 @@ $(document).ready(function () {
         setTimeout(function () {
             $(self).parent().scrollTop(originalScrollTop);
         }, 0);
-        var select = $(this).parentNode.cloneNode(true);         
-        $(this).parentNode.parentNode.replaceChild(select, $(this).parentNode);
         return false;};
     });
 }
@@ -155,8 +153,8 @@ $(function () {
                             </div>  
                             <div class="wrap-input">
                                     {{ Form::label('servizi_inclusi', 'Servizi inclusi')}}
-                                    {{ Form::select('servizi_inclusi[]', array('1' => 'Wi-fi', '2' => 'Parcheggio',
-                                                                         '3' => 'Climatizzatore','4' => 'Ascensore','5' => 'Giardino' ),
+                                    {{ Form::select("servizi_inclusi[]", array('Wi-fi' => 'Wi-fi', 'Parcheggio' => 'Parcheggio',
+                                                                         'Climatizzatore' => 'Climatizzatore','Ascensore' => 'Ascensore','Giardino' => 'Giardino' ),
                                                                          null, array('class' => 'form-control', 'multiple'=>'multiple','id' => 'servizi_inclusi[]' ))}}
 
                                 </div>

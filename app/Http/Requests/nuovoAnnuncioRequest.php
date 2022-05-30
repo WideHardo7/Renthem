@@ -29,7 +29,7 @@ class NuovoAnnuncioRequest extends FormRequest {
             'zona_quartiere' => 'required|max:50',
             'indirizzo' => 'required|max:50',            
             'importo' => 'required|integer|min:0',
-            'servizi_inclusi' => 'required',
+            'servizi_inclusi' => 'required|array',
             //'periodo'=> 'required',
             'eta_minima' => 'required|integer|min:0',
             'genere_richiesto'=> 'required',           
