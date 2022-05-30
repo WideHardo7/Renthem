@@ -26,7 +26,7 @@
                  
                   <!--ancore per admin-->
                  @can('isAdmin')
-                <li><a href=""><b>Gestione Faq</b></a></li> 
+                <li><a href="{{route('viewEditFaq')}}"><b>Gestione Faq</b></a></li> 
                 <li><a href=""><b>Statistiche</b></a></li> 
                 @endcan
               </ul>
