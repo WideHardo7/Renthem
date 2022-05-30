@@ -17,8 +17,9 @@ class CreateAnnunciTable extends Migration
         Schema::create('annunci', function (Blueprint $table) {
             $table->bigIncrements('AnnuncioId');
             
-            $table->unsignedBigInteger('IDproprietario');            
-            $table->foreign('IDproprietario')->references('Id')->on('users');
+            $table->unsignedBigInteger('user_id');            
+            $table->foreign('user_id')->references('id')->on('users');
+            
             
             $table->string('citta',50);
             $table->string('zona_quartiere',50)->nullable();
@@ -35,14 +36,13 @@ class CreateAnnunciTable extends Migration
             $table->boolean('assegnato'); 
             $table->date('data_assegnazione')->nullable();           
             $table->string('immagine',200)->nullable();            
-            $table->integer('C_numero_posti_letto_totali')->nullable();
+            $table->integer('numero_posti_letto_totali')->nullable();
             $table->integer('C_numero_posti_letto_in_camera')->nullable();
-            $table->boolean('C_presenza_angolo_studio')->nullable();
+            $table->string('A_locali_presenti',500);
             $table->integer('A_numero_camere')->nullable();
-            $table->integer('A_numero_posti_letto')->nullable();
-            $table->boolean('A_presenza_cucina')->nullable();
-            $table->boolean('A_presenza_locale_ricreativo')->nullable();
-            $table->string('A_servizi_disponibili')->nullable();
+           
+           
+            
             $table->timestamps();
         });
     }

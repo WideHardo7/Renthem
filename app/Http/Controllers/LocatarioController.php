@@ -48,6 +48,12 @@ class LocatarioController extends Controller
     
         return view('profilo3');
         }
+        public function insertOpzionamento(){
+            /*take the user id of the locatario and the id of that annuncio opzionato
+              $user=Auth::user()->id;
+             * $annuncioid=;
+             * $user->moreannunci()->attach($annuncioid);             */
+        }
         
 }
 

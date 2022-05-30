@@ -7,6 +7,9 @@ use App\Models\Catalog;
 use App\Models\FaqGetter;
 use App\Models\Alloggi;
 use App\Models\Locatore;
+use App\User;
+use Auth;
+use Illuminate\Support\Facades\Log;
 
 
 class LocatoreController extends Controller
@@ -67,7 +70,16 @@ class LocatoreController extends Controller
     }
     
         public function showAnnunci(){
-           return view('listaAlloggi');
+           $utente= Auth::user()->id;
+           Log::info('utente id passato'.$utente);
+           $alloggio= $this->annunci->getAnnunciobyLocatore($utente,3);
+           return view('listaAlloggi')
+           ->with('ads', $alloggio);
+    }
+    public function showOptionforAnnuncio($idannuncio){
+        $annuncio=Annuncio::find($idannuncio);
+        $locatari= $annuncio->moreutenti;
+        return $locatari;
     }
     
 }

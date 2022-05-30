@@ -3,6 +3,7 @@
 namespace App\Models\Resources;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Annuncio extends Model
 {
@@ -16,7 +17,13 @@ class Annuncio extends Model
      * @var array
      */
     protected $fillable = [
-        'IDproprietario', 'citta','zona-quartiere','indirizzo','descrizione',
+        'user_id', 'citta','zona-quartiere','indirizzo','descrizione',
     ];
+    public function utente(){
+        return $this->belongsTo(User::class, 'id', 'user_id');
+    }
+    public function moreutenti(){
+        return $this->belongsToMany(Users::class, 'annunci_users')->withTimestamps();
+    }
     
 }

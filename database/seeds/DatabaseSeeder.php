@@ -94,7 +94,7 @@ class DatabaseSeeder extends Seeder {
 
         DB::table('annunci')->insert([
             ['AnnuncioId' => '1',
-             'IDproprietario' => '1',
+             'user_id' => '1',
              'citta' => 'Ancona',               
              'zona_quartiere' => 'Q1',
              'indirizzo' => 'via brecce bianche 12',
@@ -122,7 +122,7 @@ class DatabaseSeeder extends Seeder {
              'updated_at' => date("Y-m-d H:i:s")],
             
             ['AnnuncioId' => '2',
-             'IDproprietario' => '1',
+             'user_id' => '1',
              'citta' => 'Ancona',               
              'zona_quartiere' => 'Q2',
              'indirizzo' => 'via flavia 25',
@@ -150,7 +150,7 @@ class DatabaseSeeder extends Seeder {
              'updated_at' => date("Y-m-d H:i:s")],
             
             ['AnnuncioId' => '3',
-            'IDproprietario' => '1',
+            'user_id' => '1',
              'citta' => 'Ancona',               
              'zona_quartiere' => 'Q2',
              'indirizzo' => 'via flavia 25',
@@ -179,7 +179,7 @@ class DatabaseSeeder extends Seeder {
             
             
             ['AnnuncioId' => '4',
-             'IDproprietario' => '1',
+             'user_id' => '1',
              'citta' => 'Ancona',               
              'zona_quartiere' => 'Q2',
              'indirizzo' => 'via flavia 25',
@@ -207,7 +207,7 @@ class DatabaseSeeder extends Seeder {
              'updated_at' => date("Y-m-d H:i:s")],
             
             ['AnnuncioId' => '5',
-           'IDproprietario' => '1',
+           'user_id' => '1',
              'citta' => 'Ancona',               
              'zona_quartiere' => 'Q2',
              'indirizzo' => 'via flavia 25',
@@ -235,7 +235,7 @@ class DatabaseSeeder extends Seeder {
              'updated_at' => date("Y-m-d H:i:s")],
             
             ['AnnuncioId' => '6',
-             'IDproprietario' => '1',
+             'user_id' => '1',
              'citta' => 'Ancona',               
              'zona_quartiere' => 'Q2',
              'indirizzo' => 'via flavia 25',
@@ -263,7 +263,7 @@ class DatabaseSeeder extends Seeder {
              'updated_at' => date("Y-m-d H:i:s")],
             
             ['AnnuncioId' => '7',
-            'IDproprietario' => '1',
+            'user_id' => '1',
              'citta' => 'Ancona',               
              'zona_quartiere' => 'Q2',
              'indirizzo' => 'via flavia 25',
@@ -291,7 +291,7 @@ class DatabaseSeeder extends Seeder {
              'updated_at' => date("Y-m-d H:i:s")],
             
             ['AnnuncioId' => '8',
-            'IDproprietario' => '1',
+            'user_id' => '1',
              'citta' => 'Ancona',               
              'zona_quartiere' => 'Q2',
              'indirizzo' => 'via flavia 25',
@@ -319,7 +319,7 @@ class DatabaseSeeder extends Seeder {
              'updated_at' => date("Y-m-d H:i:s")],
             
             ['AnnuncioId' => '9',
-             'IDproprietario' => '1',
+             'user_id' => '1',
              'citta' => 'Ancona',               
              'zona_quartiere' => 'Q2',
              'indirizzo' => 'via flavia 25',
@@ -347,7 +347,7 @@ class DatabaseSeeder extends Seeder {
              'updated_at' => date("Y-m-d H:i:s")],
             
             ['AnnuncioId' => '10',
-           'IDproprietario' => '1',
+           'user_id' => '1',
              'citta' => 'Ancona',               
              'zona_quartiere' => 'Q2',
              'indirizzo' => 'via flavia 25',
@@ -375,7 +375,7 @@ class DatabaseSeeder extends Seeder {
              'updated_at' => date("Y-m-d H:i:s")],
             
             ['AnnuncioId' => '11',
-             'IDproprietario' => '1',
+             'user_id' => '1',
              'citta' => 'Ancona',               
              'zona_quartiere' => 'Q2',
              'indirizzo' => 'via flavia 25',
@@ -404,7 +404,7 @@ class DatabaseSeeder extends Seeder {
            
             
             ['AnnuncioId' => '12',
-            'IDproprietario' => '1',
+            'user_id' => '1',
              'citta' => 'Ancona',               
              'zona_quartiere' => 'Q2',
              'indirizzo' => 'via flavia 25',

@@ -1,4 +1,4 @@
-    function getErrorHtml(elemErrors) {
+function getErrorHtml(elemErrors) {
     if ((typeof (elemErrors) === 'undefined') || (elemErrors.length < 1))
         return;
     var out = '<ul class="errors">';

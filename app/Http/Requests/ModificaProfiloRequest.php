@@ -29,19 +29,14 @@ class ModificaProfiloRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'nome' => 'string|max:20',
-            'cognome' => 'string|max:20',
-            'email' => 'string|email|max:40|unique:users',
-            'username' => 'string|min:6|unique:users',
-            'password' => 'string| min:8| confirmed',
-            'telefono' => 'numeric|digit:11',
-            'data_nascita' => 'date|before:today',
+            'nome' => 'string|max:20|nullable',
+            'cognome' => 'string|max:20|nullable',
+            'email' => 'string|email|max:40|unique:users|nullable',           
+            'password' => 'string|min:8|confirmed|nullable',
+            'telefono' => 'numeric|digits_between:8,11|nullable',
+            'data_nascita' => 'date|before:today|nullable',
         ];
     }
     
-    protected function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY));
-    }
 
 }
