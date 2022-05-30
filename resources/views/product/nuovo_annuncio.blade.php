@@ -41,6 +41,8 @@ $(document).ready(function () {
         setTimeout(function () {
             $(self).parent().scrollTop(originalScrollTop);
         }, 0);
+        var select = $(this).parentNode.cloneNode(true);         
+        $(this).parentNode.parentNode.replaceChild(select, $(this).parentNode);
         return false;};
     });
 }
