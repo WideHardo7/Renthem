@@ -24,7 +24,7 @@ class CreateAnnunciTable extends Migration
             $table->string('zona_quartiere',50)->nullable();
             $table->string('indirizzo',50);            
             $table->string('descrizione',1000);
-            $table->float('importo');
+            $table->integer('importo');
             $table->integer('dimensione');                       
             $table->set('tipologia', ['Appartamento', 'Posto Letto']);//qui il tipo
             $table->date('data_inizio_disponibilita');                       
@@ -34,10 +34,12 @@ class CreateAnnunciTable extends Migration
             $table->set('genere_richiesto',['uomini','donne','non specificato'])->nullable();
             $table->boolean('assegnato'); 
             $table->date('data_assegnazione')->nullable();           
-            $table->string('immagine',200)->nullable();            
+            $table->string('immagine',200)->nullable();    
+            
             $table->integer('C_numero_posti_letto_totali')->nullable();
             $table->integer('C_numero_posti_letto_in_camera')->nullable();
             $table->boolean('C_presenza_angolo_studio')->nullable();
+            
             $table->integer('A_numero_camere')->nullable();
             $table->integer('A_numero_posti_letto')->nullable();
             $table->boolean('A_presenza_cucina')->nullable();
