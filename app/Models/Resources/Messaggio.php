@@ -7,14 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Messaggio extends Model
 {
     protected $table = 'messaggi';
-    protected $primaryKey = 'ID';
-    protected $guarded = ['ID'];
+    protected $primaryKey = 'id';
+    protected $guarded = ['id'];
     
 
     public $timestamps = true;
     
-    public function prodCat() {
-        return $this->hasOne(Category::class, 'catId', 'catId');
+    //relazione one to many inversa,
+    public function locatorechat() {
+        return $this->belongsTo(User::class, 'id', 'idlocatore');
+    }
+    //relazione one to many inversa,
+    public function locatariochat() {
+        return $this->belongsTo(User::class, 'id', 'idlocatario');
     }
     
    

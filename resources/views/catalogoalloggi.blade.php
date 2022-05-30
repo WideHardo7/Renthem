@@ -94,44 +94,7 @@
                         </div>
                     </div>
                     @endisset()
-                    <!-- properties -->
-
-                    <!-- properties 
-                    <div class="col-lg-4 col-sm-6">
-                    <div class="properties">
-                      <div class="image-holder"><img src="images/properties/1.jpg" class="img-responsive" alt="properties">
-                        
-                      </div>
-                      <h4><a href="">posto letto</a></h4>
-                      
-                    </div>
-                    </div>
-                    <!-- properties -->
-
-                    <!-- properties 
-                    <div class="col-lg-4 col-sm-6">
-                    <div class="properties">
-                      <div class="image-holder"><img src="images/properties/1.jpg" class="img-responsive" alt="properties">
-                        
-                      </div>
-                      <h4><a href="">posto letto</a></h4>
-                      
-                    </div>
-                    </div>
-                    <!-- properties -->
-                    <!--   
-                        <div class="center">
-                  <ul class="pagination">
-                            <li><a href="#">«</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">»</a></li>
-                          </ul>
-                  </div>
-                    -->
+                    
 
                 </div>
             </div>

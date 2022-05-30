@@ -8,7 +8,7 @@ class Locatore {
    
     //new
 
-    public function getTipoAlloggio() {
-        return Annuncio::where('Tipologia', '!=', 0)->get();
+    public function getAlloggio() {
+        return Annuncio::all();
     }
 }

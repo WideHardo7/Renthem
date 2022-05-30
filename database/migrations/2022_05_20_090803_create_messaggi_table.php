@@ -15,18 +15,18 @@ class CreateMessaggiTable extends Migration
     public function up()
     {
         Schema::create('messaggi', function (Blueprint $table) {
-            $table->bigIncrements('ID')->index();
+            $table->bigIncrements('id')->index();
             
-            $table->unsignedBigInteger('IDmittente')->nullable();
-            $table->foreign('IDmittente')->references('id')->on('users');
+            $table->unsignedBigInteger('idlocatario');
+            $table->foreign('idlocatario')->references('id')->on('users');
             
-            $table->unsignedBigInteger('IDdestinatario')->nullable();
-            $table->foreign('IDdestinatario')->references('id')->on('users');
+            $table->unsignedBigInteger('idlocatore');
+            $table->foreign('idlocatore')->references('id')->on('users');
             
             $table->string('contenuto',200);
+            //specifica chi invia il messaggio 0 inviato da locatario, 1 iniviato da locatore
+            $table->boolean('sender');
             
-            $table->unsignedBigInteger('IDannuncio')->nullable();
-            $table->foreign('IDannuncio')->references('AnnuncioId')->on('annunci');
             $table->timestamps();
             
         });

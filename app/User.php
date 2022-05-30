@@ -56,5 +56,13 @@ class User extends Authenticatable {
         return $this->belongsToMany(Annunci::class, 'annunci_users')->withTimestamps();
         
     }
+    //relazione one to many un locatore può ricevere più messaggi
+    public function messaggiolocatore(){
+        return $this->hasMany(Messaggio::class, 'idlocatore', 'id');
+    }
+    //relazione one to many un locatario può inviare più messaggi
+     public function messaggiolocatario(){
+        return $this->hasMany(Messaggio::class, 'idlocatario', 'id');
+    }
 
 }

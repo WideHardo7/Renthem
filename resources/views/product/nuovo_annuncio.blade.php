@@ -5,29 +5,31 @@
 
 @section('scripts')
 @parent
-<script src="{{ asset('js/functions.js') }}" ></script>
+<script src="{{ asset('assets/js/functions.js') }}" ></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 
 $(document).ready(function () {
-    $("input[name=tipo]").on("click", function () {
+    $("input[name=tipologia]").on("click", function () {
         var test = $(this).val();
+        
         if (test === "Posto letto") {
-            test = "Postoletto";
-            $(".desc").hide();
+            test = "PostoL";
+         //   $(".desc").hide();
             $("#" + test).show();
             $("#" + test).children().find($(":input")).prop("disabled", false);
-            $("#Appartamento").children().find($(":input")).prop("disabled", true);
+            $("#Appartament").children().find($(":input")).prop("disabled", true);
 
         } else if (test === "Appartamento") {
-            test = "Appartamento";
-            $(".desc").hide();
+            test = "Appartament";
+        //    $(".desc").hide();
             $("#" + test).show();
             $("#" + test).children().find($(":input")).prop("disabled", false);
-            $("#Postoletto").children().find($(":input")).prop("disabled", true);
+            $("#PostoL").children().find($(":input")).prop("disabled", true);
         }
     });
 });
+
 
 $(document).ready(function () {
     $('option').mousedown(function (e) {
@@ -44,8 +46,23 @@ $(document).ready(function () {
         return false;};
     });
 }
-);
+); 
 
+</script>
+
+<script>
+$(function () {
+    var actionUrl = "{{ route('insertAnnuncio') }}";
+    var formId = 'formAnnuncio';
+    $(":input").on('blur', function (event) {
+        var formElementId = $(this).attr('id');
+        doElemValidation(formElementId, actionUrl, formId);
+    });
+    $("#formAnnuncio").on('submit', function (event) {
+        event.preventDefault();
+        doFormValidation(actionUrl, formId);
+    });
+});
 </script>
 
 <style type="text/css">
@@ -53,10 +70,7 @@ $(document).ready(function () {
         display: none;
     }
 </style>
-
-
 @endsection
-
 
 @section('CreaAnnuncio')
 <div class="static">
@@ -68,7 +82,7 @@ $(document).ready(function () {
 
                 <h3><b>Dati Generali</b></h3>   
 
-                {{ Form::open(array('route' => 'insertAnnuncio', 'class' => 'contact-form', 'id'=>'form Annuncio')) }}     
+                {{ Form::open(array('route' => 'insertAnnuncio', 'id'=>'formAnnuncio', 'files'=>true)) }}     
 
                 <fieldset>
                     <div id='input-1'>
@@ -76,35 +90,29 @@ $(document).ready(function () {
                             <p>Tipologia dell'alloggio</p></div></div>
 
                     <div id='input-2'>                               
-                        {{ Form::radio('tipo', 'Appartamento',false, ['class' => 'input', 'id' => 'Appartamento1']) }}
-                        {{ Form::label('tipo', 'Appartamento', ['class' => 'label-input']) }}
+                        {{ Form::radio('tipologia', 'Appartamento', false, ['class' => 'label-input', 'id' => 'Appartamento']) }}
+                        {{ Form::label('tipologia', 'Appartamento', ['class' => 'label-input']) }}
 
                     </div>
                     <div id='input-3'>
-                        {{ Form::radio('tipo', 'Posto letto', false, ['class' => 'input', 'id' => 'Posto_letto']) }}
-                        {{ Form::label('tipo', 'Posto letto', ['class' => 'label-input']) }}                           
+                        {{ Form::radio('tipologia', 'Posto letto', false, ['class' => 'label-input', 'id' => 'Posto letto']) }}
+                        {{ Form::label('tipologia', 'Posto letto', ['class' => 'label-input']) }}                           
                 </fieldset>
 
+                
                 <div class="wrap-input">
 
-                    {{ Form::textarea('bio', null, ['cols'=>135, 'rows' =>5, 'placeholder'=>"Descrizione generale dell'alloggio."]) }}                   
+                    {{ Form::textarea('descrizione', '', ['cols'=>135, 'rows' =>5, 'placeholder'=>"Descrizione generale dell'alloggio.", 'id' => 'descrizione']) }}                   
                 </div>
-
+                
                 <div class="spacer">
 
-                    <div class='row'>
+                    <div class='row', id='caratteristiche_generale'>
                         <div class='col-lg-6'>
 
                             <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('image', 'Immagine', ['class' => 'label-input']) }}
-                                {{ Form::file('image', ['class' => 'input', 'id' => 'immagine']) }}
-                                @if ($errors->first('immagine'))
-                                <ul class="errors">
-                                    @foreach ($errors->get('immagine') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
+                                {{ Form::label('immagine', 'Immagine', ['class' => 'label-input']) }}
+                                {{ Form::file('immagine', ['class' => 'input', 'id' => 'immagine']) }}                               
                             </div>
 
                             <div class="wrap-input">
@@ -113,8 +121,8 @@ $(document).ready(function () {
 
                             </div>
                             <div class="wrap-input">
-                                {{ Form::label('zona', 'Zona e/o quartiere', ['class' => 'label-input']) }}
-                                {{ Form::text('zona', '', ['class' => 'input', 'id' => 'zona', 'placeholder'=>'es: Q1']) }}                           
+                                {{ Form::label('zona_quartiere', 'Zona e/o quartiere', ['class' => 'label-input']) }}
+                                {{ Form::text('zona_quartiere', '', ['class' => 'input', 'id' => 'zona_quartiere', 'placeholder'=>'es: Q1']) }}                           
 
                             </div>
                             <div class="wrap-input">
@@ -123,59 +131,70 @@ $(document).ready(function () {
 
                             </div>
                             <div class="wrap-input">
-                                {{ Form::label('canone_affitto', 'Canone affitto €/mese ', ['class' => 'label-input']) }}
-                                {{ Form::text('canone_affitto', '', ['class' => 'input', 'id' => 'cannone_affitto', 'placeholder'=>'es: 400']) }}                           
+                                {{ Form::label('importo', 'Canone affitto €/mese ', ['class' => 'label-input']) }}
+                                {{ Form::text('importo', '', ['class' => 'input', 'id' => 'importo', 'placeholder'=>'es: 400']) }}                           
                             </div>
 
                             <div class="wrap-input">
                                 {{ Form::label('periodo', 'Periodo di affitto')}}
-
                                 {{ Form::select('periodo', array('i1' => '3 mesi', 'i2' => '6 mesi',
-                                                                         'i3' => '1 anno','i4' => '2 anni'))}}
-
+                                                                 'i3' => '1 anno','i4' => '2 anni'),null,array('disabled'=>true))}}
+                                                                         
                             </div>
+                            <div class="wrap-input">
+                                {{ Form::label('eta_minima', 'Etá minima neccessaria', ['class' => 'label-input']) }}
+                                {{ Form::text('eta_minima', '', ['class' => 'input', 'id' => 'eta_minima', 'placeholder'=>'es: 18']) }}                           
+                            </div>
+                            
+                            <div class="wrap-input">
+                                {{ Form::label('genere_richiesto', 'Vincolo genere locatore')}}
+                                {{ Form::select('genere_richiesto', array('uomini' => 'uomini', 'donne' => 'donne', 'non specificato' => 'non specificato'),
+                                                                          null, array('id' => 'genere_richiesto'))}}
+                            </div>  
+                            <div class="wrap-input">
+                                    {{ Form::label('servizi_inclusi', 'Servizi inclusi')}}
+                                    {{ Form::select("servizi_inclusi[]", array('Wi-fi' => 'Wi-fi', 'Parcheggio' => 'Parcheggio',
+                                                                         'Climatizzatore' => 'Climatizzatore','Ascensore' => 'Ascensore','Giardino' => 'Giardino' ),
+                                                                         null, array('class' => 'form-control', 'multiple'=>'multiple','id' => 'servizi_inclusi[]' ))}}
 
+                                </div>
                         </div>
 
-
                         <div class='col-lg-6'>
-                            <div class='desc', id='Appartamento'>
+                            <div class='desc', id='Appartament'>
                                 <h4><b><ins>Caratteristiche Appartamento</ins></b></h4>
 
                                 <div class="wrap-input">
-                                    {{ Form::label('Sup', 'Superficie appartamento in mq') }}
-                                    {{ Form::text('Sup', '', ['class' => 'input', 'id' => 'Sup', 'placeholder'=>'es: 78']) }}                           
+                                    {{ Form::label('dimensione', 'Superficie appartamento in mq') }}
+                                    {{ Form::text('dimensione', '', ['class' => 'input', 'id' => 'A_dimensione', 'placeholder'=>'es: 78']) }}                           
                                 </div>
                                 <div class="wrap-input">
-                                    {{ Form::label('ncamere', 'N° camere' )}}
-                                    {{ Form::text('ncamere', '', ['placeholder'=>'es: 3']) }}                           
-
-                                </div>
-
-                                <div class="wrap-input">
-                                    {{ Form::label('npostolettoTot', 'N° Posti letto totali')}}
-                                    {{ Form::text('npostolettoTot', '', ['placeholder'=>'es: 4']) }}                           
-                                </div>
-                                <div class="wrap-input">
-                                    {{ Form::label('servizi_inclusi', 'Servizi Inclusi')}}
-
-                                    {{ Form::select('servizi_inclusi', array('i1' => 'Wi-fi', 'i2' => 'Parcheggio',
-                                                                         'i3' => 'Climatizzatore','i4' => 'Ascensore',
-                                                                         'i5' => 'Giardino' ),null, array('class' => 'form-control', 'multiple'=>'multiple',
-                                                                         'disabled'=>true))}}
+                                    {{ Form::label('A_numero_camere', 'N° camere' )}}
+                                    {{ Form::text('A_numero_camere', '', ['placeholder'=>'es: 3', 'id' => 'A_numero_camere']) }}                           
 
                                 </div>
 
                                 <div class="wrap-input">
-                                    {{ Form::label('locali_presenti', 'Locali Presenti')}}
+                                    {{ Form::label('A_numero_posti_letto', 'N° Posti letto totali')}}
+                                    {{ Form::text('A_numero_posti_letto', '', ['placeholder'=>'es: 4', 'id' => 'A_numero_posti_letto']) }}                           
+                                </div>
+                                <div class="wrap-input">
+                                    {{ Form::label('A_servizi_disponibili', 'Servizi disponibili')}}
+                                    {{ Form::select('A_servizi_disponibili', array('1' => 'Wi-fi', '2' => 'Parcheggio',
+                                                                         '3' => 'Climatizzatore','4' => 'Ascensore',
+                                                                         '5' => 'Giardino' ),null, array('class' => 'form-control', 'multiple'=>'multiple',
+                                                                         'disabled'=>true,'id' => 'A_servizi_disponibili'))}}
 
-                                    {{ Form::select('locali_presenti',array('i1' => 'Cucina', 'i2' => 'Studio',
-                                                                         'i3' => 'Bagno doppio','i4' => 'bagno singolo','i5' => 'Sala multiuso',
-                                                                         'i6' => 'Mansarda','i7' => 'Garage',
-                                                                         'i8' => 'Lavanderia'),null,
-                                                                            array('multiple'=>'multiple','id'=>'locali_presenti',
-                                                                                    'class'=>'form-control',
-                                                                                    'disabled'=>true))}}
+                                </div>
+                                
+                                <div class="wrap-input">
+                                    {{ Form::label('A_presenza_cucina', 'Presenza cucina')}}
+                                    {{ Form::select('A_presenza_cucina', array(true => 'si', false => 'no'), null, array('id' => 'A_presenza_cucina', ))}}
+                                </div>
+
+                                <div class="wrap-input">
+                                    {{ Form::label('A_presenza_locale_ricreativo', 'Presenza locale ricreativo')}}
+                                    {{ Form::select('A_presenza_locale_ricreativo',array(true => 'si', false => 'no'))}}
 
                                 </div>
 
@@ -185,33 +204,28 @@ $(document).ready(function () {
                             </div>
 
 
-                            <div class="desc", id='Postoletto'>
+                            <div class="desc", id='PostoL'>
                                 <h4><b><ins>Caratteristiche Posto Letto</ins></b></h4>
 
                                 <div class="wrap-input">
-                                    {{ Form::label('Sup', 'Superficie camera in mq') }}
-                                    {{ Form::text('Sup', '', ['class' => 'input', 'id' => 'Sup', 'placeholder'=>'es: 16']) }}                           
+                                    {{ Form::label('dimensione', 'Superficie camera in mq') }}
+                                    {{ Form::text('dimensione', '', ['class' => 'input', 'id' => 'C_dimensione', 'placeholder'=>'es: 16']) }}                           
 
                                 </div>
 
                                 <div class="wrap-input">
-                                    {{ Form::label('ncamere', 'N° Posti letto nella stessa camera' )}}
-                                    {{ Form::text('ncamere', '', ['placeholder'=>'es: 2']) }}                           
+                                    {{ Form::label('C_numero_posti_letto_in_camera', 'N° Posti letto nella stessa camera' )}}
+                                    {{ Form::text('C_numero_posti_letto_in_camera', '', ['placeholder'=>'es: 2']) }}                           
 
                                 </div>
 
                                 <div class="wrap-input">
-                                    {{ Form::label('npostolettoTot', 'N° Posti letto totale nel alloggio')}}
-                                    {{ Form::text('npostolettoTot', '', ['placeholder'=>'es: 4']) }}                           
+                                    {{ Form::label('C_numero_posti_letto_totali', 'N° Posti letto totale nel alloggio')}}
+                                    {{ Form::text('C_numero_posti_letto_totali', '', ['placeholder'=>'es: 4']) }}                           
                                 </div>
                                 <div class="wrap-input">
-                                    {{ Form::label('servizi_inclusi', 'Servizi Inclusi')}}
-
-                                    {{ Form::select('servizi_inclusi', array('i1' => 'Wi-fi', 'i2' => 'Bagno in camera',
-                                                                         'i3' => 'Climatizzatore','i4' => 'Minibar',
-                                                                         'i5' => 'Angolo studio' ),null,
-                                                                 array('class' => 'form-control', 'multiple'=>'multiple',
-                                                                        'disabled'=>true ))}}
+                                    {{ Form::label('C_presenza_angolo_studio', 'Presenza angolo studio')}}
+                                    {{ Form::select('C_presenza_angolo_studio',array(true => 'si', false => 'no'))}}
 
                                 </div>
 

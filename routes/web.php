@@ -30,7 +30,7 @@
  
  Route::get('nuovoAnnuncio', 'LocatoreController@showNuovoAnnuncioForm')->name('nuovoAnnuncio'); 
  
- Route::post('nuovoAnnuncio', 'LocatoreController@insertAnnuncio')->name('insertAnnuncio');
+ Route::post('insertAnnuncio', 'LocatoreController@insertAnnuncio')->name('insertAnnuncio');
  
   Route::get('GestioneAlloggi', 'LocatoreController@showAnnunci')->name('viewAnnunci');
 
@@ -101,7 +101,8 @@ Route::post('logout', 'Auth\LoginController@logout') -> name('logout');
    
 // ROUTES LIVELLO 4
 
-
+ Route::get('/GestioneFaq', 'AdminController@ViewEditFaq') -> name('viewEditFaq');
+ Route::post('/GestioneFaq', 'AdminController@EditFaq') -> name('EditFaq');
   
 // Route::get('/', controller here ) -> name('homelvl4');   
 

@@ -25,7 +25,7 @@ class CreateAnnunciTable extends Migration
             $table->string('zona_quartiere',50)->nullable();
             $table->string('indirizzo',50);            
             $table->string('descrizione',1000);
-            $table->float('importo');
+            $table->integer('importo');
             $table->integer('dimensione');                       
             $table->set('tipologia', ['Appartamento', 'Posto Letto']);//qui il tipo
             $table->date('data_inizio_disponibilita');                       
