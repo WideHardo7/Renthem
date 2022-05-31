@@ -15,14 +15,14 @@ $(document).ready(function () {
         
         if (test === "Posto letto") {
             test = "PostoL";
-         //   $(".desc").hide();
+            $(".desc").hide();
             $("#" + test).show();
             $("#" + test).children().find($(":input")).prop("disabled", false);
             $("#Appartament").children().find($(":input")).prop("disabled", true);
 
         } else if (test === "Appartamento") {
             test = "Appartament";
-        //    $(".desc").hide();
+            $(".desc").hide();
             $("#" + test).show();
             $("#" + test).children().find($(":input")).prop("disabled", false);
             $("#PostoL").children().find($(":input")).prop("disabled", true);
