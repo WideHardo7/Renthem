@@ -6,11 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Models\Catalog;
 use App\Models\FaqGetter;
-use App\Models\Resources\Annuncio;
-use App\Http\Requests\NuovoAnnuncioRequest;
-use App\Models\locatore;
+use App\Models\Alloggi;
+use App\Models\Locatore;
 use App\User;
 use Auth;
+
+use App\Models\Resources\Annuncio;
+use App\Http\Requests\NuovoAnnuncioRequest;
+
+
 
 
 class LocatoreController extends Controller
@@ -21,11 +25,13 @@ class LocatoreController extends Controller
     protected $annunci;
     protected $dati;
     protected $locatore;
+    protected $alloggi;
 
     public function __construct() {
         
         $this->faqu = new FaqGetter();    
         $this->annunci= new Annuncio();
+        $this->alloggi=new Alloggi();
         $this->middleware('can:isLocatore');
         
         $this->locatore= new Locatore(); 
@@ -78,13 +84,19 @@ class LocatoreController extends Controller
         
         $annuncio->fill($request->validated());
         $annuncio->immagine = $imageName;
-        $annuncio->IDproprietario = Auth::user()->id;
-        $annuncio->data_inizio_disponibilita = '2002-12-11';
-        $annuncio->data_fine_disponibilita = '2003-11-11';
+        $annuncio->user_id = Auth::user()->id;        
         $annuncio->assegnato = false;
-        $array=$request->servizi_inclusi;
+        
+        $array=$request->servizi_inclusi;       
         $stringa= implode(' ',$array);  
         $annuncio->servizi_inclusi = $stringa;
+        
+        if(($annuncio->tipologia)=='Appartamento'){
+        $array2=$request->A_locali_presenti;
+        $stringa2= implode(' ',$array2);  
+        $annuncio->A_locali_presenti = $stringa2;
+        };
+                   
         $annuncio->save();
         
         
@@ -98,9 +110,16 @@ class LocatoreController extends Controller
     }
        
         public function showAnnunci(){
-           $alloggio= $this->annunci->getAnnunciobyPage(6);
+           $utente= Auth::user()->id;
+           Log::info('utente id passato'.$utente);
+           $alloggio= $this->alloggi->getAnnunciobyLocatore($utente);
            return view('listaAlloggi')
            ->with('ads', $alloggio);
+    }
+    public function showOptionforAnnuncio($idannuncio){
+       // $annuncio=Annuncio::find($idannuncio);
+        //$locatari= $annuncio->moreutenti;
+        //return $locatari;
     }
     
 }

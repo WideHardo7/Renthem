@@ -42,11 +42,11 @@
               <p><h5><ins>Caratteristiche</ins><br><br>
                   Superficie Appartamento: {{$ann->dimensione}} m<sup>2</sup><br>
                      Numero di camere nell'appartamento: {{$ann->A_numero_camere}}<br> 
-                     Numero posti letto totale nell'abitazione: {{$ann->A_numero_posti_letto}}<br></p></h5>
+                     Numero posti letto totale nell'abitazione: {{$ann->numero_posti_letto_totali}}<br></p></h5>
               
               <p><h5><ins>Servizi</ins><br><br>
                   Superficie Camaera: {{$ann->dimensione}} m<sup>2</sup><br>
-                     Numero di posti letto nell'appartamento: {{$ann->C_numero_posti_letto}}<br> 
+                     Numero di posti letto nell'appartamento: {{$ann->numero_posti_letto_totali}}<br> 
                      Numero posti letto in camera: {{$ann->A_numero_posti_letto}}<br></p></h5>
               
               <h5><p><ins>Vincoli di Locazione</ins><br><br>
@@ -59,8 +59,8 @@
                      
                      <p><h5><ins>Caratteristiche</ins><br><br>
                   Superficie Camaera: {{$ann->dimensione}} m<sup>2</sup><br>
-                     Numero di posti letto nell'appartamento: {{$ann->C_numero_posti_letto}}<br> 
-                     Numero posti letto in camera: {{$ann->A_numero_posti_letto}}<br></p></h5>
+                     Numero di posti letto nell'appartamento: {{$ann->numero_posti_letto_totali}}<br> 
+                     Numero posti letto in camera: {{$ann->C_numero_posti_letto_in_camera}}<br></p></h5>
                      
                  
                  Servizi: angolo studio, minibar, bagno in camera<br>               
@@ -79,8 +79,7 @@
           <div class="contatta">
               <h5><span class="glyphicon glyphicon-envelope"></span>Per ulteriori informazioni  contatta il gestore dell'alloggio</h5>
               <form role="form">
-                 <input type="text" class="form-control" placeholder="Username Locatore"/>
-                 <input type="text" class="form-control" placeholder="Oggetto"/>               
+                                
                  <textarea rows="8" class="form-control" placeholder="Messaggio"></textarea>
                  <button type="submit" class="btn btn-primary" name="Submit">Invia Messaggio</button>
               </form>

@@ -22,29 +22,25 @@ class NuovoAnnuncioRequest extends FormRequest {
     
     public function rules() {
         return [
-            'tipologia' => 'required',
-            'descrizione' => 'required|max:1000',
             'citta' => 'required|max:50',
-            'immagine' => 'image|max:1024',
             'zona_quartiere' => 'required|max:50',
             'indirizzo' => 'required|max:50',            
+            'descrizione' => 'required|max:1000',
             'importo' => 'required|integer|min:0',
-            'servizi_inclusi' => 'required|array',
-            //'periodo'=> 'required',
+            'dimensione' => 'required|integer|min:0',
+            'tipologia' => 'required',
+            'data_inizio_disponibilita' => 'required',
+            'data_fine_disponibilita' => 'required',          
+            'servizi_inclusi' => 'required|array',  //usato sia per posto letto che appartamento
             'eta_minima' => 'required|integer|min:0',
             'genere_richiesto'=> 'required',           
-            
-            'dimensione' => 'required|integer|min:0',
-            
-            'A_numero_camere' => 'nullable|integer|min:1',
-            'A_numero_posti_letto' => 'nullable|integer|min:1',
-            'A_servizi_disponibili' => 'nullable',
-            'A_presenza_locale_ricreativo' => 'nullable',
-            'A_presenza_cucina' => 'nullable',
+            'immagine' => 'image|max:1024',
                       
+            'A_numero_camere' => 'nullable|integer|min:1',           
+            'A_locali_presenti' => 'nullable',
+                                 
             'C_numero_posti_letto_in_camera'=> 'nullable|integer|min:1',
-            'C_numero_posti_letto_totali'=> 'nullable|integer|min:1',
-            'C_presenza_angolo_studio'=> 'nullable',
+            'numero_posti_letto_totali'=> 'nullable|integer|min:1',            
                    
         ];
         

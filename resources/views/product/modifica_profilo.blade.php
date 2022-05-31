@@ -128,10 +128,11 @@ $(function () {
         
         
         {{ Form::reset('Annulla modifiche', ['class' => 'button btn-form']) }}
-        {{ Form::submit('Aggiorna profilo utente', ['class' => 'form-btn1', 'id'=>'sub-btn']) }}     
+          {{ Form::submit('Aggiorna profilo utente', ['class' => 'form-btn1', 'id'=>'sub-btn']) }} 
     {{ Form::close() }}
     
 
     <br><br>   
 </div>
 @endsection
+          
