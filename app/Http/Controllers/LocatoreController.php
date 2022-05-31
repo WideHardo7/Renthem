@@ -111,7 +111,9 @@ class LocatoreController extends Controller
        
         public function showAnnunci(){
            $utente= Auth::user()->id;
+           
            Log::info('utente id passato'.$utente);
+           
            $alloggio= $this->alloggi->getAnnunciobyLocatore($utente);
            return view('listaAlloggi')
            ->with('ads', $alloggio);
