@@ -15,14 +15,14 @@ $(document).ready(function () {
         
         if (test === "Posto letto") {
             test = "PostoL";
-         //   $(".desc").hide();
+            $(".desc").hide();
             $("#" + test).show();
             $("#" + test).children().find($(":input")).prop("disabled", false);
             $("#Appartament").children().find($(":input")).prop("disabled", true);
 
         } else if (test === "Appartamento") {
             test = "Appartament";
-        //    $(".desc").hide();
+            $(".desc").hide();
             $("#" + test).show();
             $("#" + test).children().find($(":input")).prop("disabled", false);
             $("#PostoL").children().find($(":input")).prop("disabled", true);
@@ -130,21 +130,14 @@ $(function () {
                             <div class="wrap-input">
                                 {{ Form::label('importo', 'Canone affitto €/mese ', ['class' => 'label-input']) }}
                                 {{ Form::text('importo', '', ['class' => 'input', 'id' => 'importo', 'placeholder'=>'es: 400']) }}                           
-                            </div>
-
-                            <div class="wrap-input">
-                                {{ Form::label('periodo', 'Periodo di affitto')}}
-                                {{ Form::select('periodo', array('i1' => '3 mesi', 'i2' => '6 mesi',
-                                                                 'i3' => '1 anno','i4' => '2 anni'),null,array('disabled'=>true))}}
-                                                                         
-                            </div>
+                            </div>                           
                             <div class="wrap-input">
                                 {{ Form::label('eta_minima', 'Etá minima neccessaria', ['class' => 'label-input']) }}
                                 {{ Form::text('eta_minima', '', ['class' => 'input', 'id' => 'eta_minima', 'placeholder'=>'es: 18']) }}                           
                             </div>
                             
                             <div class="wrap-input">
-                                {{ Form::label('genere_richiesto', 'Vincolo genere locatore')}}
+                                {{ Form::label('genere_richiesto', 'Vincolo genere del locatario')}}
                                 {{ Form::select('genere_richiesto', array('uomini' => 'uomini', 'donne' => 'donne', 'non specificato' => 'non specificato'),
                                                                           null, array('id' => 'genere_richiesto'))}}
                             </div>
