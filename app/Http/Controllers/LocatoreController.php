@@ -38,36 +38,11 @@ class LocatoreController extends Controller
     }
     
     
-     public function ViewHomeLv2(){
-        $faq = $this->faqu->getAllFaqs();
-
-        return view('homepage2')->with('faqs', $faq);
-    }
-    
-        public function ViewAlloggiLv2(){
-        $alloggio= $this->annunci->getAnnunciobyPage(6);
-        
-        return view('catalogoalloggi2')
-               ->with('ads', $alloggio);            
-    }
-    
-        public function schedaAlloggio2($Annuncioid){
-        
-        $alloggio= $this->annunci->getAnnuncioById($Annuncioid);
-        return view('scheda_alloggio2')->with('ann', $alloggio);
-    }
-    
-    
-         public function ViewProfiloLv2(){
-    
-        return view('profilo2');                        
-    }
-    
-    //new
     
     public function showNuovoAnnuncioForm(){              
         return view('product.nuovo_annuncio');                    
     }
+    
     
     
     public function insertAnnuncio(NuovoAnnuncioRequest $request){
@@ -88,12 +63,12 @@ class LocatoreController extends Controller
         $annuncio->assegnato = false;
         
         $array=$request->servizi_inclusi;       
-        $stringa= implode(' ',$array);  
+        $stringa= implode(',',$array);  
         $annuncio->servizi_inclusi = $stringa;
         
         if(($annuncio->tipologia)=='Appartamento'){
         $array2=$request->A_locali_presenti;
-        $stringa2= implode(' ',$array2);  
+        $stringa2= implode(',',$array2);  
         $annuncio->A_locali_presenti = $stringa2;
         };
                    
