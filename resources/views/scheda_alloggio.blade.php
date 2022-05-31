@@ -33,23 +33,23 @@
             <p class="area"><span class="glyphicon glyphicon-map-marker">                    
                 </span> {{$ann->indirizzo}}, {{$ann->citta}}</p>
         </div>
-          <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span><b>Dettagli alloggio</b></h4> 
+          <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span><b>Dettagli alloggio</b></h4> <br>
               
-              <h5><p><ins>Descrizione</ins><br><br>
+              <h5><p><ins><b>Descrizione</b></ins><br><br>
                       {{$ann->descrizione}}</p></h5>
               @if($ann->tipologia =='Appartamento')
               <hr>
-              <p><h5><ins>Caratteristiche</ins><br><br>
+              <p><h5><ins><b>Caratteristiche</b></ins><br><br>
                   Superficie Appartamento: {{$ann->dimensione}} m<sup>2</sup><br>
                      Numero di camere nell'appartamento: {{$ann->A_numero_camere}}<br> 
                      Numero posti letto totale nell'abitazione: {{$ann->numero_posti_letto_totali}}<br></p></h5>
               
-              <p><h5><ins>Servizi</ins><br><br>
+              <p><h5><ins><b>Servizi</b></ins><br><br>
                   Superficie Camaera: {{$ann->dimensione}} m<sup>2</sup><br>
                      Numero di posti letto nell'appartamento: {{$ann->numero_posti_letto_totali}}<br> 
-                     Numero posti letto in camera: {{$ann->A_numero_posti_letto}}<br></p></h5>
+                     Numero posti letto in camera: {{$ann->A_numero_posti_letto}}<br></h5></p>
               
-              <h5><p><ins>Vincoli di Locazione</ins><br><br>
+              <h5><p><ins><b>Vincoli di Locazione</b></ins><br><br>
                  Periodo disponibilita': da {{$ann->data_inizio_disponibilità}} al {{$ann->data_fine_disponibilità}}<br>
                  Eta' minima: {{$ann->eta_minima}}<br>
                  Alloggio riservato a : {{$ann->genere_richiesto?? "Non specificato"}}<br></p></h5>                                 
