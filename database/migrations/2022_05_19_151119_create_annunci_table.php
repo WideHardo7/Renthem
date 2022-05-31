@@ -36,9 +36,11 @@ class CreateAnnunciTable extends Migration
             $table->boolean('assegnato'); 
             $table->date('data_assegnazione')->nullable();           
             $table->string('immagine',200)->nullable();            
-            $table->integer('numero_posti_letto_totali')->nullable();
+            
+            $table->integer('numero_posti_letto_totali')->nullable();            
             $table->integer('C_numero_posti_letto_in_camera')->nullable();
-            $table->string('A_locali_presenti',500);
+            
+            $table->string('A_locali_presenti',500)->nullable();
             $table->integer('A_numero_camere')->nullable();
            
            
