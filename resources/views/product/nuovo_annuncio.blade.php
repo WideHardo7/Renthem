@@ -97,16 +97,13 @@ $(function () {
                     <div id='input-3'>
                         {{ Form::radio('tipologia', 'Posto letto', false, ['class' => 'label-input', 'id' => 'Posto letto']) }}
                         {{ Form::label('tipologia', 'Posto letto', ['class' => 'label-input']) }}                           
-                </fieldset>
-
-                
+                </fieldset>                
                 <div class="wrap-input">
-
                     {{ Form::textarea('descrizione', '', ['cols'=>135, 'rows' =>5, 'placeholder'=>"Descrizione generale dell'alloggio.", 'id' => 'descrizione']) }}                   
                 </div>
                 
+                
                 <div class="spacer">
-
                     <div class='row', id='caratteristiche_generale'>
                         <div class='col-lg-6'>
 
@@ -150,15 +147,19 @@ $(function () {
                                 {{ Form::label('genere_richiesto', 'Vincolo genere locatore')}}
                                 {{ Form::select('genere_richiesto', array('uomini' => 'uomini', 'donne' => 'donne', 'non specificato' => 'non specificato'),
                                                                           null, array('id' => 'genere_richiesto'))}}
-                            </div>  
+                            </div>
                             <div class="wrap-input">
-                                    {{ Form::label('servizi_inclusi', 'Servizi inclusi')}}
-                                    {{ Form::select("servizi_inclusi[]", array('Wi-fi' => 'Wi-fi', 'Parcheggio' => 'Parcheggio',
-                                                                         'Climatizzatore' => 'Climatizzatore','Ascensore' => 'Ascensore','Giardino' => 'Giardino' ),
-                                                                         null, array('class' => 'form-control', 'multiple'=>'multiple','id' => 'servizi_inclusi[]' ))}}
-
-                                </div>
+                                {{ Form::label('data_inizio_disponibilita', 'Data inizio disponibilita')}}
+                                {{ Form::date('data_inizio_disponibilita', \Carbon\Carbon::now()) }}
+                            </div>
+                            <div class="wrap-input">
+                                {{ Form::label('data_fine_disponibilita', 'Data fine disponibilita')}}
+                                {{ Form::date('data_fine_disponibilita', \Carbon\Carbon::now()) }}
+                            </div>
+                            
                         </div>
+                        
+                        <!--inizio form APPARTAMENTO-->
 
                         <div class='col-lg-6'>
                             <div class='desc', id='Appartament'>
@@ -171,62 +172,46 @@ $(function () {
                                 <div class="wrap-input">
                                     {{ Form::label('A_numero_camere', 'N° camere' )}}
                                     {{ Form::text('A_numero_camere', '', ['placeholder'=>'es: 3', 'id' => 'A_numero_camere']) }}                           
-
-                                </div>
-
-                                <div class="wrap-input">
-                                    {{ Form::label('A_numero_posti_letto', 'N° Posti letto totali')}}
-                                    {{ Form::text('A_numero_posti_letto', '', ['placeholder'=>'es: 4', 'id' => 'A_numero_posti_letto']) }}                           
                                 </div>
                                 <div class="wrap-input">
-                                    {{ Form::label('A_servizi_disponibili', 'Servizi disponibili')}}
-                                    {{ Form::select('A_servizi_disponibili', array('1' => 'Wi-fi', '2' => 'Parcheggio',
-                                                                         '3' => 'Climatizzatore','4' => 'Ascensore',
-                                                                         '5' => 'Giardino' ),null, array('class' => 'form-control', 'multiple'=>'multiple',
-                                                                         'disabled'=>true,'id' => 'A_servizi_disponibili'))}}
-
-                                </div>
-                                
+                                    {{ Form::label('A_locali_presenti', 'Locali presenti')}}
+                                    {{ Form::select('A_locali_presenti[]', array('Studio' => 'Studio', 'Bagno Singolo' => 'Bagno Singolo',
+                                                                         'Cucina' => 'Cucina','Sala multiuso' => 'Sala multiuso',
+                                                                         'Bagno doppio' => 'Bagno doppio', 'Garage' => 'Garage'),
+                                                                          null, array('class' => 'form-control', 'multiple'=>'multiple',
+                                                                         'disabled'=>true,'id' => 'A_locali_presenti[]'))}}
+                                </div>                                
                                 <div class="wrap-input">
-                                    {{ Form::label('A_presenza_cucina', 'Presenza cucina')}}
-                                    {{ Form::select('A_presenza_cucina', array(true => 'si', false => 'no'), null, array('id' => 'A_presenza_cucina', ))}}
+                                    {{ Form::label('servizi_inclusi', 'Servizi inclusi')}}
+                                    {{ Form::select('servizi_inclusi[]', array('Wi-fi' => 'Wi-fi', 'Parcheggio Riservato' => 'Parcheggio Riservato',
+                                                                         'Climatizzatore' => 'Climatizzatore','Ascensore' => 'Ascensore',
+                                                                         'Giardino' => 'Giardino' ),
+                                                                          null, array('class' => 'form-control', 'multiple'=>'multiple',
+                                                                         'disabled'=>true,'id' => 'servizi_inclusi[]'))}}
                                 </div>
-
-                                <div class="wrap-input">
-                                    {{ Form::label('A_presenza_locale_ricreativo', 'Presenza locale ricreativo')}}
-                                    {{ Form::select('A_presenza_locale_ricreativo',array(true => 'si', false => 'no'))}}
-
-                                </div>
-
-
-
-
                             </div>
-
-
+                            
+                            <!--inizio form POSTOO LETTO-->
+                            
                             <div class="desc", id='PostoL'>
                                 <h4><b><ins>Caratteristiche Posto Letto</ins></b></h4>
-
                                 <div class="wrap-input">
                                     {{ Form::label('dimensione', 'Superficie camera in mq') }}
                                     {{ Form::text('dimensione', '', ['class' => 'input', 'id' => 'C_dimensione', 'placeholder'=>'es: 16']) }}                           
-
                                 </div>
-
                                 <div class="wrap-input">
                                     {{ Form::label('C_numero_posti_letto_in_camera', 'N° Posti letto nella stessa camera' )}}
                                     {{ Form::text('C_numero_posti_letto_in_camera', '', ['placeholder'=>'es: 2']) }}                           
-
-                                </div>
-
-                                <div class="wrap-input">
-                                    {{ Form::label('C_numero_posti_letto_totali', 'N° Posti letto totale nel alloggio')}}
-                                    {{ Form::text('C_numero_posti_letto_totali', '', ['placeholder'=>'es: 4']) }}                           
                                 </div>
                                 <div class="wrap-input">
-                                    {{ Form::label('C_presenza_angolo_studio', 'Presenza angolo studio')}}
-                                    {{ Form::select('C_presenza_angolo_studio',array(true => 'si', false => 'no'))}}
-
+                                    {{ Form::label('numero_posti_letto_totali', 'N° Posti letto totale nel alloggio')}}
+                                    {{ Form::text('numero_posti_letto_totali', '', ['placeholder'=>'es: 4']) }}                           
+                                </div>                               
+                                <div class="wrap-input">
+                                    {{ Form::label('servizi_inclusi', 'Servizi inclusi')}}
+                                    {{ Form::select("servizi_inclusi[]", array('Angolo Studio' => 'Angolo Studio', 'Bagno in Camera' => 'Bagno in Camera',
+                                                                         'minibar' => 'minibar','Wi-fi' => 'Wi-fi','Climatizzatore' => 'Climatizzatore' ),
+                                                                         null, array('class' => 'form-control', 'multiple'=>'multiple','id' => 'servizi_inclusi[]' ))}}
                                 </div>
 
                             </div>           

@@ -84,13 +84,19 @@ class LocatoreController extends Controller
         
         $annuncio->fill($request->validated());
         $annuncio->immagine = $imageName;
-        $annuncio->IDproprietario = Auth::user()->id;
-        $annuncio->data_inizio_disponibilita = '2002-12-11';
-        $annuncio->data_fine_disponibilita = '2003-11-11';
+        $annuncio->user_id = Auth::user()->id;        
         $annuncio->assegnato = false;
-        $array=$request->servizi_inclusi;
+        
+        $array=$request->servizi_inclusi;       
         $stringa= implode(' ',$array);  
         $annuncio->servizi_inclusi = $stringa;
+        
+        if(($annuncio->tipologia)=='Appartamento'){
+        $array2=$request->A_locali_presenti;
+        $stringa2= implode(' ',$array2);  
+        $annuncio->A_locali_presenti = $stringa2;
+        };
+                   
         $annuncio->save();
         
         
