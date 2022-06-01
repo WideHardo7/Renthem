@@ -104,6 +104,8 @@ Route::get('/Chat','UserController@viewChat') -> name('chat');
 
  Route::get('/GestioneFaq', 'AdminController@ViewEditFaq') -> name('viewEditFaq');
  Route::post('/GestioneFaq', 'AdminController@EditFaq') -> name('EditFaq');
+// Route::post('/GestioneFaq/Add', 'AdminController@AggiungiFaq') -> name('Faqadd');
+ Route::delete('/GestioneFaq/{id}', 'AdminController@EliminaFaq') -> name('EliminaFaq');
  Route::get('/Statistiche', 'AdminController@ViewStats') -> name('viewStats'); 
 // Route::get('/', controller here ) -> name('homelvl4');   
 
@@ -145,3 +147,6 @@ Route::get('/Chat','UserController@viewChat') -> name('chat');
 
    Route::post('/admin/newproduct', 'AdminController@storeProduct')
         ->name('newproduct.store');*/
+// {{Form::close()}}
+//   {{Form::open(array("route"=>["EliminaFaq",'id'=>$faq->FaqId],"id"=>"FaqDel"))}}
+ //                           {{Form::hidden('FaqId',$faq->FaqId,['id'=>'faqiddel'])}}

@@ -8,5 +8,10 @@ class FaqGetter{
     public function getAllFaqs(){
         return Faq::all();
     }
+    
+    public function getFaqbyId($id){
+        return Faq::find($id)->first();
+    }
+            
 }
 
