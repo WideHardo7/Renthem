@@ -34,6 +34,10 @@ class Alloggi{
     public function getAnnuncioById($Id){
         return Annuncio::where('AnnuncioId',$Id)->first();
     }
+    public function getAnnunciobyFilter($citta,$paged=1){
+        $filtrati=Annuncio::whereIn('citta', $citta);
+         return $filtrati->paginate($paged);
+         }
     
     public function sortService($idAnnuncio){
         

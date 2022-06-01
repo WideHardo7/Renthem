@@ -13,7 +13,7 @@
     $mylifeis= $("#faq-risposta\\["+id+"\\]").text();
     $("#domandamaybe").val($potato);
     $("#rispostamaybe").val($mylifeis);
-    $("#myModal").show());  
+    $("#myModal").show();  
     };
    
     function closemodal(){   
