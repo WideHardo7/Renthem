@@ -31,7 +31,7 @@
                         <div class="col-6 col-sm-3">
                             <h4><a>{{$ad->tipologia}}</a> in {{$ad->indirizzo}}, {{$ad->citta}}</h4>
                             <a class="btn btn-primary bottoni_ancore" href="{{route('scheda',[$ad->AnnuncioId])}}">Info annuncio</a><br><br>
-                            <a class="btn btn-primary bottoni_ancore" href="">Modifica Annuncio</a><br><br>
+                            <a class="btn btn-primary bottoni_ancore" href="{{route('modann',[$ad->AnnuncioId])}}">Modifica Annuncio</a><br><br>
                             <a class="btn btn-primary bottoni_ancore" href="">Elimina annuncio</a><br><br>
                             <a class="btn btn-primary bottoni_ancore" href="">Visualizza interessati</a>
                         </div>

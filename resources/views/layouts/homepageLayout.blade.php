@@ -18,6 +18,8 @@
         @show
         @section('scriptAFaqs')
         @show
+        @section('scriptsModann')
+        @show
     </head>    
     <body>
         <div id="wrapper">
@@ -78,6 +80,12 @@
             <div id="page">                
                     <div id="home">
                         @yield('gestFaq') 
+             <!--            <div style="clear: both;">&nbsp;</div> -->
+                    </div>                
+            </div> 
+            <div id="page">                
+                    <div id="modAnn">
+                        @yield('schedaMod') 
              <!--            <div style="clear: both;">&nbsp;</div> -->
                     </div>                
             </div> 
