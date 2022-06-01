@@ -32,7 +32,7 @@
  
  Route::post('insertAnnuncio', 'LocatoreController@insertAnnuncio')->name('insertAnnuncio');
  
-  Route::get('GestioneAlloggi', 'LocatoreController@showAnnunci')->name('viewAnnunci');
+ Route::get('GestioneAlloggi', 'LocatoreController@showAnnunci')->name('viewAnnunci');
 
 
 // ROUTES IN COMUNE (MAYBE)

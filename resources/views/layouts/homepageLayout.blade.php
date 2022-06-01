@@ -16,7 +16,8 @@
         @show     
         @section('homeScripts')
         @show
-        
+        @section('scriptAFaqs')
+        @show
     </head>    
     <body>
         <div id="wrapper">

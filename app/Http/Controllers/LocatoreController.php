@@ -71,7 +71,7 @@ class LocatoreController extends Controller
     
     
     public function insertAnnuncio(NuovoAnnuncioRequest $request){
-                if ($request->hasFile('immagine')) {
+        if ($request->hasFile('immagine')) {
             $image = $request->file('immagine');
             $imageName = $image->getClientOriginalName();
         } else {
