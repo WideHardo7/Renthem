@@ -109,7 +109,7 @@
                     @if(@isset($faqs))
                     @foreach ($faqs as $faq)
                     <div class="col-6 col-sm-6">                     
-                            <h4 id="faq-domanda[{!!$faq->FaqId!!}]"><a id="faq-a[{!!$faq->FaqId!!}]"><b id="faqb[{!!$faq->FaqId!!}]">{{$faq->domanda}}</b></a></h4>
+                            <h4 id="faq-domanda[{!!$faq->FaqId!!}]" class="vert"><b id="faqb[{!!$faq->FaqId!!}]">{{$faq->domanda}}</b></h4>
                     <div id="faq-risposta[{!!$faq->FaqId!!}]">{!! $faq->risposta !!} </div>                   
                     </div> 
                         <div class="col-6 col-sm-3">

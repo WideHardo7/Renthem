@@ -23,36 +23,22 @@ class LocatarioController extends Controller
     }
     
     
-     public function ViewHomeLv3(){
-        $faq = $this->faqu->getAllFaqs();
-
-        return view('homepage3')->with('faqs', $faq);
-    }
     
-        public function ViewAlloggiLv3(){
-        $alloggio= $this->annunci->getAnnunciobyPage(6);
-        
-        return view('catalogoalloggi3')
-               ->with('ads', $alloggio);
-        
-        
-    }
     
-        public function schedaAlloggio3($Annuncioid){
+       
+    
         
-        $alloggio= $this->annunci->getAnnuncioById($Annuncioid);
-        return view('scheda_alloggio3')->with('ann', $alloggio);
-    }
     
-        public function ViewProfiloLv3(){
-    
-        return view('profilo3');
-        }
+        
         public function insertOpzionamento(){
             /*take the user id of the locatario and the id of that annuncio opzionato
               $user=Auth::user()->id;
              * $annuncioid=;
              * $user->moreannunci()->attach($annuncioid);             */
+        }
+        
+        public function sendMessage(SendMessageRequest $request){
+            
         }
         
 }
