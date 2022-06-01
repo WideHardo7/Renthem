@@ -8,20 +8,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="{{ asset('assets/js/GestFaqjs.js') }}" ></script>
 <script src="{{ asset('assets/js/functions.js') }}" ></script>
-<script>   
-    function showmodalForm(id){
-    $potato= $("#faq-domanda\\["+id+"\\]").text();
-    $mylifeis= $("#faq-risposta\\["+id+"\\]").text();
-    $("#domandamaybe").val($potato);
-    $("#rispostamaybe").val($mylifeis);
-    $("#faqid").val(""+id+"");
-    $("#myModal").show();  
-    };
-   
-    function closemodal(){   
-    $("#myModal").hide();
-    };
-</script>
 <script>
   $(function () {
     var actionUrl = "{{ route('EditFaq') }}";
@@ -37,26 +23,18 @@
 });
 </script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        jQuery(function($){
-    $('.clicca-e-mostra').each(function(i){
-    $(this).click(function(){ $('.showclick').eq(i).show();
-    $('.mostra-al-click').eq(i).show();
-    $('.clicca-e-mostra').eq(i).hide();
-    $('.clicca-e-nascondi').eq(i).show();
-    }); });
-    });  
-
-
-    jQuery(function($){
-    $('.clicca-e-nascondi').each(function(i){
-    $(this).click(function(){ $('.clicca-e-nascond').eq(i).show();
-    $('.mostra-al-click').eq(i).hide();
-    $('.clicca-e-nascondi').eq(i).hide();
-    $('.clicca-e-mostra').eq(i).show();
-    }); });
-    });  
-    }); 
+ $(function () {
+    var actionUrl = "{{ route('Faqadd') }}";
+    var formId = 'formadd';
+    $(":input").on('blur', function (event) {
+        var formElementId = $(this).attr('id');
+        doElemValidation(formElementId, actionUrl, formId);
+    });
+    $("#formadd").on('submit', function (event) {
+        event.preventDefault();
+        doFormValidation(actionUrl, formId);
+    });
+});    
 </script>
 
 @endsection
@@ -78,31 +56,10 @@
    <div id="zona1">
       <h3>AGGIUNGI FAQ</h3>
    </div>
-   <div id="zona2"> <button class="w3-button w3-xlarge w3-circle w3-teal clicca-e-mostra"><b>+</b></button> 
+   <div id="zona2"> <button onclick="openmodal()" class="w3-button w3-xlarge w3-circle w3-teal clicca-e-mostra" ><b>+</b></button> 
       <button class="w3-button w3-xlarge w3-circle w3-teal clicca-e-nascondi">+</button>
    </div>
-            <div class="mostra-al-click" >
-      <div>
-         {{ Form::open(array( 'class' => 'contact-form')) }}
-         <div class="input-group">
-            <div class="input-inline">
-               {{ Form::label ('domanda', 'Domanda:  ')  }}
-               {{ Form::textarea ('domanda', '',['class'=>'input','id'=>'domanda']) }}
-            </div>
-         </div>
-         <br>
-         <div class="input-group">
-            <div class="input-inline">
-               {{ Form::label ('risposta', 'Risposta:  ')  }}
-               {{ Form::textarea ('risposta', '',['class'=>'input','id'=>'risposta']) }}
-            </div>
-         </div>
-         <br>
-         {{ Form::reset('Annulla', ['class' => 'button btn-form']) }}
-         {{ Form::submit('Aggiungi FAQ', ['class' => 'button btn-form', 'id'=>'sub-btn']) }}
-         {{ Form::close() }}
-      </div>
-    </div>
+
     </div>
         <br><br><br><br><br>     
                 <div class="row">           
@@ -127,7 +84,7 @@
           <div class='modal-content' id='appeF'>
         {{Form::open(array("route"=>"EditFaq","id"=>"formMFaq"))}}
             <div class='modal-header'>       
-              <button type='button' class='close' onclick='closemodal()' id='chiuditi' aria-label='close' >&times;</button>
+              <button type='button' class='close' onclick='closemodal("myModal")' aria-label='close' >&times;</button>
               <h4 class='modal-title'>MODIFICA FAQ</h4>
             </div>
             {{Form::hidden('FaqId','',['id'=>'faqid'])}}
@@ -143,6 +100,32 @@
             </div>
             <div class='modal-footer'>              
               {{ Form::submit('Salva', ['class' => 'form-btn1 btn btn-default', 'id'=>'salva']) }}
+            </div>
+        {{Form::close()}}
+          </div>
+       </div>
+  </div>
+        <div class='modal' id='myModalAdd' role='dialog' tabindex='-1' aria-hidden='true'>
+      <div class='modal-dialog'>
+          <div class='modal-content' id='appeF'>
+        {{Form::open(array("route"=>"Faqadd","id"=>"formadd"))}}
+            <div class='modal-header'>       
+              <button type='button' class='close' onclick='closemodal("myModalAdd")' aria-label='close' >&times;</button>
+              <h4 class='modal-title'>MODIFICA FAQ</h4>
+            </div>
+            {{Form::hidden('FaqId','',['id'=>'faqid'])}}
+            <div class='modal-body' id='appD'>
+                <div class="row">
+                    {{ Form::label ('domanda', 'Domanda:  ')  }}
+               {{ Form::textarea ('domanda', '',['class'=>'form-control','id'=>'domanda']) }}
+                </div>
+                <div class="row">
+                    {{ Form::label ('risposta', 'Risposta:  ')  }}
+               {{ Form::textarea ('risposta', '',['class'=>'form-control','id'=>'risposta']) }}
+                </div>
+            </div>
+            <div class='modal-footer'>              
+              {{ Form::submit('Salva', ['class' => 'form-btn1 btn btn-default', 'id'=>'salvaadd']) }}
             </div>
         {{Form::close()}}
           </div>

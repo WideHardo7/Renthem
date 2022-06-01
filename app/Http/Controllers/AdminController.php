@@ -10,6 +10,7 @@ use App\Models\Catalog;
 use App\Models\FaqGetter;
 use Illuminate\Support\Facades\Log;
 use App\Models\Alloggi;
+use App\Http\Requests\AggiungiFaqRequest;
 use App\Http\Requests\ModificaFaqRequest;
 class AdminController extends Controller {
 
@@ -43,7 +44,11 @@ class AdminController extends Controller {
         return view('stats');
     }
     
-    public function AggiungiFaq(){
+    public function AggiungiFaq(AggiungiFaqRequest $request){
+        $faq = new Faq;  
+        $faq->fill($request->validated());
+        $faq->save();
+        return response()->json(['redirect' => route('viewEditFaq')]);
         
     }
     

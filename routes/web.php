@@ -104,7 +104,7 @@ Route::get('/Chat','UserController@viewChat') -> name('chat');
 
  Route::get('/GestioneFaq', 'AdminController@ViewEditFaq') -> name('viewEditFaq');
  Route::post('/GestioneFaq', 'AdminController@EditFaq') -> name('EditFaq');
-// Route::post('/GestioneFaq/Add', 'AdminController@AggiungiFaq') -> name('Faqadd');
+ Route::post('/GestioneFaq/Add', 'AdminController@AggiungiFaq') -> name('Faqadd');
  Route::post('/GestioneFaq/{id}', 'AdminController@EliminaFaq') -> name('EliminaFaq');
  Route::get('/Statistiche', 'AdminController@ViewStats') -> name('viewStats'); 
 // Route::get('/', controller here ) -> name('homelvl4');   

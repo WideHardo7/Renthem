@@ -19,20 +19,21 @@ function elimina($id){
     else return false;
 }
 
-/*$(function() {
-        $(document).on('click','',function(){
-        var element = $(this);
-        var del_id = element.attr("id");
-        var info = 'id=' + del_id;
-        if(confirm("Are you sure you want to delete this Record?")){
-            $.ajax({
-                type: "GET",
-                url: "deleteCourse.php",
-                data: info,
-                success: function(){  } 
-            });
-        }
-        return false;
-        });
-        });
-*/
+function showmodalForm(id){
+    $potato= $("#faq-domanda\\["+id+"\\]").text();
+    $mylifeis= $("#faq-risposta\\["+id+"\\]").text();
+    $("#domandamaybe").val($potato);
+    $("#rispostamaybe").val($mylifeis);
+    $("#faqid").val(""+id+"");
+    $("#myModal").show();  
+    };    
+   
+function closemodal($id){   
+    $("#"+$id).hide();
+    };   
+
+function openmodal(){
+    $("#myModalAdd").show();
+}
+
+
