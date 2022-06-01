@@ -58,7 +58,7 @@ class AdminController extends Controller {
          $faq->fill($request->validated());
          $faq->domanda=$request->domandamaybe;
          $faq->risposta=$request->rispostamaybe;
-         $faqupdate= $this->faqu->getFaqbyId($request->FaqId);        
+         $faqupdate= $this->faqu->getThisFaq($request->FaqId);        
          $faqupdate->update($faq->only(['domanda','risposta']));
          return response()->json(['redirect' => route('viewEditFaq')]);
     }
