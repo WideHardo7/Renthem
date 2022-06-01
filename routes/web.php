@@ -48,7 +48,8 @@
    
 Route::post('logout', 'Auth\LoginController@logout') -> name('logout'); 
 
-// Route::get('/Chat',controller here) -> name(chat);   
+Route::get('/Chat','UserController@viewChat') -> name('chat');  
+ 
 
 // Route::get('/Chat/{UserId}',controller here) -> name(chatutente);
    

@@ -36,4 +36,7 @@ class userController extends Controller {
             
     }    
     
+        public function viewChat() {
+        return view('chat');
+    }
 }

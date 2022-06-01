@@ -21,7 +21,7 @@
                 
                  <!--ancora chat per locatari e locatori-->
                 @can('isLoreLario')
-                <li><a href=""><b>Chat</b></a></li> 
+                <li><a href="{{route('chat')}}"><b>Chat</b></a></li> 
                 @endcan
                  
                   <!--ancore per admin-->
