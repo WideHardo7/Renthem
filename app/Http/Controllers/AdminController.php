@@ -39,7 +39,9 @@ class AdminController extends Controller {
         return view('listafaq')->with('faqs', $faq);
     }
     
-    
+        public function ViewStats() {
+        return view('stats');
+    }
     
     
 }

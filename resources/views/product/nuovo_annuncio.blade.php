@@ -223,5 +223,4 @@ $(function () {
             </div>
         </div>    
 
-
-        @endsection
+@endsection

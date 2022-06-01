@@ -16,7 +16,8 @@
         @show     
         @section('homeScripts')
         @show
-        
+        @section('scriptAFaqs')
+        @show
     </head>    
     <body>
         <div id="wrapper">
@@ -80,6 +81,13 @@
              <!--            <div style="clear: both;">&nbsp;</div> -->
                     </div>                
             </div> 
+
+            <div id="page">                
+                    <div id="home">
+                        @yield('stats') 
+             <!--            <div style="clear: both;">&nbsp;</div> -->
+                    </div>                
+            </div>            
             
             <div id="page">                
                 <div id="home">

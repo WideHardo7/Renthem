@@ -32,7 +32,7 @@
  
  Route::post('insertAnnuncio', 'LocatoreController@insertAnnuncio')->name('insertAnnuncio');
  
-  Route::get('GestioneAlloggi', 'LocatoreController@showAnnunci')->name('viewAnnunci');
+ Route::get('GestioneAlloggi', 'LocatoreController@showAnnunci')->name('viewAnnunci');
 
 
 // ROUTES IN COMUNE (MAYBE)
@@ -104,7 +104,7 @@ Route::get('/Chat','UserController@viewChat') -> name('chat');
 
  Route::get('/GestioneFaq', 'AdminController@ViewEditFaq') -> name('viewEditFaq');
  Route::post('/GestioneFaq', 'AdminController@EditFaq') -> name('EditFaq');
-  
+ Route::get('/Statistiche', 'AdminController@ViewStats') -> name('viewStats'); 
 // Route::get('/', controller here ) -> name('homelvl4');   
 
 // Route::get('/admin', 'AdminController@index')->name('admin');
