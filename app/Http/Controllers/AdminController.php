@@ -48,9 +48,9 @@ class AdminController extends Controller {
     }
     
     public function EliminaFaq($id){
-        $faqdel= $this->faqu->getFaqbyId($id);
+        $faqdel= $this->faqu->getThisFaq($id);
         $faqdel->delete();
-        return response()->json(['success' => 'record deleted']);
+        return response()->json(['redirect' => route('viewEditFaq')]);
     }
 
     public function EditFaq(ModificaFaqRequest $request){

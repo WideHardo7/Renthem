@@ -1,15 +1,18 @@
 function elimina($id){
     var token = $("meta[name='csrf-token']").attr("content");
+    var idFaq= $id;
     if (confirm("Sei sicuro di voler cancellare la Faq?")){
         $.ajax({
-            url: "/GestioneFaq/"+$id,
-            type: 'DELETE',
+            url: "GestioneFaq/"+idFaq,
+            type: 'POST',
             data:{
-                'id':$id,
+                'id':idFaq,
                 "_token":token
+                
             },
-            success:function(){
-                console.log("funzaionao");
+            success:function(data){
+                console.log("funzaionao"+$id);
+                window.location.replace(data.redirect)
             }
         });
     }
