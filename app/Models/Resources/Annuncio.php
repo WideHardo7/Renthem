@@ -43,7 +43,7 @@ class Annuncio extends Model
     ];
     //relazione one to many inversa, da un annuncio devo poter risalire al suo gestore/locatore
     public function utente(){
-        return $this->belongsTo(User::class, 'id', 'user_id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
     //relazione many to many inversa, da qualsiasi annuncio sia, io devo poter risalire a tutti i locatari che lo hanno opzionato
     public function moreutenti(){

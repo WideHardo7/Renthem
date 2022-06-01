@@ -5,18 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Catalog;
 use App\Models\FaqGetter;
 use App\Models\Alloggi;
+use App\Models\Locatore;
+use Illuminate\Support\Facades\Log;
 
 class PublicController extends Controller {
 
     protected $_catalogModel;
     protected $faqu;
     protected $annunci;
+    protected $locatore;
 
 
     public function __construct() {
         $this->_catalogModel = new Catalog;
         $this->faqu = new FaqGetter();    
         $this->annunci= new Alloggi();
+        $this->locatore= new Locatore();
     }
 
     public function showCatalog1() {
@@ -91,6 +95,20 @@ class PublicController extends Controller {
     public function schedaAlloggio($Annuncioid){
         
         $alloggio= $this->annunci->getAnnuncioById($Annuncioid);
-        return view('scheda_alloggio')->with('ann', $alloggio);
+        Log::info('valore di alloggio'.$alloggio);
+        
+        $stringa= $alloggio->servizi_inclusi;
+        $array=explode(',',$stringa);
+        $alloggio->servizi_inclusi=$array;
+        
+        if(($alloggio->tipologia)=='Appartamento'){
+            $stringa2= $alloggio->A_locali_presenti;
+        $array2=explode(',',$stringa2);
+        $alloggio->A_locali_presenti=$array2;
+        }
+        
+        $proprietario= $this->locatore->getLocatorebyAnnuncio($Annuncioid);
+        Log::info('valore di proprietario'.$proprietario);
+        return view('scheda_alloggio')->with('ann', $alloggio)->with('lore', $proprietario);
     }
 }

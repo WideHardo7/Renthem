@@ -48,7 +48,8 @@
    
 Route::post('logout', 'Auth\LoginController@logout') -> name('logout'); 
 
-// Route::get('/Chat',controller here) -> name(chat);   
+Route::get('/Chat','UserController@viewChat') -> name('chat');  
+ 
 
 // Route::get('/Chat/{UserId}',controller here) -> name(chatutente);
    
@@ -103,7 +104,7 @@ Route::post('logout', 'Auth\LoginController@logout') -> name('logout');
 
  Route::get('/GestioneFaq', 'AdminController@ViewEditFaq') -> name('viewEditFaq');
  Route::post('/GestioneFaq', 'AdminController@EditFaq') -> name('EditFaq');
-  
+ Route::get('/Statistiche', 'AdminController@ViewStats') -> name('viewStats'); 
 // Route::get('/', controller here ) -> name('homelvl4');   
 
 // Route::get('/admin', 'AdminController@index')->name('admin');

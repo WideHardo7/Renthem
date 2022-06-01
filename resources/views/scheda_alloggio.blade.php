@@ -13,18 +13,30 @@
 
 
 <div class="container"><br><br>
-    <div class="Tipo appartamento opostoletto"> 
-        <h3><b>{{$ann->tipologia}} in Zona: {{$ann->zona_quartiere}}</b></h3>
+    <div class="row"> 
+        <div class="col-lg-5 col-sm-5">
+        <h3><b>{{$ann->tipologia}} in zona {{$ann->zona_quartiere}}, {{$ann->citta}}</b></h3>
+     </div>
+       
+    </div>
+    <div class="row"> 
+       
+        <div class="col-lg-4 col-sm-4"> <h4><b>Annuncio inserito da:</b> <i>{{$lore->nome}} {{$lore->cognome}}</i></h4> </div>
     </div>
     
     <div class="property-images">
           <img src="{{ asset('images/properties/' . $ann->immagine) }}" alt="Realestate">
         </div>
+    
      
 </div>
    
 <div class="container">
   <div class="spacer">
+       @if($ann->assegnato)
+          <h3 class="evidenziati">ASSEGNATO in data:{{$ann->data_assegnazione}}</h3>                      
+        @endif
+      
       <div class="row"><br>
         
       <div class="col-lg-6 col-sm-6">   
@@ -33,45 +45,67 @@
             <p class="area"><span class="glyphicon glyphicon-map-marker">                    
                 </span> {{$ann->indirizzo}}, {{$ann->citta}}</p>
         </div>
-          <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span><b>Dettagli alloggio</b></h4> 
+          <div class="contorno-box box-3">
+          <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span><b>Dettagli alloggio</b></h4> <br>
               
-              <h5><p><ins>Descrizione</ins><br><br>
-                      {{$ann->descrizione}}</p></h5>
+              <h5><p><ins><b>Descrizione</b></ins><br><br>
+                      {!!$ann->descrizione!!}</p></h5>
               @if($ann->tipologia =='Appartamento')
               <hr>
-              <p><h5><ins>Caratteristiche</ins><br><br>
+              <p><h5><ins><b>Caratteristiche</b></ins><br><br>
                   Superficie Appartamento: {{$ann->dimensione}} m<sup>2</sup><br>
                      Numero di camere nell'appartamento: {{$ann->A_numero_camere}}<br> 
                      Numero posti letto totale nell'abitazione: {{$ann->numero_posti_letto_totali}}<br></p></h5>
               
-              <p><h5><ins>Servizi</ins><br><br>
-                  Superficie Camaera: {{$ann->dimensione}} m<sup>2</sup><br>
-                     Numero di posti letto nell'appartamento: {{$ann->numero_posti_letto_totali}}<br> 
-                     Numero posti letto in camera: {{$ann->A_numero_posti_letto}}<br></p></h5>
+              <p><h5><ins><b>Locali Presenti</b></ins><br><br>
+                  @if(is_null($ann->A_locali_presenti))
+                  Non specificati
+                  @endif
+                  <ul>
+                      @foreach($ann->A_locali_presenti as $locali)
+                      <li>{{$locali}}</li>
+                      @endforeach
+                  </ul><br></h5></p>
               
-              <h5><p><ins>Vincoli di Locazione</ins><br><br>
-                 Periodo disponibilita': da {{$ann->data_inizio_disponibilità}} al {{$ann->data_fine_disponibilità}}<br>
-                 Eta' minima: {{$ann->eta_minima}}<br>
-                 Alloggio riservato a : {{$ann->genere_richiesto?? "Non specificato"}}<br></p></h5>                                 
+              <p><h5><ins><b>Servizi Inclusi</b></ins><br><br>
+                  @if(is_null($ann->servizi_inclusi))
+                  Non specificati
+                  @endif
+                  <ul>
+                      @foreach($ann->servizi_inclusi as $service)
+                      <li>{{$service}}</li>
+                      @endforeach
+                  </ul><br></h5></p>
+              
+                                             
               
               
                      @else
                      
-                     <p><h5><ins>Caratteristiche</ins><br><br>
-                  Superficie Camaera: {{$ann->dimensione}} m<sup>2</sup><br>
-                     Numero di posti letto nell'appartamento: {{$ann->numero_posti_letto_totali}}<br> 
-                     Numero posti letto in camera: {{$ann->C_numero_posti_letto_in_camera}}<br></p></h5>
+               <p><h5><ins>Caratteristiche</ins><br><br>
+                  Superficie Camera: {{$ann->dimensione}} m<sup>2</sup><br>
+                  Numero di posti letto complessivi nell'alloggio: {{$ann->numero_posti_letto_totali}}<br> 
+                  Numero di posti letto in camera: {{$ann->C_numero_posti_letto_in_camera}}<br></p></h5>
                      
                  
-                 Servizi: angolo studio, minibar, bagno in camera<br>               
-                                
-              <h5><p>Vincoli di Locazione<br>
-                 Periodo disponibilita': da 15/09/2022 al 15/12/2020<br>
-                 Eta' minima: 18<br>
-                 Genere: solo donne<br></h5>                                 
-              </p>
+                 <p><h5><ins><b>Servizi Inclusi</b></ins><br><br>
+                  @if(is_null($ann->servizi_inclusi))
+                  Non specificati
+                  @endif
+                  <ul>
+                      @foreach($ann->servizi_inclusi as $service)
+                      <li>{{$service}}</li>
+                      @endforeach
+                  </ul><br></h5></p>
+                  
               @endif
-         </div>          
+              
+               <h5><p><ins><b>Vincoli di Locazione</b></ins><br><br>
+                 Periodo disponibilita': da {{$ann->data_inizio_disponibilita}} al {{$ann->data_fine_disponibilita}}<br>
+                 Eta' minima: {{$ann->eta_minima?? "Non specificato"}}<br>
+                 Alloggio riservato a : {{$ann->genere_richiesto?? "Non specificato"}}<br></p></h5> 
+         </div> 
+          </div>
       </div>
         
        @can('isLocatario')   
