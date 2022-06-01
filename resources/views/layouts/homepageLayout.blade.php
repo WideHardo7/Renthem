@@ -80,6 +80,13 @@
              <!--            <div style="clear: both;">&nbsp;</div> -->
                     </div>                
             </div> 
+
+            <div id="page">                
+                    <div id="home">
+                        @yield('stats') 
+             <!--            <div style="clear: both;">&nbsp;</div> -->
+                    </div>                
+            </div>            
             
             <div id="page">                
                 <div id="home">
