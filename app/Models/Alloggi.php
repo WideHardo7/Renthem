@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Resources\Annuncio;
 use App\User;
 use Illuminate\Support\Facades\Log;
+use App\Models\Resources\AnnuncioUsers;
 
 class Alloggi{
     
@@ -34,8 +35,16 @@ class Alloggi{
     public function getAnnuncioById($Id){
         return Annuncio::where('AnnuncioId',$Id)->first();
     }
-    public function getAnnunciobyFilter($citta,$paged=1){
-        $filtrati=Annuncio::whereIn('citta', $citta);
+    public function getAnnunciobyFilter($param,$paged=1){
+        
+        $filtrati=DB::table('annunci')->get();
+        dd($filtrati);
+        
+        if($param->citta)
+            $filtrati=$filtrati->whereIn('citta',$param->citta);
+        if($param->tipologia)
+            $filtrati=$filtrati->whereIn('tipologia',$param->tipologia);
+            
          return $filtrati->paginate($paged);
          }
     
@@ -47,4 +56,19 @@ class Alloggi{
            
     }*/ 
     }
+     public function showOptionforAnnuncio($idannuncio){
+       $annuncio=Annuncio::find($idannuncio);
+        $locatari= $annuncio->moreutenti;
+        return $locatari;
+    }
+    
+    public function isOptionate($idlocatario,$idannuncio){
+        $option=AnnuncioUsers::where('user_id',$idlocatario)->where('annuncio_id',$idannuncio);
+        if($option=null){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    
 }

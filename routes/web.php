@@ -95,9 +95,9 @@ Route::get('nuovoAnnuncio', 'LocatoreController@showNuovoAnnuncioForm')->name('n
  
 
 
-//Route::get('/Alloggi/SchedaAlloggio/{Annuncioid}/Messaggio', controller here) -> name('mandamessaggio');
+Route::post('/Alloggi/SchedaAlloggio/{Annuncioid}/Opzionamento', 'LocatarioController@setOption') -> name('opzionamento');
    
- Route::post('/Alloggi/SchedaAlloggio/{Annuncioid}', 'LocatarioController@sendMessage') -> name('mandamessaggio');
+ Route::post('/Alloggi/SchedaAlloggio/{Annuncioid}/Messaggio', 'LocatarioController@sendMessage') -> name('mandamessaggio');
 
 
 

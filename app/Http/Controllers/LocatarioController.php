@@ -6,6 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\Catalog;
 use App\Models\FaqGetter;
 use App\Models\Alloggi;
+use App\Http\Requests\SendMessageRequest;
+use App\Http\Requests\SetOptionamentRequest;
+use App\Models\Resources\Messaggio;
+use App\Models\Resources\AnnuncioUsers;
+use Illuminate\Support\Facades\Log;
+use App\User;
+use Auth;
+
 
 class LocatarioController extends Controller
 {
@@ -20,6 +28,7 @@ class LocatarioController extends Controller
         $this->faqu = new FaqGetter();    
         $this->annunci= new Alloggi();
         $this->middleware('can:isLocatario');
+        
     }
     
     
@@ -37,8 +46,47 @@ class LocatarioController extends Controller
              * $user->moreannunci()->attach($annuncioid);             */
         }
         
-        public function sendMessage(SendMessageRequest $request){
+        public function sendMessage(SendMessageRequest $request, $id){
             
+            $dati= collect(request()->all())->filter(function($request){
+                                   return is_string($request)&&!empty($request);
+            });
+            Log::info(print_r($dati));
+            //$contenuto= $dati->contenuto;
+            
+            
+                $messaggio= new Messaggio();
+                $messaggio->fill($request->validated());
+                $messaggio->idlocatario=Auth::user()->id; 
+                $messaggio->sender= false;
+                $messaggio->save();
+           
+            return redirect()->action('PublicController@schedaAlloggio', $id);
+            
+        }
+        
+        public function setOption(SetOptionamentRequest $request, $id){
+            
+            $locatanome=Auth::user()->nome;
+            $locatacognome=Auth::user()->cognnome;
+            
+            $annuncio=$this->annunci->getAnnuncioById($id);
+            
+            $Messaggioption='L&rsquo;utente {{$locatacognome}} $locatanome ha optionato il seguente $annuncio->tipologia, in $annuncio->indirizzo $annuncio->citta  ';
+            
+             $messaggio= new Messaggio();
+                $messaggio->fill($request->validated());
+                $messaggio->idlocatario=Auth::user()->id;
+                $messaggio->contenuto= $Messaggioption;
+                $messaggio->sender= false;
+                $messaggio->save();
+                
+                $opzionamento= new AnnuncioUsers();
+                $opzionamento->user_id=Auth::user()->id;
+                $opzionamento->annuncio_id=$id;
+                $opzionamento->save();
+                
+                return redirect()->action('PublicController@schedaAlloggio', $id);
         }
         
 }

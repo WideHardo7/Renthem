@@ -114,27 +114,29 @@
               <h5><span class="glyphicon glyphicon-envelope"></span>Per ulteriori informazioni  contatta il gestore dell'alloggio</h5>
              
               
-              {{ Form::open (array('route' => ('mandamessaggio', [$ann->AnnuncioId]), 'class' => 'contact-form', 'id'=>'invMessaggio')) }}  
+    {{ Form::open (array('route' => array('mandamessaggio', $ann->AnnuncioId), 'class' => 'contact-form', 'id'=>'invMessaggio')) }}  
         <br><br>
         
-            <div class="wrap-input">
-               {{ Form::hidden ('idlocatore',$lore->id,['class'=>'input','id'=>'idlocatore']) }}
-               </div>
+           
          <div class="wrap-input">
              
-                    {{ Form::textarea('messaggio', '', [ 'rows' =>8, 'placeholder'=>"Messaggio", 'id' => 'messaggio']) }}     
+                    {{ Form::textarea('contenuto', '', [ 'rows' =>8, 'class' => "form-control", 'placeholder'=>"Messaggio", 'id' => 'contenuto']) }}     
                     
-                     @if ($errors->first('messaggio'))
+                     @if ($errors->first('contenuto'))
                     <ul class="errors">
-                        @foreach ($errors->get('messaggio') as $message)
+                        @foreach ($errors->get('contenuto') as $message)
                         <li>{{ $message }}</li>
                         @endforeach
                     </ul>
                 @endif 
                 
                 </div>
+         <div class="wrap-input">
+               {{ Form::hidden ('idlocatore', $lore->id ,['class'=>'input','id'=>'idlocatore']) }}
+               </div>
         
-            {{ Form::submit('Invia Messaggio', ['class' => 'form-btn1', 'id'=>'sub-btn']) }} 
+        
+            {{ Form::submit('Invia Messaggio', ['class' => 'btn btn-primary', 'id'=>'sub-btn']) }} 
     {{ Form::close() }}
                                 
                <!--  <textarea rows="8" class="form-control" placeholder="Messaggio"></textarea>
@@ -148,11 +150,16 @@
           
               
                 <div class="row">
-        
-                       <div class="col-lg-6 col-sm-6 col-lg-offset-3 col-sm-offset-3">
-                            <button type="submit" class="btn btn-primary" name="Submit">Opziona Offerta</button>
+                    {{ Form::open (array('route' => array('opzionamento', $ann->AnnuncioId), 'class' => 'contact-form', 'id'=>'setOpzione')) }}
+                   
+                    <div class="wrap-input">
+               {{ Form::hidden ('idlocatore', $lore->id ,['class'=>'input','id'=>'idlocatore']) }}
+               </div>
+                    <div class="col-lg-6 col-sm-6 col-lg-offset-3 col-sm-offset-3">
+                            {{ Form::submit('Opziona Offerta', ['class' => 'btn btn-primary', 'id'=>'sub-btn']) }} 
+                            <!--<button type="submit" class="btn btn-primary" name="Submit">Opziona Offerta</button>-->
                         </div>
-          
+                  {{ Form::close() }}
                  </div>
           @endcan
            

@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
 
-class SendMessageRequest extends FormRequest {
+class SetOptionamentRequest extends FormRequest {
 
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,7 @@ class SendMessageRequest extends FormRequest {
     public function rules() {
         return [
            
-            'contenuto' => 'required|string|max:300',
+            
             'idlocatore' =>'required'
         ];
     }
