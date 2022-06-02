@@ -145,7 +145,9 @@ return [
     */
 
     'attributes' => [
-        'datanascita'=>'Data di nascita'
+        'datanascita'=>'Data di nascita',
+        'domandamaybe'=>'Domanda',
+        'rispostamaybe'=>'Risposta'
     ],
     
     'values' => [

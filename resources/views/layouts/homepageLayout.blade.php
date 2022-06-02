@@ -16,7 +16,12 @@
         @show     
         @section('homeScripts')
         @show
-             
+        @section('scriptAFaqs')
+        @show
+        @section('scriptsModann')
+        @show
+        @section('scriptGestann')
+        @show
     </head>    
     <body>
         <div id="wrapper">
@@ -34,56 +39,25 @@
             <div id="page">                
                     <div id="home">
                         @yield('homepage') 
-            <!--           <div style="clear: both;">&nbsp;</div> -->
+                        @yield('chat')
+                        @yield('profilo')
+                         @yield('Registrazione')
+                         @yield('login')
+                         @yield('CreaAnnuncio') 
+                         @yield('gestAlloggi') 
+                          @yield('gestFaq') 
+                          @yield('schedaMod')
+                          @yield('stats') 
+            
+           
                     </div>                
             </div>
             <!-- end content -->
                      
             
-            <div id="profilo">                
-                    <div id="profilo">
-                        @yield('profilo')
-            <!--             <div style="clear: both;">&nbsp;</div> -->
-                    </div>                
-            </div>
-            
-            <div id="profilo">                
-                    <div id="profilo">
-                        @yield('Registrazione')
-            <!--             <div style="clear: both;">&nbsp;</div> -->
-                    </div>                
-            </div>
-            
-            <div id="profilo">                
-                    <div id="profilo">
-                        @yield('login')
-            <!--             <div style="clear: both;">&nbsp;</div> -->
-                    </div>                
-            </div>
-            
-              <div id="page">                
-                    <div id="home">
-                        @yield('CreaAnnuncio') 
-             <!--            <div style="clear: both;">&nbsp;</div> -->
-                    </div>                
-            </div>  
-              <div id="page">                
-                    <div id="home">
-                        @yield('gestAlloggi') 
-             <!--            <div style="clear: both;">&nbsp;</div> -->
-                    </div>                
-            </div>            
-            
-            <div id="page">                
-                    <div id="home">
-                        @yield('gestFaq') 
-             <!--            <div style="clear: both;">&nbsp;</div> -->
-                    </div>                
-            </div> 
-            
             <div id="footer">
                 @include('layouts/footer')
-            </div>
+            </div> 
             <!-- end footer -->
         </div>
     </body>

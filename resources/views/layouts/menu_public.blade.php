@@ -21,13 +21,13 @@
                 
                  <!--ancora chat per locatari e locatori-->
                 @can('isLoreLario')
-                <li><a href=""><b>Chat</b></a></li> 
+                <li><a href="{{route('chat')}}"><b>Chat</b></a></li> 
                 @endcan
                  
                   <!--ancore per admin-->
                  @can('isAdmin')
                 <li><a href="{{route('viewEditFaq')}}"><b>Gestione Faq</b></a></li> 
-                <li><a href=""><b>Statistiche</b></a></li> 
+                <li><a href="{{route('viewStats')}}"><b>Statistiche</b></a></li> 
                 @endcan
               </ul>
 

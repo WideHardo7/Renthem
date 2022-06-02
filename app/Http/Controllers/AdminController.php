@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\Resources\Product;
-use App\Http\Requests\NewProductRequest;
-
+use App\Models\Resources\Faq;
 use Illuminate\Http\Request;
 use App\Models\Catalog;
 use App\Models\FaqGetter;
+use Illuminate\Support\Facades\Log;
 use App\Models\Alloggi;
-
+use App\Http\Requests\AggiungiFaqRequest;
+use App\Http\Requests\ModificaFaqRequest;
 class AdminController extends Controller {
 
    protected $faqu;
@@ -39,7 +40,33 @@ class AdminController extends Controller {
         return view('listafaq')->with('faqs', $faq);
     }
     
+        public function ViewStats() {
+        return view('stats');
+    }
     
+    public function AggiungiFaq(AggiungiFaqRequest $request){
+        $faq = new Faq;  
+        $faq->fill($request->validated());
+        $faq->save();
+        return response()->json(['redirect' => route('viewEditFaq')]);
+        
+    }
+    
+    public function EliminaFaq($id){
+        $faqdel= $this->faqu->getThisFaq($id);
+        $faqdel->delete();
+        return response()->json(['redirect' => route('viewEditFaq')]);
+    }
+
+    public function EditFaq(ModificaFaqRequest $request){
+         $faq = new Faq;  
+         $faq->fill($request->validated());
+         $faq->domanda=$request->domandamaybe;
+         $faq->risposta=$request->rispostamaybe;
+         $faqupdate= $this->faqu->getThisFaq($request->FaqId);        
+         $faqupdate->update($faq->only(['domanda','risposta']));
+         return response()->json(['redirect' => route('viewEditFaq')]);
+    }
     
     
 }

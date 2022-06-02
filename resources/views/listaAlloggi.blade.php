@@ -1,5 +1,13 @@
 @extends('layouts.homepageLayout')
 @section('title', 'Gestione annunci')
+
+@section('scriptGestann')
+@parent
+<script src="{{ asset('assets/js/GestAnnjs.js') }}"></script>
+@endsection
+
+
+
 @section('gestAlloggi')
 
 <!-- banner -->
@@ -31,9 +39,10 @@
                         <div class="col-6 col-sm-3">
                             <h4><a>{{$ad->tipologia}}</a> in {{$ad->indirizzo}}, {{$ad->citta}}</h4>
                             <a class="btn btn-primary bottoni_ancore" href="{{route('scheda',[$ad->AnnuncioId])}}">Info annuncio</a><br><br>
-                            <a class="btn btn-primary bottoni_ancore" href="">Modifica Annuncio</a><br><br>
-                            <a class="btn btn-primary bottoni_ancore" href="">Elimina annuncio</a><br><br>
-                            <a class="btn btn-primary bottoni_ancore" href="">Visualizza interessati</a>
+                            <a class="btn btn-primary bottoni_ancore" href="{{route('modann',[$ad->AnnuncioId])}}">Modifica Annuncio</a><br><br>
+                            <meta name='csrf-token' content='{{csrf_token()}}'>
+                            <a class="btn btn-primary bottoni_ancore" onclick='elimina({!!$ad->AnnuncioId!!})'>Elimina annuncio</a><br><br>
+                            <a class="btn btn-primary bottoni_ancore" onclick='visint({!!$ad->AnnuncioId!!})'>Visualizza interessati</a>
                         </div>
                         
                    </div> 
@@ -42,7 +51,48 @@
                     @endforeach
                     
                       @endisset()
-                  
+    <div class='modal' id='myModal' role='dialog' tabindex='-1' aria-hidden='true'>
+      <div class='modal-dialog'>
+          <div class='modal-content' id='appeF'>
+            <div class='modal-header'>       
+              <button type='button' class='close' onclick='closemodal("myModal")' aria-label='close' >&times;</button>
+              <h4 class='modal-title'>LISTA INTERESSATI</h4>
+            </div>
+            <div class='modal-body' id='appD'>
+                <div class="row">
+                    <table>
+                        <tr>
+                            <th>Nome &nbsp;&nbsp;</th> 
+                            <th>Cognome &nbsp;&nbsp;</th> 
+                            <th>Età &nbsp;&nbsp;</th> 
+                            <th>Genere &nbsp;&nbsp;</th> 
+                        </tr>
+                        <!--
+                    @isset($interessato)
+                    @foreach($interessato as $Uint)
+                    <tr>
+                        <td>{{$Uint->nome}} &nbsp;&nbsp;</td>
+                        <td>{{$Uint->cognome}} &nbsp;&nbsp;</td>
+                        <td>{{$Uint->eta}} &nbsp;&nbsp;</td>
+                        <td>{{$Uint->genere}} &nbsp;&nbsp;</td>
+                    </tr>                       
+                     @endforeach                    
+                     @endisset()    -->
+                        <tr>
+                            <td>Joe &nbsp;&nbsp;</td>
+                            <td>Mama &nbsp;&nbsp;</td>
+                            <td>18 &nbsp;&nbsp;</td>
+                            <td>Ghey &nbsp;&nbsp;</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class='modal-footer'>              
+                <button class='form-btn1 btn btn-default' id="chidi" onclick='closemodal("myModal")'>Chiudi</button>
+            </div>
+          </div>
+       </div>
+  </div>
     
     
     
