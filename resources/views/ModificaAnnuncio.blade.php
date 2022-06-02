@@ -189,7 +189,7 @@ $(function () {
 
 
                         <div class="input-group">
-                            {{ Form::submit('Crea Nuovo Annuncio', ['class' => 'form-btn1', 'id'=>'pulsante']) }}
+                            {{ Form::submit('Modifica Annuncio', ['class' => 'form-btn1', 'id'=>'pulsante']) }}
                         </div></div>
                     {{ Form::close() }}
      

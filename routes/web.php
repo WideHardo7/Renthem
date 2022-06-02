@@ -73,7 +73,7 @@
 
  Route::post('/GestioneAnnunci/ModificaAnnuncio', 'LocatoreController@PostFormMod') -> name('insertmod');
    
-// Route::get('/GestioneAnnunci/Annuncio/{Annuncioid}', controller here) -> name('schedaannunciolocatore');
+ Route::post('/GestioneAnnunci/{Annuncioid}', 'LocatoreController@Delete' ) -> name('cancella');
    
 // Route::get('/GestioneAnnunci/Annuncio/{Annuncioid}/Interessati', controller here) -> name('interessati');
 

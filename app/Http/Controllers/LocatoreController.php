@@ -85,10 +85,8 @@ class LocatoreController extends Controller
     }
        
         public function showAnnunci(){
-           $utente= Auth::user()->id;
-           
-           Log::info('utente id passato'.$utente);
-           
+           $utente= Auth::user()->id;           
+           Log::info('utente id passato'.$utente);          
            $alloggio= $this->alloggi->getAnnunciobyLocatore($utente);
            return view('listaAlloggi')
            ->with('ads', $alloggio);
@@ -133,6 +131,12 @@ class LocatoreController extends Controller
             $destinationPath = public_path() . '/images/properties';
             $image->move($destinationPath, $imageName);
         };
+        return response()->json(['redirect' => route('viewAnnunci')]);
+    }
+    
+    public function Delete($id){
+        $Anndel= $this->alloggi->getAnnuncioById($id);
+        $Anndel->delete();
         return response()->json(['redirect' => route('viewAnnunci')]);
     }
 }
