@@ -5,8 +5,7 @@ namespace App\Models;
 use App\Models\Resources\Annuncio;
 use App\User;
 use Illuminate\Support\Facades\Log;
-use DB;
-use App\Services\PaginationService;
+use App\Models\Resources\AnnuncioUsers;
 
 class Alloggi {
 
@@ -46,6 +45,21 @@ class Alloggi {
 
           } */
     }
+     public function showOptionforAnnuncio($idannuncio){
+       $annuncio=Annuncio::find($idannuncio);
+        $locatari= $annuncio->moreutenti;
+        return $locatari;
+    }
+    
+    public function isOptionate($idlocatario,$idannuncio){
+        $option=AnnuncioUsers::where('user_id',$idlocatario)->where('annuncio_id',$idannuncio);
+        if($option=null){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    
 
     /*   public function getAnnunciobyFilter($param, $paged = 1) {
 

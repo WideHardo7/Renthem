@@ -20,8 +20,7 @@
             @can('isLocatario')  
             <div class="col-lg-3 col-sm-4" id="filtroDati">                
                 <div class="search-form"><h4><span class="glyphicon glyphicon-search"></span> Cerca per</h4>
-                    
-                    {{ Form::open(array('route' => 'filtro', 'id'=>'formFiltro', 'method' => 'get')) }}   
+                     {{ Form::open(array('route' => 'filtro', 'id'=>'formFiltro', 'method' => 'get')) }}   
                     
                         
                      
@@ -99,46 +98,52 @@
 
                 </div>
             </div>           
-            @endcan
+            
+            
+            <div class="col-lg-9 col-sm-8">
+          @endcan
+            @can('isAnybutlario') 
+            <div class="col-lg-9 col-sm-8 col-lg-offset-2">
+                @endcan 
+                
+            @guest 
+            <div class="col-lg-9 col-sm-8 col-lg-offset-2">
+            @endguest
+            
+                <div class="row">
+                    @isset($ads)
+                    @foreach ($ads as $ad)
+                    <!-- properties -->
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="properties">
+                            <div class="image-holder"><img src="{{ asset('images/properties/' . $ad->immagine) }}" class="img-responsive" alt="properties">
+                                @if($ad->assegnato)
+                                <div class="status sold">Non Disponibile</div>
+                                @endif
 
-
-
-
-            <div class="col-lg-9 col-sm-8">                
-                @can('isAnybutlario') 
-                <div class="col-lg-9 col-sm-8 col-lg-offset-2">
-                    @endcan 
-
-                    @guest 
-                    <div class="col-lg-9 col-sm-8 col-lg-offset-2">
-                        @endguest
-
-                        <div class="row">
-                            @isset($ads)
-                            @foreach ($ads as $ad)
-                            <!-- properties -->
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="properties">
-                                    <div class="image-holder"><img src="{{ asset('images/properties/' . $ad->immagine) }}" class="img-responsive" alt="properties">
-                                        @if($ad->assegnato)
-                                        <div class="status sold">Non Disponibile</div>
-                                        @endif
-
-                                    </div>
-                                    <h4><a>{{$ad->tipologia}}</a></h4>
-                                    <p class="price">{{$ad->importo}}€</p>
-                                    <a class="btn btn-primary bottoni_ancore" href="{{route('scheda',[$ad->AnnuncioId])}}">DETTAGLIO</a>
-
-                                </div>
                             </div>
-                            @endforeach
-                            <!--Paginazione-->
-                            <div class="center">
-                                <div class="pagination">
-                                    @include('pagination.paginator', ['paginator' => $ads])
-                                </div>
-                            </div>
-                            @endisset()
+                            <h4 class="vert">{{$ad->tipologia}}</h4>
+                            <h5 >{{$ad->citta}}</h5>
+                            <p class="price">{{$ad->importo}}€</p>
+                            <a class="btn btn-primary bottoni_ancore" href="{{route('scheda',[$ad->AnnuncioId])}}">DETTAGLIO</a>
+
+                        </div>
+                    </div>
+                    @endforeach
+                    <!--Paginazione-->
+                    <div class="center">
+                        <div class="pagination">
+                            @include('pagination.paginator', ['paginator' => $ads])
+                        </div>
+                    </div>
+                    @endisset()
+                    
+                  
+
+
+
+
+           
                         </div>
                     </div>
                 </div>

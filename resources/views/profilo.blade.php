@@ -26,7 +26,7 @@
                </div>
         
     
-    <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span><b>Informazioni del profilo utente</b></h4> 
+    <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span><b>Informazioni del profilo utente</b></h4><br>
         
         <h5><p><b>Nome:</b> {{ Auth::user()->nome }}</p></h5>
      
@@ -64,6 +64,7 @@
           
                  </div>
         
+</div>
 </div>
 
 </div>

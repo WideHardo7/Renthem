@@ -1,28 +1,5 @@
 @extends('layouts.homepageLayout')
 @section('title', 'Modifica profilo utente')
-
-@section('MProfiloscripts')
-
-@parent
-<script src="{{ asset('assets/js/functions.js') }}" ></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script>/*
-$(function () {
-    var actionUrl = "{{route('editutente')}}";
-    var formId = 'modProfilo';
-    $(":input").on('blur', function (event) {
-        var formElementId = $(this).attr('id');
-        doElemValidation(formElementId, actionUrl, formId);
-    });
-    $("#modProfilo").on('submit', function (event) {
-        event.preventDefault();
-        doFormValidation(actionUrl, formId);
-    });
-}); */
-</script>
-
-@endsection
-
 @section('profilo')
 
 <!-- banner -->
