@@ -47,39 +47,58 @@ class Alloggi {
           } */
     }
 
-    public function getAnnunciobyFilter($param, $paged = 1) {
+    /*   public function getAnnunciobyFilter($param, $paged = 1) {
 
 
 
-        if ($param->tipologia = 'Appartamento') {
-            $filtratiA = (new Annuncio)->newQuery()->where('tipologia', 'Appartamento');
-            if ($param->has('citta')) {
-                $filtratiA = $filtratiA->whereIn('citta', $param);
-            }
-            return $filtratiA->paginate(5);
-        } else if ($param->tipologia = 'Posto Letto') {
-            $filtratiP = (new Annuncio)->newQuery()->where('tipologia', 'Posto Letto');
-            if ($param->has('citta')) {
-                $filtratiP = $filtratiP->whereIn('citta', $param);
-            }
-            return $filtratiP->paginate(5);
-        } else
-            return;
+      if ($param->tipologia = 'Appartamento') {
+      $filtratiA = (new Annuncio)->newQuery()->where('tipologia', 'Appartamento');
+      if ($param->has('citta')) {
+      $filtratiA = $filtratiA->whereIn('citta', $param);
+      }
+      return $filtratiA->paginate(5);
+      } else if ($param->tipologia = 'Posto Letto') {
+      $filtratiP = (new Annuncio)->newQuery()->where('tipologia', 'Posto Letto');
+      if ($param->has('citta')) {
+      $filtratiP = $filtratiP->whereIn('citta', $param);
+      }
+      return $filtratiP->paginate(5);
+      } else
+      return;
+      } */
+
+    public function getAnnunciobyFilter($citta, $paged = 1) {
+        $filtrati = Annuncio::whereIn('tipologia', $citta);
+        //   LOG::INFO(print_r($filtrati,true));
+        return $filtrati->paginate($paged);
     }
 
     public function getAnnunciobyF($param, $paged = 1) {
 
         $filtrati = (new Annuncio)->newQuery();
 
-      //  $filtrati = Annuncio::all();
+        //    $filtrati = Annuncio::all();
+        $filtri=array();
+        
 
-        if ($param->has('tipologia')) {
-            $filtrati = $filtrati->whereIn('tipologia', $param);
-        }
-        if ($param->has('citta')) {
-            $filtrati = $filtrati->whereIn('citta', $param);
-        }
 
+
+        if ($param->get('tipologia')!=null){ 
+        array_push($filtri,['tipologia',$param]);
+            
+            $filtrati = Annuncio::where($filtri);
+        }       
+        
+        if ($param->get('citta')!=null){
+            LOG::INFO('entra nel secondo if');
+        array_push($filtri,['citta', $param]);       
+        }
+        
+        
+
+        
+        
+        $filtrati = Annuncio::where($filtri);
 
         return $filtrati->paginate(5);
     }
