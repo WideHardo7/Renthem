@@ -18,9 +18,7 @@ class CreateAnnunciTable extends Migration
             $table->bigIncrements('AnnuncioId');
             
             $table->unsignedBigInteger('user_id');            
-            $table->foreign('user_id')->references('id')->on('users');
-            
-            
+            $table->foreign('user_id')->references('id')->on('users');                  
             $table->string('citta',50);
             $table->string('zona_quartiere',50)->nullable();
             $table->string('indirizzo',50);            
@@ -36,7 +34,7 @@ class CreateAnnunciTable extends Migration
             $table->boolean('assegnato'); 
             $table->date('data_assegnazione')->nullable();           
             $table->string('immagine',200)->nullable();            
-            
+          
             $table->integer('numero_posti_letto_totali')->nullable();            
             $table->integer('C_numero_posti_letto_in_camera')->nullable();
             

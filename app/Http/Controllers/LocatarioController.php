@@ -15,22 +15,35 @@ use App\User;
 use Auth;
 
 
-class LocatarioController extends Controller
-{
-    
-    
+class LocatarioController extends Controller {
+
     protected $faqu;
     protected $annunci;
 
-
     public function __construct() {
-        
-        $this->faqu = new FaqGetter();    
-        $this->annunci= new Alloggi();
+
+        $this->faqu = new FaqGetter();
+        $this->annunci = new Alloggi();
+
         $this->middleware('can:isLocatario');
         
     }
     
+     //metodo filtro
+    
+    public function filtro(Request $request) {
+
+
+       // $params = $request->except('_token');
+        
+        $params = collect(request()->except('_token'));
+        
+        LOG::INFO(print_r($params,true));
+
+        $variabile = $this->annunci->getAnnunciobyFilter($params, 6);
+
+        return view('catalogoalloggi')->with('ads', $variabile);
+    }
     
     
     
@@ -89,7 +102,16 @@ class LocatarioController extends Controller
                 return redirect()->action('PublicController@schedaAlloggio', $id);
         }
         
-}
 
 
-
+     
+    
+    
+   
+    
+    
+    public function filter(Request $request) {
+        return CercaAlloggiFiltrati::apply($request);  
+        }
+ }
+    

@@ -46,7 +46,7 @@
    
  
 
-Route::get('/Chat','UserController@viewChat') -> name('chat');  
+ Route::get('/Chat','UserController@viewChat') -> name('chat');  
  
 
 // Route::get('/Chat/{UserId}',controller here) -> name(chatutente);
@@ -59,6 +59,9 @@ Route::get('/Chat','UserController@viewChat') -> name('chat');
    
    
 // ROUTES LIVELLO 2   
+Route::get('filtro', 'LocatarioController@filtro') -> name('filtro');
+
+Route::get('filter', 'LocatarioController@filter') -> name('filter');
 
 Route::get('nuovoAnnuncio', 'LocatoreController@showNuovoAnnuncioForm')->name('nuovoAnnuncio'); 
  
@@ -73,11 +76,11 @@ Route::get('nuovoAnnuncio', 'LocatoreController@showNuovoAnnuncioForm')->name('n
    
 // Route::get('/GestioneAnnunci', controller here) -> name('gestann');
    
-// Route::get('/GestioneAnnunci/ModificaAnnuncio/{Annuncioid}', controller here) -> name('modann');
+ Route::get('/GestioneAnnunci/ModificaAnnuncio/{Annuncioid}', 'LocatoreController@ShowFormMod') -> name('modann');
 
-// Route::post('/GestioneAnnunci/ModificaAnnuncio/{Annuncioid}', controller here) -> name('modann.store');
+ Route::post('/GestioneAnnunci/ModificaAnnuncio', 'LocatoreController@PostFormMod') -> name('insertmod');
    
-// Route::get('/GestioneAnnunci/Annuncio/{Annuncioid}', controller here) -> name('schedaannunciolocatore');
+ Route::post('/GestioneAnnunci/{Annuncioid}', 'LocatoreController@Delete' ) -> name('cancella');
    
 // Route::get('/GestioneAnnunci/Annuncio/{Annuncioid}/Interessati', controller here) -> name('interessati');
 
@@ -107,10 +110,15 @@ Route::post('/Alloggi/SchedaAlloggio/{Annuncioid}/Opzionamento', 'LocatarioContr
 // ROUTES LIVELLO 4
 
  Route::get('/GestioneFaq', 'AdminController@ViewEditFaq') -> name('viewEditFaq');
+ 
  Route::post('/GestioneFaq', 'AdminController@EditFaq') -> name('EditFaq');
+ 
  Route::post('/GestioneFaq/Add', 'AdminController@AggiungiFaq') -> name('Faqadd');
+ 
  Route::post('/GestioneFaq/{id}', 'AdminController@EliminaFaq') -> name('EliminaFaq');
+ 
  Route::get('/Statistiche', 'AdminController@ViewStats') -> name('viewStats'); 
+ 
 // Route::get('/', controller here ) -> name('homelvl4');   
 
 // Route::get('/admin', 'AdminController@index')->name('admin');

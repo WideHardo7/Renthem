@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Catalog;
+
 use App\Models\FaqGetter;
 use App\Models\Alloggi;
 use App\Models\Locatore;
@@ -18,82 +18,25 @@ class PublicController extends Controller {
     protected $locatore;
 
 
-    public function __construct() {
-        $this->_catalogModel = new Catalog;
+    public function __construct() {      
         $this->faqu = new FaqGetter();    
         $this->annunci= new Alloggi();
         $this->locatore= new Locatore();
     }
 
-    public function showCatalog1() {
-
-        //Categorie Top
-        $topCats = $this->_catalogModel->getTopCats();
-        
-        //Prodotti in sconto di tutte le categorie, ordinati per sconto decrescente
-        $prods = $this->_catalogModel->getProdsByCat($topCats->map->only(['catId']), 2, 'desc', true);
-
-        return view('catalog')
-                        ->with('topCategories', $topCats)
-                        ->with('products', $prods);
-    }
-
-    public function showCatalog2($topCatId) {
-
-        //Categorie Top
-        $topCats = $this->_catalogModel->getTopCats();
-
-        //Categoria Top selezionata
-        $selTopCat = $topCats->where('catId', $topCatId)->first();
-
-        // Sottocategorie
-        $subCats = $this->_catalogModel->getCatsByParId([$topCatId]);
-                        
-        //Prodotti in sconto della categoria Top selezionata, ordinati per sconto decrescente 
-        $prods = $this->_catalogModel->getProdsByCat([$topCatId], 2, 'desc', true);
-
-        return view('catalog')
-                        ->with('topCategories', $topCats)
-                        ->with('selectedTopCat', $selTopCat)
-                        ->with('subCategories', $subCats)
-                        ->with('products', $prods);
-    }
-
-    public function showCatalog3($topCatId, $catId) {
-
-        //Categorie Top
-        $topCats = $this->_catalogModel->getTopCats();
-
-        //Categoria Top selezionata
-        $selTopCat = $topCats->where('catId', $topCatId)->first();
-
-        // Sottocategorie
-        $subCats = $this->_catalogModel->getCatsByParId([$topCatId]);
-
-        // Prodotti della categoria selezionata, in sconto o meno
-       $prods = $this->_catalogModel->getProdsByCat([$catId]);
-
-        return view('catalog')
-                        ->with('topCategories', $topCats)
-                        ->with('selectedTopCat', $selTopCat)
-                        ->with('subCategories', $subCats)
-                        ->with('products', $prods);
-    }
+   
     
     public function viewFaqPage(){
         $faq = $this->faqu->getAllFaqs();
-
         return view('homepage')->with('faqs', $faq);
     }
+    
     public function showAlloggi(){
-        $alloggio= $this->annunci->getAnnunciobyPage(6);
-        
+        $alloggio= $this->annunci->getAnnunciobyPage(6);      
         return view('catalogoalloggi')
-               ->with('ads', $alloggio);
-        
-        
+               ->with('ads', $alloggio);      
     }
-
+        
     public function schedaAlloggio($Annuncioid){
         
         //estrae l'alloggio
