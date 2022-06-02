@@ -84,10 +84,8 @@ class PublicController extends Controller {
         
         return view('catalogoalloggi')
                ->with('ads', $alloggio);
-        
-        
     }
-
+        
     public function schedaAlloggio($Annuncioid){
         
         $alloggio= $this->annunci->getAnnuncioById($Annuncioid);

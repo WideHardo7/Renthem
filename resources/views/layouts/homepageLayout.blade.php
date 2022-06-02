@@ -16,7 +16,7 @@
         @show     
         @section('homeScripts')
         @show
-        
+             
     </head>    
     <body>
         <div id="wrapper">

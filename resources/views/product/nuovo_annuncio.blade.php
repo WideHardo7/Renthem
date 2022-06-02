@@ -96,7 +96,8 @@ $(function () {
                     </div>
                     <div id='input-3'>
                         {{ Form::radio('tipologia', 'Posto letto', false, ['class' => 'label-input', 'id' => 'Posto letto']) }}
-                        {{ Form::label('tipologia', 'Posto letto', ['class' => 'label-input']) }}                           
+                        {{ Form::label('tipologia', 'Posto letto', ['class' => 'label-input']) }}
+                    </div>
                 </fieldset>                
                 <div class="wrap-input">
                     {{ Form::textarea('descrizione', '', ['cols'=>135, 'rows' =>5, 'placeholder'=>"Descrizione generale dell'alloggio.", 'id' => 'descrizione']) }}                   

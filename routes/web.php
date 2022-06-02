@@ -60,6 +60,9 @@ Route::post('logout', 'Auth\LoginController@logout') -> name('logout');
    
    
 // ROUTES LIVELLO 2   
+Route::get('filtro', 'LocatarioController@filtro') -> name('filtro');
+
+Route::get('filter', 'LocatarioController@filter') -> name('filter');
 
    
 // Route::get('/CreaAnnuncio', controller here) -> name('creaannuncio');
