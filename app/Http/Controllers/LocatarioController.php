@@ -6,48 +6,52 @@ use Illuminate\Http\Request;
 use App\Models\Catalog;
 use App\Models\FaqGetter;
 use App\Models\Alloggi;
+use App\Http\Requests\SendMessageRequest;
+use App\Http\Requests\SetOptionamentRequest;
+use App\Models\Resources\Messaggio;
+use App\Models\Resources\AnnuncioUsers;
+use Illuminate\Support\Facades\Log;
+use App\User;
+use Auth;
 
-class LocatarioController extends Controller
-{
-    
-    
+
+class LocatarioController extends Controller {
+
     protected $faqu;
     protected $annunci;
 
-
     public function __construct() {
-        
-        $this->faqu = new FaqGetter();    
-        $this->annunci= new Alloggi();
-        $this->middleware('can:isLocatario');
-    }
-    
-    
-     public function ViewHomeLv3(){
-        $faq = $this->faqu->getAllFaqs();
 
-        return view('homepage3')->with('faqs', $faq);
-    }
-    
-        public function ViewAlloggiLv3(){
-        $alloggio= $this->annunci->getAnnunciobyPage(6);
-        
-        return view('catalogoalloggi3')
-               ->with('ads', $alloggio);
-        
+        $this->faqu = new FaqGetter();
+        $this->annunci = new Alloggi();
+
+        $this->middleware('can:isLocatario');
         
     }
     
-        public function schedaAlloggio3($Annuncioid){
+     //metodo filtro
+    
+    public function filtro(Request $request) {
+
+
+       // $params = $request->except('_token');
         
-        $alloggio= $this->annunci->getAnnuncioById($Annuncioid);
-        return view('scheda_alloggio3')->with('ann', $alloggio);
+        $params = collect(request()->except('_token'));
+        
+        LOG::INFO(print_r($params,true));
+
+        $variabile = $this->annunci->getAnnunciobyF($params, 6);
+
+        return view('catalogoalloggi')->with('ads', $variabile);
     }
     
-        public function ViewProfiloLv3(){
     
-        return view('profilo3');
-        }
+    
+       
+    
+        
+    
+        
         public function insertOpzionamento(){
             /*take the user id of the locatario and the id of that annuncio opzionato
               $user=Auth::user()->id;
@@ -55,7 +59,59 @@ class LocatarioController extends Controller
              * $user->moreannunci()->attach($annuncioid);             */
         }
         
-}
+        public function sendMessage(SendMessageRequest $request, $id){
+            
+            $dati= collect(request()->all())->filter(function($request){
+                                   return is_string($request)&&!empty($request);
+            });
+            Log::info(print_r($dati));
+            //$contenuto= $dati->contenuto;
+            
+            
+                $messaggio= new Messaggio();
+                $messaggio->fill($request->validated());
+                $messaggio->idlocatario=Auth::user()->id; 
+                $messaggio->sender= false;
+                $messaggio->save();
+           
+            return redirect()->action('PublicController@schedaAlloggio', $id);
+            
+        }
+        
+        public function setOption(SetOptionamentRequest $request, $id){
+            
+            $locatanome=Auth::user()->nome;
+            $locatacognome=Auth::user()->cognnome;
+            
+            $annuncio=$this->annunci->getAnnuncioById($id);
+            
+            $Messaggioption='L&rsquo;utente {{$locatacognome}} $locatanome ha optionato il seguente $annuncio->tipologia, in $annuncio->indirizzo $annuncio->citta  ';
+            
+             $messaggio= new Messaggio();
+                $messaggio->fill($request->validated());
+                $messaggio->idlocatario=Auth::user()->id;
+                $messaggio->contenuto= $Messaggioption;
+                $messaggio->sender= false;
+                $messaggio->save();
+                
+                $opzionamento= new AnnuncioUsers();
+                $opzionamento->user_id=Auth::user()->id;
+                $opzionamento->annuncio_id=$id;
+                $opzionamento->save();
+                
+                return redirect()->action('PublicController@schedaAlloggio', $id);
+        }
+        
 
 
-
+     
+    
+    
+   
+    
+    
+    public function filter(Request $request) {
+        return CercaAlloggiFiltrati::apply($request);  
+        }
+ }
+    

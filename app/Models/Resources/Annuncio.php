@@ -18,7 +18,7 @@ class Annuncio extends Model
      */
     protected $fillable = [
         'IDproprietario', 
-        
+        'user_id',//maybe wrong
         'citta',
         'zona_quartiere',
         'indirizzo',
@@ -49,5 +49,5 @@ class Annuncio extends Model
     public function moreutenti(){
         return $this->belongsToMany(User::class, 'annunci_users')->withTimestamps();
     }
-    
+      
 }

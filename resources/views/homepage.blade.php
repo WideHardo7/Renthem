@@ -80,7 +80,14 @@
         <h3><b>About Us</b></h3>
         <p><big>Renthem è il miglior portale immobiliare per gli studenti. È stato lanciato nel 2022, 
             con l’obiettivo di offrire la migliore piattaforma 
-            per la pubblicazione e la ricerca di annunci immobiliari designati per studenti universitari.</big><br></p>
+            per la pubblicazione e la ricerca di annunci immobiliari designati per studenti universitari.<br> 
+            La documentazione del progetto è disponibile <a href="{{ route('doc') }}"><b>qui</b></a>.</big><br></p>
+        <h3><b>Note d'uso</b></h3>
+        <p><big>In questo sito è possibile visualizzare annunci per l'affitto di appartamenti o posti letto per studenti,
+        ed effettuando il log-in è possibile mettere in affitto tali alloggi, oppure opzionarli mettendosi successivamente 
+        in contatto con i rispettivi proprietari. La ricerca dell'alloggio ideale è facilitata, grazie anche ad un filtraggio
+        che i vari utenti loggati come studenti possono usufruire.</big><br></p>
+        
             <h3><b>Contatti</b></h3>
       <p><big>Per informazioni sul sito, sulla pubblicazione degli annunci e altre info:<br><br> 
             Elisa Pace: <b>elisa.pace@affitti.it</b> <br> 

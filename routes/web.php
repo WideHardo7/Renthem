@@ -23,16 +23,18 @@
  Route::get('login', 'Auth\LoginController@showLoginForm') ->name('login');       
 
  Route::post('login', 'Auth\LoginController@login');
+ 
+ Route::post('logout', 'Auth\LoginController@logout') -> name('logout');
    
  Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');       
 
  Route::post('register', 'Auth\RegisterController@register');
  
- Route::get('nuovoAnnuncio', 'LocatoreController@showNuovoAnnuncioForm')->name('nuovoAnnuncio'); 
+ //download della documentazione
+Route::get('/download', function () {
+    return response()->download('doc/documentazione_progetto.docx');
+})->name('doc');
  
- Route::post('insertAnnuncio', 'LocatoreController@insertAnnuncio')->name('insertAnnuncio');
- 
- Route::get('GestioneAlloggi', 'LocatoreController@showAnnunci')->name('viewAnnunci');
 
 
 // ROUTES IN COMUNE (MAYBE)
@@ -46,7 +48,7 @@
  
 // Route::post('/Profilo/Modifica', controller here) -> name('profilo.store');
    
- Route::post('logout', 'Auth\LoginController@logout') -> name('logout'); 
+ 
 
  Route::get('/Chat','UserController@viewChat') -> name('chat');  
  
@@ -61,6 +63,15 @@
    
    
 // ROUTES LIVELLO 2   
+Route::get('filtro', 'LocatarioController@filtro') -> name('filtro');
+
+Route::get('filter', 'LocatarioController@filter') -> name('filter');
+
+Route::get('nuovoAnnuncio', 'LocatoreController@showNuovoAnnuncioForm')->name('nuovoAnnuncio'); 
+ 
+ Route::post('insertAnnuncio', 'LocatoreController@insertAnnuncio')->name('insertAnnuncio');
+ 
+ Route::get('GestioneAlloggi', 'LocatoreController@showAnnunci')->name('viewAnnunci');
 
    
 // Route::get('/CreaAnnuncio', controller here) -> name('creaannuncio');
@@ -93,9 +104,9 @@
  
 
 
-// Route::get('/Alloggi/SchedaAlloggio/{Annuncioid}/Messaggio', controller here) -> name('mandamessaggio');
+Route::post('/Alloggi/SchedaAlloggio/{Annuncioid}/Opzionamento', 'LocatarioController@setOption') -> name('opzionamento');
    
-// Route::post('/Alloggi/SchedaAlloggio/{Annuncioid}/Messaggio', controller here) -> name('mandamessaggio.store');
+ Route::post('/Alloggi/SchedaAlloggio/{Annuncioid}/Messaggio', 'LocatarioController@sendMessage') -> name('mandamessaggio');
 
 
 

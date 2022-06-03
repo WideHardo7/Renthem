@@ -79,7 +79,3 @@ function doFormValidation(actionUrl, formId) {
         processData: false
     });
 }
-
-
-
-
