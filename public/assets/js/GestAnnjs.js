@@ -35,10 +35,10 @@ function visint($id){
 }
 
 function fillmodal(data){
-    
+    $("tr").remove(".remove");
    $.each(data,function(key,val){
-   
-        $("#appendme").append('<tr><td>'+val.nome+'</td><td>'+val.cognome+'</td><td>'+val.data_nascita+'</td><td>'+val.genere+'</td></tr>');
+        
+        $("#appendme").append('<tr class="remove"><td>'+val.nome+'</td><td>'+val.cognome+'</td><td>'+val.data_nascita+'</td><td>'+val.genere+'</td></tr>');
     });
     $("#myModal").show();
 }
