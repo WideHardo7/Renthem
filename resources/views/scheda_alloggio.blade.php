@@ -113,14 +113,14 @@
           <div class="contatta">
               <h5><span class="glyphicon glyphicon-envelope"></span>Per ulteriori informazioni  contatta il gestore dell'alloggio</h5>
              
-              
+       <!--SEZIONE FROM INVIO MESSAGGIO-->       
     {{ Form::open (array('route' => array('mandamessaggio', $ann->AnnuncioId), 'class' => 'contact-form', 'id'=>'invMessaggio')) }}  
         <br><br>
         
            
          <div class="wrap-input">
              
-                    {{ Form::textarea('contenuto', '', [ 'rows' =>8, 'class' => "form-control", 'placeholder'=>"Messaggio", 'id' => 'contenuto']) }}     
+                    {{ Form::textarea('contenuto', '', [ 'rows' =>8, 'class' => "form-control", 'placeholder'=>"Scrivi qui un messaggio al Gestore", 'id' => 'contenuto']) }}     
                     
                      @if ($errors->first('contenuto'))
                     <ul class="errors">
@@ -145,9 +145,10 @@
           </div>
           
           <hr><br>
+        <!--SEZIONE FORM OPZIONAMENTO-->
           <h4><p>Pensi che sia l'appartamento giusto per te? 
                   Allora opziona subito l'offerta!</p></h4>
-          
+         
               
                 <div class="row">
                     {{ Form::open (array('route' => array('opzionamento', $ann->AnnuncioId), 'class' => 'contact-form', 'id'=>'setOpzione')) }}

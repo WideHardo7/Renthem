@@ -52,7 +52,8 @@ class Alloggi {
     }
     
     public function isOptionate($idlocatario,$idannuncio){
-        $option=AnnuncioUsers::where('user_id',$idlocatario)->where('annuncio_id',$idannuncio);
+        $option=AnnuncioUsers::find($idannuncio)->comments()->where('title', 'foo')->first();;
+        log::info('optionamento'.$option);
         if($option=null){
             return false;
         }else{
