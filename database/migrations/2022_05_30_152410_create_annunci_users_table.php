@@ -17,10 +17,10 @@ class CreateAnnunciUsersTable extends Migration
         Schema::create('annunci_users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');  
-            $table->unsignedBigInteger('annuncio_id');  
+            $table->unsignedBigInteger('annuncio_AnnuncioId');  
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('annuncio_id')->references('AnnuncioId')->on('annunci');
+            $table->foreign('annuncio_AnnuncioId')->references('AnnuncioId')->on('annunci');
         });
     }
 

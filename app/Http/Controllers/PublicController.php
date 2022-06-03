@@ -59,9 +59,13 @@ class PublicController extends Controller {
         //Log::info('valore di proprietario'.$proprietario);
         
         //verifica se il locatario ha già opzionato questo alloggio
+        /*if( !(Auth::guest())){
         //$option=$this->annunci->isOptionate(Auth::user()->id, $Annuncioid);
         
-        return view('scheda_alloggio')->with('ann', $alloggio)->with('lore', $proprietario);
-                //->with('isOptionate',$option);
+        return view('scheda_alloggio')->with('ann', $alloggio)->with('lore', $proprietario)
+                ->with('isOptionate',$option);
+        } else{*/
+             return view('scheda_alloggio')->with('ann', $alloggio)->with('lore', $proprietario);
+       // }
     }
 }

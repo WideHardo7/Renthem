@@ -13,6 +13,7 @@
 
 
 // ROUTES LIVELLO 1
+//Route::get('/test','LocatoreController@Returnintrest');
 
  Route::get('/','PublicController@viewFaqPage' ) -> name('homelvl1');
 

@@ -139,6 +139,19 @@ class LocatoreController extends Controller
         $Anndel->delete();
         return response()->json(['redirect' => route('viewAnnunci')]);
     }
+    
+    public function Returnintrest($id){
+        $test=2;
+        $locatari= $this->alloggi->showOptionforAnnuncio($id);
+        
+        //log::info(print_r($locatari));
+        //return view('test')->with('loca',$locatari);
+        /*return Response::json(array(
+                    'success' => true,
+                    'data'   => $locatari
+                )); */
+        return $locatari;
+    }
 }
 
 

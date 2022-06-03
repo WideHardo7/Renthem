@@ -94,11 +94,10 @@ class LocatarioController extends Controller {
                 $messaggio->sender= false;
                 $messaggio->save();
                 
-                $opzionamento= new AnnuncioUsers();
-                $opzionamento->user_id=Auth::user()->id;
-                $opzionamento->annuncio_id=$id;
-                $opzionamento->save();
+               
                 
+                $user_id=Auth::user()->id;
+                $this->annunci->insertOptionament($user_id,$id);
                 return redirect()->action('PublicController@schedaAlloggio', $id);
         }
         

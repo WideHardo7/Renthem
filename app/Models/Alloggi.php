@@ -46,13 +46,16 @@ class Alloggi {
           } */
     }
      public function showOptionforAnnuncio($idannuncio){
+         
        $annuncio=Annuncio::find($idannuncio);
         $locatari= $annuncio->moreutenti;
+        log::info(print_r($locatari,true));
+     
         return $locatari;
     }
     
     public function isOptionate($idlocatario,$idannuncio){
-        $option=AnnuncioUsers::find($idannuncio)->comments()->where('title', 'foo')->first();;
+        //$option=AnnuncioUsers::find($idannuncio)->comments()->where('title', 'foo')->first();;
         log::info('optionamento'.$option);
         if($option=null){
             return false;
@@ -116,6 +119,12 @@ class Alloggi {
         $filtrati = Annuncio::where($filtri);
 
         return $filtrati->paginate(5);
+    }
+    
+    public function insertOptionament($idloca,$idann){
+        $u=User::find($idloca);
+        $u->moreannunci()->sync($idann);
+        
     }
 
 }

@@ -24,7 +24,7 @@ function visint($id){
     var idAnn=$id;
     $.ajax({
         type: 'GET',
-        url: 'GestioneAnnunci'+idAnn,
+        url: "GestioneAnnunci/"+idAnn,
         data:{
             'id':idAnn,
             '_token': token           
@@ -35,8 +35,10 @@ function visint($id){
 }
 
 function fillmodal(data){
-    $.each(data,function(key,key,val){
-        $("#appendme").append('<tr><td>'+val+'</td><td>'+val+'</td><td></td><td>'+val+'</td><td></td><td>'+val+'</td><td></tr>');
+    
+   $.each(data,function(key,val){
+   
+        $("#appendme").append('<tr><td>'+val.nome+'</td><td>'+val.cognome+'</td><td>'+val.data_nascita+'</td><td>'+val.genere+'</td></tr>');
     });
     $("#myModal").show();
 }
