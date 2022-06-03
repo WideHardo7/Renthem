@@ -30,6 +30,10 @@
 
  Route::post('register', 'Auth\RegisterController@register');
  
+ //download della documentazione
+Route::get('/download', function () {
+    return response()->download('doc/documentazione_progetto.docx');
+})->name('doc');
  
 
 
