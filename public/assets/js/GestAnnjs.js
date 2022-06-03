@@ -20,9 +20,27 @@ function elimina($id){
 }
 
 function visint($id){
-    $("#myModal").show();    
+    var token = $("meta[name='csrf-token']").attr("content"); 
+    var idAnn=$id;
+    $.ajax({
+        type: 'GET',
+        url: 'GestioneAnnunci'+idAnn,
+        data:{
+            'id':idAnn,
+            '_token': token           
+        },
+        dataType:'json',
+        success: fillmodal
+    });
+}
+
+function fillmodal(data){
+    $.each(data,function(key,key,val){
+        $("#appendme").append('<tr><td>'+val+'</td><td>'+val+'</td><td>''</td><td>'+val+'</td><td>''</td><td>'+val+'</td><td></tr>'):
+    });
+    $("#myModal").show();
 }
 
 function closemodal($id){
-    $("#"+$id+"").hide()
+    $("#"+$id+"").hide();
 }

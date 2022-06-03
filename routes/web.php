@@ -74,7 +74,9 @@
  Route::post('/GestioneAnnunci/ModificaAnnuncio', 'LocatoreController@PostFormMod') -> name('insertmod');
    
  Route::post('/GestioneAnnunci/{Annuncioid}', 'LocatoreController@Delete' ) -> name('cancella');
-   
+
+ Route::get('/GestioneAnnunci/{Annuncioid}', 'LocatoreController@Returnintrest' ) -> name('interessati');
+         
 // Route::get('/GestioneAnnunci/Annuncio/{Annuncioid}/Interessati', controller here) -> name('interessati');
 
 // Route::get('/GestioneAnnunci/Annuncio/{Annuncioid}/Interessati/{UserId}', controller here) -> name('chatinteressato');

@@ -47,7 +47,7 @@ class Annuncio extends Model
     }
     //relazione many to many inversa, da qualsiasi annuncio sia, io devo poter risalire a tutti i locatari che lo hanno opzionato
     public function moreutenti(){
-        return $this->belongsToMany(Users::class, 'annunci_users')->withTimestamps();
+        return $this->belongsToMany(User::class, 'annunci_users')->withTimestamps();
     }
     
 }
