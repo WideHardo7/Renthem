@@ -36,7 +36,7 @@ function visint($id){
 
 function fillmodal(data){
     $.each(data,function(key,key,val){
-        $("#appendme").append('<tr><td>'+val+'</td><td>'+val+'</td><td>''</td><td>'+val+'</td><td>''</td><td>'+val+'</td><td></tr>'):
+        $("#appendme").append('<tr><td>'+val+'</td><td>'+val+'</td><td></td><td>'+val+'</td><td></td><td>'+val+'</td><td></tr>');
     });
     $("#myModal").show();
 }
