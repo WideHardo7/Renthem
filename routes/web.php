@@ -30,6 +30,10 @@
 
  Route::post('register', 'Auth\RegisterController@register');
  
+ //download della documentazione
+Route::get('/download', function () {
+    return response()->download('doc/documentazione_progetto.docx');
+})->name('doc');
  
 
 
@@ -81,7 +85,9 @@ Route::get('nuovoAnnuncio', 'LocatoreController@showNuovoAnnuncioForm')->name('n
  Route::post('/GestioneAnnunci/ModificaAnnuncio', 'LocatoreController@PostFormMod') -> name('insertmod');
    
  Route::post('/GestioneAnnunci/{Annuncioid}', 'LocatoreController@Delete' ) -> name('cancella');
-   
+
+ Route::get('/GestioneAnnunci/{Annuncioid}', 'LocatoreController@Returnintrest' ) -> name('interessati');
+         
 // Route::get('/GestioneAnnunci/Annuncio/{Annuncioid}/Interessati', controller here) -> name('interessati');
 
 // Route::get('/GestioneAnnunci/Annuncio/{Annuncioid}/Interessati/{UserId}', controller here) -> name('chatinteressato');

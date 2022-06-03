@@ -47,10 +47,9 @@
                         
                    </div> 
                    <br><br> 
-
-                    @endforeach
-                    
-                      @endisset()
+ @endforeach                    
+@endisset()
+                   
     <div class='modal' id='myModal' role='dialog' tabindex='-1' aria-hidden='true'>
       <div class='modal-dialog'>
           <div class='modal-content' id='appeF'>
@@ -60,24 +59,20 @@
             </div>
             <div class='modal-body' id='appD'>
                 <div class="row">
-                    <table>
+                    <table id="appendme">
                         <tr>
                             <th>Nome &nbsp;&nbsp;</th> 
                             <th>Cognome &nbsp;&nbsp;</th> 
                             <th>Età &nbsp;&nbsp;</th> 
                             <th>Genere &nbsp;&nbsp;</th> 
                         </tr>
-                        <!--
-                    @isset($interessato)
-                    @foreach($interessato as $Uint)
-                    <tr>
-                        <td>{{$Uint->nome}} &nbsp;&nbsp;</td>
-                        <td>{{$Uint->cognome}} &nbsp;&nbsp;</td>
-                        <td>{{$Uint->eta}} &nbsp;&nbsp;</td>
-                        <td>{{$Uint->genere}} &nbsp;&nbsp;</td>
-                    </tr>                       
-                     @endforeach                    
-                     @endisset()    -->
+                        
+                   
+                    
+                    
+                                         
+                                         
+                         
                         <tr>
                             <td>Joe &nbsp;&nbsp;</td>
                             <td>Mama &nbsp;&nbsp;</td>
@@ -93,6 +88,7 @@
           </div>
        </div>
   </div>
+
     
     
     
