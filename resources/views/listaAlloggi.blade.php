@@ -60,7 +60,7 @@
             <div class='modal-body' id='appD'>
                 <div class="row">
                     <table id="appendme">
-                        <tr>
+                        <tr class="head">
                             <th>Nome &nbsp;&nbsp;</th> 
                             <th>Cognome &nbsp;&nbsp;</th> 
                             <th>Età &nbsp;&nbsp;</th> 
