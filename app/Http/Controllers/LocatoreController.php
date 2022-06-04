@@ -53,10 +53,7 @@ class LocatoreController extends Controller
             $imageName = NULL;
         }
 
-        $annuncio = new Annuncio;
-        
-        
-        
+        $annuncio = new Annuncio;     
         $annuncio->fill($request->validated());
         $annuncio->immagine = $imageName;
         $annuncio->user_id = Auth::user()->id;        
@@ -66,12 +63,16 @@ class LocatoreController extends Controller
         $stringa= implode(',',$array);  
         $annuncio->servizi_inclusi = $stringa;
         
+        if (is_null($imageName)){
+            $annuncio->immagine="1.jpg";
+        }
+        
         if(($annuncio->tipologia)=='Appartamento'){
         $array2=$request->A_locali_presenti;
         $stringa2= implode(',',$array2);  
         $annuncio->A_locali_presenti = $stringa2;
-        };
-                   
+        };    
+        
         $annuncio->save();
         
         
