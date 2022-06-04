@@ -123,7 +123,7 @@ class Alloggi {
     
     public function insertOptionament($idloca,$idann){
         $u=User::find($idloca);
-        $u->moreannunci()->sync($idann);
+        $u->moreannunci()->attach($idann);
         
     }
 

@@ -142,7 +142,7 @@ class LocatoreController extends Controller
     }
     
     public function Returnintrest($id){
-        $test=2;
+        
         $locatari= $this->alloggi->showOptionforAnnuncio($id);
         
         //log::info(print_r($locatari));
