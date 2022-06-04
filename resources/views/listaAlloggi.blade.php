@@ -73,12 +73,7 @@
                                          
                                          
                          
-                        <tr>
-                            <td>Joe &nbsp;&nbsp;</td>
-                            <td>Mama &nbsp;&nbsp;</td>
-                            <td>18 &nbsp;&nbsp;</td>
-                            <td>Ghey &nbsp;&nbsp;</td>
-                        </tr>
+                        
                     </table>
                 </div>
             </div>
