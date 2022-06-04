@@ -55,13 +55,15 @@ class Alloggi {
     }
     
     public function isOptionate($idlocatario,$idannuncio){
-        //$option=AnnuncioUsers::find($idannuncio)->comments()->where('title', 'foo')->first();;
-        log::info('optionamento'.$option);
-        if($option=null){
-            return false;
-        }else{
-            return true;
-        }
+        $locaoption=User::find($idlocatario);
+        $op=$locaoption->moreannunci()->where('annuncio_AnnuncioId',$idannuncio)->exists();
+        
+        
+        if(empty($op))
+            $op=0;
+        log::info('optionamento'.$op);
+            return $op;
+        
     }
     
 

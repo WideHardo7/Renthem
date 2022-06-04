@@ -1,6 +1,32 @@
-@extends('layouts.schedannuncioSingolo_layout')
+@extends('layouts.homepageLayout')
 @section('title', 'Dettaglio Alloggio')
 @section('scheda')
+
+@section('SchedaAlloggiScripts')
+@parent
+<script src="{{ asset('js/functions.js') }}" ></script>
+
+<script>
+    window.onload = function(){
+    var check={{$isOptionate}};
+    var assegnato={{$ann->assegnato}};
+    var option= document.getElementById('subbtnoption');
+    if(check || assegnato){
+        option.setAttribute("disabled", "");;
+    }
+    }
+/*    $(document).ready(function () {
+    $(".prova").on("click", function(e){
+    $(this).find($(".nascosto")).toggle();
+    });
+});*/
+</script>
+<style>
+    .prova{
+        cursor: pointer;
+    }
+</style>
+@endsection
 
 <div class="inside-banner">
   <div class="container"> 
@@ -136,7 +162,7 @@
                </div>
         
         
-            {{ Form::submit('Invia Messaggio', ['class' => 'btn btn-primary', 'id'=>'sub-btn']) }} 
+            {{ Form::submit('Invia Messaggio', ['class' => 'btn btn-primary', 'id'=>'sub-btn_message']) }} 
     {{ Form::close() }}
                                 
                <!--  <textarea rows="8" class="form-control" placeholder="Messaggio"></textarea>
@@ -146,9 +172,19 @@
           
           <hr><br>
         <!--SEZIONE FORM OPZIONAMENTO-->
+        @if(($ann->assegnato) &&($isOptionate))
+          <h4><p>Ci dispiace, ma l'offerta che hai opzionato è stata assegnata ad un altro utente. Per ulteriori informazioni invia un messaggio al gestore.</p></h4>
+          
+          @elseif($ann->assegnato)
+           <h4><p>Questo annuncio non è più opzionabile, in quanto è stato assegnato ad un'altro utente.</p></h4>
+           
+          @elseif($isOptionate)
+          
+          <h4><p>Hai già opzionato questo alloggio! Aspetta una risposta del gestore o invia un messaggio per informazioni.</p></h4>
+          @else
           <h4><p>Pensi che sia l'appartamento giusto per te? 
                   Allora opziona subito l'offerta!</p></h4>
-         
+          @endif
               
                 <div class="row">
                     {{ Form::open (array('route' => array('opzionamento', $ann->AnnuncioId), 'class' => 'contact-form', 'id'=>'setOpzione')) }}
@@ -157,7 +193,7 @@
                {{ Form::hidden ('idlocatore', $lore->id ,['class'=>'input','id'=>'idlocatore']) }}
                </div>
                     <div class="col-lg-6 col-sm-6 col-lg-offset-3 col-sm-offset-3">
-                            {{ Form::submit('Opziona Offerta', ['class' => 'btn btn-primary', 'id'=>'sub-btn']) }} 
+                            {{ Form::submit('Opziona Offerta', ['class' => 'btn btn-primary', 'id'=>'subbtnoption', ]) }} 
                             <!--<button type="submit" class="btn btn-primary" name="Submit">Opziona Offerta</button>-->
                         </div>
                   {{ Form::close() }}

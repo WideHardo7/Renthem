@@ -22,6 +22,8 @@
         @show
         @section('scriptGestann')
         @show
+        @section('SchedaAlloggiScripts')
+        @show
     </head>    
     <body>
         <div id="wrapper">
@@ -48,6 +50,7 @@
                           @yield('gestFaq') 
                           @yield('schedaMod')
                           @yield('stats') 
+                            @yield('scheda')
             
            
                     </div>                
