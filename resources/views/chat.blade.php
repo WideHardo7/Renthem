@@ -148,7 +148,7 @@
       <div id="chat-parte-destra-header-ruolo">Locatore</div>
    </header>
    <div id="contenitore-messaggi">
-    @for('blahblah')
+
       <!-- PRIMO MESSAGGIO (RICEVUTO) -->
       <div class="row">
          <div class="mess-ricevuto">
@@ -157,7 +157,7 @@
          </div>
          <div class="separatore"></div>
       </div>
-      @if(inviato)
+
       <!-- SECONDO MESSAGGIO (INVIATO) -->
       <div class="row">
          <div class="mess-inviato">
@@ -167,8 +167,7 @@
          <div class="separatore"></div>
       </div>
    </div>
-    @endif
-    @endfor
+
    <footer class="zona-scrittura-messaggio">
       <input type="text" id="testomessaggio">
       <input type="button" value="INVIA">
