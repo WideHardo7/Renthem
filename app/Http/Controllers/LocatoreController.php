@@ -64,7 +64,7 @@ class LocatoreController extends Controller
         $annuncio->servizi_inclusi = $stringa;
         
         if (is_null($imageName)){
-            $annuncio->immagine="1.jpg";
+            $annuncio->immagine="default.jpg";
         }
         
         if(($annuncio->tipologia)=='Appartamento'){
