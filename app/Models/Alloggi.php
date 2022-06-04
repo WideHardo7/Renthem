@@ -49,7 +49,7 @@ class Alloggi {
          
        $annuncio=Annuncio::find($idannuncio);
         $locatari= $annuncio->moreutenti;
-        log::info(print_r($locatari,true));
+        //log::info(print_r($locatari,true));
      
         return $locatari;
     }
@@ -126,6 +126,13 @@ class Alloggi {
     public function insertOptionament($idloca,$idann){
         $u=User::find($idloca);
         $u->moreannunci()->attach($idann);
+        
+    }
+    
+    public function assegnaAlloggio($idlocatario){
+         $locaoption=User::find($idlocatario);
+        $op=$locaoption->moreannunci()->where('user_id',$idlocatario)->first();
+        return $op;
         
     }
 

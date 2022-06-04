@@ -70,7 +70,7 @@ class DatabaseSeeder extends Seeder {
              'cognome' => 'catore',               
              'data_nascita' => date("Y-m-d"),
              'genere' => 'maschio',
-             'email' => 'lario@lario.it',
+             'email' => 'catore@catore.it',
              'telefono' => '3182201389',
              'username' => 'catore',
              'password' => Hash::make('catore'),
@@ -446,6 +446,38 @@ La posizione è strategica per Ancona: a 10 minuti di auto dalla Riviera del Con
              'created_at' => date("Y-m-d H:i:s"),
              'updated_at' => date("Y-m-d H:i:s")],
         ]);
+        
+         DB::table('annunci_users')->insert([
+            ['id' => '1',
+             'user_id' => 2,
+             'annuncio_AnnuncioId' => 1,    
+             'assegnato' => false,   
+             'created_at' => date("Y-m-d H:i:s"),
+             'updated_at' => date("Y-m-d H:i:s")],
+             
+             ['id' => '2',
+             'user_id' => 2,
+             'annuncio_AnnuncioId' => 3,    
+             'assegnato' => false,   
+             'created_at' => date("Y-m-d H:i:s"),
+             'updated_at' => date("Y-m-d H:i:s")],
+             
+             ['id' => '3',
+             'user_id' => 4,
+             'annuncio_AnnuncioId' => 3,    
+             'assegnato' => false,   
+             'created_at' => date("Y-m-d H:i:s"),
+             'updated_at' => date("Y-m-d H:i:s")],
+             
+              ['id' => '4',
+             'user_id' => 4,
+             'annuncio_AnnuncioId' => 2,    
+             'assegnato' => true,   
+             'created_at' => date("Y-m-d H:i:s"),
+             'updated_at' => date("Y-m-d H:i:s")],
+             
+             
+        ]);     
     }
 
 }

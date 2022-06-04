@@ -89,6 +89,8 @@ Route::get('nuovoAnnuncio', 'LocatoreController@showNuovoAnnuncioForm')->name('n
 
  Route::get('/GestioneAnnunci/{Annuncioid}', 'LocatoreController@Returnintrest' ) -> name('interessati');
          
+ Route::post('/GestioneAnnunci/Assegna/{Annuncioid}&{user_id}', 'LocatoreController@Assegna' ) -> name('assegna');
+ 
 // Route::get('/GestioneAnnunci/Annuncio/{Annuncioid}/Interessati', controller here) -> name('interessati');
 
 // Route::get('/GestioneAnnunci/Annuncio/{Annuncioid}/Interessati/{UserId}', controller here) -> name('chatinteressato');

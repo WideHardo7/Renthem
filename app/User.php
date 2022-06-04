@@ -53,7 +53,7 @@ class User extends Authenticatable {
     }
     //relazione many to many più locatari possono opzionare lo stesso annuncio e più annunci
     public function moreannunci(){
-        return $this->belongsToMany(Annuncio::class, 'annunci_users')->withTimestamps();
+        return $this->belongsToMany(Annuncio::class, 'annunci_users')->withPivot('assegnato')->withTimestamps();
         
     }
     //relazione one to many un locatore può ricevere più messaggi

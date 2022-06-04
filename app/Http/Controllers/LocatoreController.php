@@ -13,6 +13,7 @@ use Auth;
 use App\Http\Requests\ModificaAnnuncioRequest;
 use App\Models\Resources\Annuncio;
 use App\Http\Requests\NuovoAnnuncioRequest;
+use Carbon\Carbon;;
 
 
 
@@ -145,13 +146,36 @@ class LocatoreController extends Controller
         
         $locatari= $this->alloggi->showOptionforAnnuncio($id);
         
-        //log::info(print_r($locatari));
-        //return view('test')->with('loca',$locatari);
-        /*return Response::json(array(
-                    'success' => true,
-                    'data'   => $locatari
-                )); */
+       
         return $locatari;
+    }
+    
+    public function Assegna($ann, $loca){
+        
+       /* log::info('stringa'.$array);
+       $array=explode('&',$stringa);
+        $loca=$array[0];
+        $id=$array[1];*/
+        log::info('loca'.$loca);
+        log::info('id'.$ann);
+        
+        
+        
+      $annuassegnato=$this->alloggi->getAnnuncioById($ann);
+      
+      if(($annuassegnato->assegnato)==false){
+      
+      $today=Carbon::today()->format('Y-m-d');
+      
+      $annuassegnato->assegnato=true;
+      $annuassegnato->data_assegnazione=$today;
+      
+      $annuassegnato->save();
+      
+      
+      return response()->json(['redirect' => route('viewAnnunci')]);
+     
+    }
     }
 }
 
