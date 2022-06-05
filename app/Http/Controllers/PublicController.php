@@ -32,7 +32,8 @@ class PublicController extends Controller {
     }
     
     public function showAlloggi(){
-        $alloggio= $this->annunci->getAnnunciobyPage(6);      
+        $alloggio= $this->annunci->getAnnunciobyPage(6);   
+        log::info(print_r($alloggio,true));
         return view('catalogoalloggi')
                ->with('ads', $alloggio);      
     }

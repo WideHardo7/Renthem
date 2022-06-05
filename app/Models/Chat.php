@@ -12,7 +12,7 @@ class Chat {
     
    public function  getMessagebyId($idutente,$role){
        
-       $listautenti= collect();
+       $listautenti= collect([]);
        if($role=='locatario'){
            //prende i valori della colonna idlocatore e le righe dove idlocatario = idutente
            $messaggio=Messaggio::whereIn('idlocatario', [$idutente])->get(['idlocatore']);
@@ -28,7 +28,7 @@ class Chat {
        
        //per ogni id estrae i dati dell'utente relativo e li mette in una collection
        foreach($idloca as $id){
-           $infoutente=User::find($id);
+           $infoutente=User::find($id)->first();
            $listautenti->add($infoutente);
        }
        Log::info(print_r($listautenti,true));

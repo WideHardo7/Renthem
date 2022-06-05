@@ -8,6 +8,7 @@ use Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Chat;
 use App\Models\Resources\Messaggio;
+use Illuminate\Support\Facades\Log;
 
 
 class userController extends Controller {
@@ -47,7 +48,7 @@ class userController extends Controller {
             
             
             $listautenti=$this->messaggi->getMessagebyId((Auth::user()->id),(Auth::user()->role)); 
-           
+           Log::info(json_encode($listautenti));
         return view('chat')->with('list', $listautenti);
     }
     
