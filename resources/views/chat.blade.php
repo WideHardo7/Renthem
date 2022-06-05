@@ -1,9 +1,17 @@
 @extends('layouts.homepageLayout')
 @section('title', 'Gestione annunci')
+@section('Chatscript')
+@parent
+<link rel="stylesheet" href="{{asset('assets/css/chatcss.css')}}">
+
+<script src="{{ asset('assets/js/Chatjs.js') }}" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+@endsection
 @section('gestAlloggi')
 
 
-    <link rel="stylesheet" href="{{asset('assets/css/chatcss.css')}}">
+    
 
 
 <!-- banner -->
@@ -25,12 +33,13 @@
 <aside class="chat-parte-sinistra">
    <header class="chat-parte-sinistra-header">
       <h3 id="scritta"><b>Chat attive</b></h3>
+       <meta name='csrf-token' content='{{csrf_token()}}'>
    </header>
    <div class="chat-disponibili">
        @isset($list)
        @foreach($list as $l)
        
-       <a id="chat-disp-cliccabile-scritta" href="">
+       <a id="chat-disp-cliccabile-scritta" onclick="visualizzamessaggi({!!$l->id!!})">
       <div id="chat-disp-cliccabile">
          {{$l->nome}} {{$l->cognome}}
       </div>
@@ -49,7 +58,7 @@
    <div id="contenitore-messaggi">
 
       <!-- PRIMO MESSAGGIO (RICEVUTO) -->
-      <div class="row">
+      <div class="row rimuovi">
          <div class="mess-ricevuto">
             <p id="testomessaggioInChat">MESSAGGIO RICEVUTO prova prova prova prova prova prova prova prova prova prova prova prova prova prova </p>
             <div id="timeMessagge">13:55 15/05/2022</div>
@@ -58,7 +67,7 @@
       </div>
 
       <!-- SECONDO MESSAGGIO (INVIATO) -->
-      <div class="row">
+      <div class="row rimuovi">
          <div class="mess-inviato">
             <p id="testomessaggioInChat">MESSAGGIO INVIATO  prova prova prova </p>
             <div id="timeMessagge">13:55 15/05/2022</div>
