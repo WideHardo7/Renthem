@@ -129,11 +129,23 @@ class Alloggi {
         
     }
     
-    public function assegnaAlloggio($idlocatario){
-         $locaoption=User::find($idlocatario);
-        $op=$locaoption->moreannunci()->where('user_id',$idlocatario)->first();
-        return $op;
+    public function assegnaAlloggio($idlocatario, $idannuncio){
+         $u=User::find($idlocatario);
+         //grazie alla relazione moreannunci(), va a prendere,nella tabella annunci_users, la riga contenente 'user_id' del locatore trovato, con la colonna 'annuncio_AnnuncioId'=idannuncio passato e aggiorna la colonna 'assegnato' ad 1
+        $ass=['assegnato' => 1];
+        $annnunc=$u->moreannunci()->updateExistingPivot($idannuncio, $ass );
+        
+        
         
     }
+    
+   /* public function assegnaAlloggio($idlocatario, $idannuncio){
+         $locaoption=User::find($idlocatario);
+        $op=$locaoption->moreannunci()->where('annuncio_AnnuncioId',$idannuncio)->first();
+        log:info('op'. $op);
+        return $op;
+        
+    }*/
 
 }
+

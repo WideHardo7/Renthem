@@ -159,7 +159,7 @@ class LocatoreController extends Controller
         log::info('loca'.$loca);
         log::info('id'.$ann);
         
-        
+       
         
       $annuassegnato=$this->alloggi->getAnnuncioById($ann);
       
@@ -171,6 +171,11 @@ class LocatoreController extends Controller
       $annuassegnato->data_assegnazione=$today;
       
       $annuassegnato->save();
+      
+       //aggiornamento della tabella AnnunciUser, con il campo assegnato a true
+        $optass=$this->alloggi->assegnaAlloggio($loca, $ann);
+       
+      
       
       
       return response()->json(['redirect' => route('viewAnnunci')]);
