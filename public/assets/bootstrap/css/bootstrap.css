@@ -342,8 +342,15 @@ img {
 
 .img-responsive {
   display: block;
-  height: auto;
-  max-width: 100%;
+  width: 242.55px;
+  height: 156.19px;
+   
+}
+
+.img-responsive2{
+    display: block;
+    width:555px;
+    height:357.41px;
 }
 
 .img-rounded {
