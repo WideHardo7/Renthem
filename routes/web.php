@@ -33,7 +33,7 @@
  
  //download della documentazione
 Route::get('/download', function () {
-    return response()->download('doc/documentazione_progetto.docx');
+    return response()->download('doc/Documentazione_progetto.docx');
 })->name('doc');
  
 
