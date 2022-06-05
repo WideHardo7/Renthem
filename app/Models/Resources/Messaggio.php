@@ -15,7 +15,7 @@ class Messaggio extends Model
     
     //relazione one to many inversa,
     public function locatorechat() {
-        return $this->belongsTo(User::class, 'id', 'idlocatore');
+        return $this->belongsTo(User::class, 'idlocatore', 'id');
     }
     //relazione one to many inversa,
     public function locatariochat() {
