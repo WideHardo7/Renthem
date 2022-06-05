@@ -172,11 +172,9 @@
           
           <hr><br>
         <!--SEZIONE FORM OPZIONAMENTO-->
-        @if(($ann->assegnato) &&($isOptionate))
-          <h4><p>Ci dispiace, ma l'offerta che hai opzionato è stata assegnata ad un altro utente. Per ulteriori informazioni invia un messaggio al gestore.</p></h4>
-          
-          @elseif($ann->assegnato)
-           <h4><p>Questo annuncio non è più opzionabile, in quanto è stato assegnato ad un'altro utente.</p></h4>
+        
+          @if($ann->assegnato)
+           <h4><p>Questo annuncio non è più opzionabile, in quanto è stato assegnato.</p></h4>
            
           @elseif($isOptionate)
           

@@ -125,7 +125,7 @@ class Alloggi {
     
     public function insertOptionament($idloca,$idann){
         $u=User::find($idloca);
-        $u->moreannunci()->attach($idann);
+        $u->moreannunci()->attach($idann, ['assegnato' => 0]);
         
     }
     
