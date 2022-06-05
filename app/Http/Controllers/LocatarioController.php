@@ -30,27 +30,7 @@ class LocatarioController extends Controller {
     }
     
      //metodo filtro
-    
-    public function filtro(Request $request) {
-
-
-       // $params = $request->except('_token');
-        
-        $params = collect(request()->except('_token'));
-        
-        LOG::INFO(print_r($params,true));
-
-        $variabile = $this->annunci->getAnnunciobyF($params, 6);
-
-        return view('catalogoalloggi')->with('ads', $variabile);
-    }
-    
-    
-    
-       
-    
-        
-    
+      
         
         public function insertOpzionamento(){
             /*take the user id of the locatario and the id of that annuncio opzionato
@@ -109,8 +89,13 @@ class LocatarioController extends Controller {
    
     
     
-    public function filter(Request $request) {
-        return CercaAlloggiFiltrati::apply($request);  
-        }
+    public function filtro(Request $request) {
+        $params = collect(request()->except('_token'));
+
+        LOG::INFO(print_r($params,true));
+
+        $variabile = $this->annunci->getAnnunciobyF($params, 6);
+        return view('catalogoalloggi')->with('ads', $variabile);
+    }
  }
     

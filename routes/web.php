@@ -66,8 +66,6 @@ Route::get('/download', function () {
 // ROUTES LIVELLO 2   
 Route::get('filtro', 'LocatarioController@filtro') -> name('filtro');
 
-Route::get('filter', 'LocatarioController@filter') -> name('filter');
-
 Route::get('nuovoAnnuncio', 'LocatoreController@showNuovoAnnuncioForm')->name('nuovoAnnuncio'); 
  
  Route::post('insertAnnuncio', 'LocatoreController@insertAnnuncio')->name('insertAnnuncio');

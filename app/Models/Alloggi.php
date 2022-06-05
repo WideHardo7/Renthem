@@ -67,59 +67,61 @@ class Alloggi {
     }
     
 
-    /*   public function getAnnunciobyFilter($param, $paged = 1) {
 
+    public function getAnnunciobyF($params, $paged = 1) {
 
-
-      if ($param->tipologia = 'Appartamento') {
-      $filtratiA = (new Annuncio)->newQuery()->where('tipologia', 'Appartamento');
-      if ($param->has('citta')) {
-      $filtratiA = $filtratiA->whereIn('citta', $param);
-      }
-      return $filtratiA->paginate(5);
-      } else if ($param->tipologia = 'Posto Letto') {
-      $filtratiP = (new Annuncio)->newQuery()->where('tipologia', 'Posto Letto');
-      if ($param->has('citta')) {
-      $filtratiP = $filtratiP->whereIn('citta', $param);
-      }
-      return $filtratiP->paginate(5);
-      } else
-      return;
-      } */
-
-    public function getAnnunciobyFilter($citta, $paged = 1) {
-        $filtrati = Annuncio::whereIn('tipologia', $citta);
-        //   LOG::INFO(print_r($filtrati,true));
-        return $filtrati->paginate($paged);
-    }
-
-    public function getAnnunciobyF($param, $paged = 1) {
-
-        $filtrati = (new Annuncio)->newQuery();
-
-        //    $filtrati = Annuncio::all();
-        $filtri=array();
         
+        //creo array vuoto a cui inserisco gli elementi da passare al where() alla fine
+        //array di ['(value sul db)','(operator)','(input value)']
+        $filtri = array();
 
-
-
-        if ($param->get('tipologia')!=null){ 
-        array_push($filtri,['tipologia',$param]);
-            
-            $filtrati = Annuncio::where($filtri);
-        }       
-        
-        if ($param->get('citta')!=null){
-            LOG::INFO('entra nel secondo if');
-        array_push($filtri,['citta', $param]);       
+        if ($params->get('tipologia')) {
+            array_push($filtri, ['tipologia', $params->get('tipologia')]);
         }
         
         
+        if ($params->get('citta')) {
+            array_push($filtri, ['citta', $params->get('citta')]);
+        }
+                             
+        if ($params->get('dimensione')) {
+            array_push($filtri, ['dimensione','>=', $params->get('dimensione')]);
+        }
 
+        if ($params->get('A_numero_camere')) {
+            array_push($filtri, ['A_numero_camere', $params->get('A_numero_camere')]);
+        }  
+              
+        if($params->get('A_locali_presenti')){
+             $arlocali=$params->get('A_locali_presenti');
+             $strlocali=implode(',',$arlocali);
+             array_push($filtri, ['A_locali_presenti', 'LIKE', '%'.$strlocali.'%']);
+             
+             Log::info('qui array locali:::::::::::::::: ',$arlocali);
+             Log::info(print_r($strlocali,true));
+        }
+        
+         if($params->get('servizi_inclusi')){
+             $arservizi=$params->get('servizi_inclusi');
+             $strservizi=implode(',',$arservizi);
+             array_push($filtri, ['servizi_inclusi', 'LIKE', '%'.$strservizi.'%']);            
+        }
+            
+            
         
         
-        $filtrati = Annuncio::where($filtri);
-
+        
+               
+        $filtrati = Annuncio::where($filtri)
+                            ->whereDate('data_inizio_disponibilita','<=', $params->get('data_inizio_permanenza'))
+                            ->whereDate('data_fine_disponibilita','>=', $params->get('data_inizio_permanenza'));
+                                             
+                                                     
+        Log::info(print_r($filtri,true));
+        
+        Log::info($filtrati->toSql());       
+        Log::info($filtrati->get());
+        
         return $filtrati->paginate(5);
     }
     
