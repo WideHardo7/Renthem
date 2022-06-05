@@ -209,11 +209,8 @@ $(function () {
                     </div>
                     @endforeach
                     <!--Paginazione-->
-                    <div class="center">
-                        <div class="pagination">
-                            @include('pagination.paginator', ['paginator' => $ads])
-                        </div>
-                    </div>
+                    
+                    
                     @endisset()
                     
                   
@@ -223,6 +220,13 @@ $(function () {
 
            
                         </div>
+            <div class="row">
+               <div class="center">
+                        <div class="pagination">
+                            @include('pagination.paginator', ['paginator' => $ads])
+                        </div>
+                    </div> 
+            </div>
                     </div>
                 </div>
             </div> 

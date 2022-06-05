@@ -50,8 +50,8 @@
         <div class="col-lg-4 col-sm-4"> <h4><b>Annuncio inserito da:</b> <i>{{$lore->nome}} {{$lore->cognome}}</i></h4> </div>
     </div>
     
-    <div class="property-images">
-          <img src="{{ asset('images/properties/' . $ann->immagine) }}" alt="Realestate">
+    <div >
+          <img id="contenitore-immagine1" src="{{ asset('images/properties/' . $ann->immagine) }}" alt="Realestate">
         </div>
     
      

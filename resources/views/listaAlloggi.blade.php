@@ -29,7 +29,7 @@
                     
                     <div class="row">
                         <div class="col-6 col-sm-6">
-                            <div class="image-holder"><img src="{{ asset('images/properties/' . $ad->immagine) }}" class="img-responsive" alt="properties">
+                            <div ><img  src="{{ asset('images/properties/' . $ad->immagine) }}" class="img-responsive2" alt="properties">
                             @if($ad->assegnato)
                             <div class="status sold">Alloggio già assegnato</div>
                             @endif
