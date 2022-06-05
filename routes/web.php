@@ -33,7 +33,7 @@
  
  //download della documentazione
 Route::get('/download', function () {
-    return response()->download('doc/Documentazione_progetto.docx');
+    return response()->download('doc/Documentazione_progetto.pdf');
 })->name('doc');
  
 
@@ -65,8 +65,6 @@ Route::get('/download', function () {
    
 // ROUTES LIVELLO 2   
 Route::get('filtro', 'LocatarioController@filtro') -> name('filtro');
-
-Route::get('filter', 'LocatarioController@filter') -> name('filter');
 
 Route::get('nuovoAnnuncio', 'LocatoreController@showNuovoAnnuncioForm')->name('nuovoAnnuncio'); 
  

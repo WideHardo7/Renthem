@@ -24,6 +24,8 @@
         @show
         @section('SchedaAlloggiScripts')
         @show
+        @section('scriptsCat')
+        @show
     </head>    
     <body>
         <div id="wrapper">
@@ -51,6 +53,7 @@
                           @yield('schedaMod')
                           @yield('stats') 
                             @yield('scheda')
+                            @yield('catalogo')
             
            
                     </div>                
