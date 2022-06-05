@@ -35,14 +35,11 @@ function visint($id){
 }
 
 function fillmodal(data,id){
-    $("tr").remove(".remove");
+   $("tr").remove(".remove");
    $.each(data,function(key,val){
         var dob = new Date(val.data_nascita);
         var today = new Date();
-    var dayDiff = Math.ceil((today - dob) / (1000 * 60 * 60 * 24 * 365));
-   
-    
-    
+        var dayDiff = Math.ceil((today - dob) / (1000 * 60 * 60 * 24 * 365));
         $("#appendme").append('<tr class="remove"><td>'+val.nome+'</td><td>'+val.cognome+'</td><td>'+dayDiff+'</td><td>'+val.genere+'</td><td><button onclick="openchat()">Chatta</button></td><td><button onclick="assegna('+id+','+val.id+')">Assegna</button></td></tr>');
     });
     $("#myModal").show();
@@ -66,14 +63,16 @@ function assegna($id, $loca){
             url: "GestioneAnnunci/Assegna/"+idAnn+"&"+loca,
             type: 'POST',
             data:{
-                'id':idAnn,
-                
+                'id':idAnn,               
                 "_token":token
                 
             },
             success:function(data){
                 console.log("funzaionao"+$id);
-                window.location.replace(data.redirect)
+                window.location.replace(data.redirect);
+            },
+            error: function(){
+                alert("L'alloggio è stato già assegnato");
             }
         });
     }

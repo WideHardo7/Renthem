@@ -168,19 +168,17 @@ class LocatoreController extends Controller
       $today=Carbon::today()->format('Y-m-d');
       
       $annuassegnato->assegnato=true;
+      
       $annuassegnato->data_assegnazione=$today;
       
       $annuassegnato->save();
       
-       //aggiornamento della tabella AnnunciUser, con il campo assegnato a true
-        $optass=$this->alloggi->assegnaAlloggio($loca, $ann);
-       
-      
-      
-      
+      //aggiornamento della tabella AnnunciUser, con il campo assegnato a true
+      $optass=$this->alloggi->assegnaAlloggio($loca, $ann);
+          
       return response()->json(['redirect' => route('viewAnnunci')]);
      
-    }
+    } else {throw Exception;}
     }
 }
 
