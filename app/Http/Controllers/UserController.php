@@ -71,4 +71,11 @@ class userController extends Controller {
         $mess->save();              
         return response()->json(['redirect' => route('chat')]);
     }
+    
+    public function viewMessage($id){
+        
+        $listamessaggi=$this->messaggi->getMessagebyConversazione(Auth::user()->id,Auth::user()->role,$id);
+        
+        return $listamessaggi;
+    }
 }

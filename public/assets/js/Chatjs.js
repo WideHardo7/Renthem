@@ -1,5 +1,8 @@
-function visualizzamessaggio($id){
-    var token = $("meta[name='csrf-token']").attr("content"); 
+function visualizzamessaggi($id,$roleloggato,$nome,$cognome,$username){
+    var token = $("meta[name='csrf-token']").attr("content");
+    var nome= $nome;var cognome=$cognome; var username=$username;
+    
+    var role= $roleloggato;
     var idAnn=$id;
     $.ajax({
         type: 'GET',
@@ -9,26 +12,38 @@ function visualizzamessaggio($id){
         },
         dataType:'json',
         success: function(data){
-            visualizzaconv(data);
+            visualizzaconv(data, role);
             textbox(idAnn);
+            cambianome(nome,cognome,username);
         }
     });
 }
 
-function visualizzaconv(data){   
+function visualizzaconv(data, role){   
     $("div").remove(".rimuovi");
     $.each(data,function(key,val){
-    if((data.sender)==true){
-    $("#contenitore-messaggi").append('<div class="row rimuovi"><div class="mess-inviato"><p>'+val.messaggio+'</p><div>'+val.ora+'</div></div></div>');
-    } else {
-    $("#contenitore-messaggi").append('<div class="row rimuovi"><div class="mess-ricevuto"><p>'+val.messaggio+'</p><div>'+val.ora+'</div></div></div>');    
-    }
+        
+    if(role=='locatario'){    
+        if ((val.sender)==false){
+        $("#contenitore-messaggi").append('<div class="row rimuovi"><div class="mess-inviato"><p>'+val.contenuto+'</p><div>'+val.created_at+'</div></div></div>');
+        } else {
+        $("#contenitore-messaggi").append('<div class="row rimuovi"><div class="mess-ricevuto"><p>'+val.contenuto+'</p><div>'+val.created_at+'</div></div></div>');    
+        }
+    };
+    
+   if(role=='locatore'){    
+        if ((val.sender)==true){
+        $("#contenitore-messaggi").append('<div class="row rimuovi"><div class="mess-inviato"><p>'+val.contenuto+'</p><div>'+val.created_at+'</div></div></div>');
+        } else {
+        $("#contenitore-messaggi").append('<div class="row rimuovi"><div class="mess-ricevuto"><p>'+val.contenuto+'</p><div>'+val.created_at+'</div></div></div>');    
+        }
+    };
 });
 }
 
 function textbox(id){
-    $("textbox").empty();
-    $("textbox").append('<input type="text" id="testomessaggio"><input type="button" value="INVIA" onclick="mandamess('+id+')">');
+    $("#textbox").empty();
+    $("#textbox").append('<input type="text" id="testomessaggio"><input type="button" value="INVIA" onclick="mandamess('+id+')">');
 }
 
 function mandamess($id){
@@ -50,4 +65,9 @@ function mandamess($id){
         }
     });
     
+}
+
+function cambianome($nome,$cognome,$username){
+    $('#chat-parte-destra-header-nome').text($nome+' '+$cognome);
+    $("#chat-parte-destra-header-username").text($username);
 }
