@@ -12,17 +12,22 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Alloggi;
 use App\Http\Requests\AggiungiFaqRequest;
 use App\Http\Requests\ModificaFaqRequest;
+use App\Http\Requests\FiltroStatisticheRequest;
 class AdminController extends Controller {
 
    protected $faqu;
     protected $annunci;
     protected $dati;
-    
+    protected  $admin;
+
+
 
     public function __construct() {
         
         $this->faqu = new FaqGetter();    
         $this->annunci= new Alloggi();
+        $this->admin= new Admin();
+        
         $this->middleware('can:isAdmin');
         
        
@@ -40,9 +45,22 @@ class AdminController extends Controller {
         return view('listafaq')->with('faqs', $faq);
     }
     
-        public function ViewStats() {
-        return view('stats');
+        public function ViewStatsbyFilter(FiltroStatisticheRequest $request) {
+            
+            $param = collect(request()->all());
+            
+            
+            Log::info(print_r($param,true));
+            //$param=array("tipologia"=> 'Appartamento', "data_inizio" =>'2022-06-04');
+            $stats=$this->admin->getStatistiche($param);
+            
+        return view('stats')->with('stats',$stats);
     }
+    
+     public function ViewStats() {
+         
+         return view('stats');
+     }
     
     public function AggiungiFaq(AggiungiFaqRequest $request){
         $faq = new Faq;  
