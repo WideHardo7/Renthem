@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Resources\Annuncio;
+use App\Models\Resources\Messaggio;
 
 class User extends Authenticatable {
 

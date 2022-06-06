@@ -26,6 +26,8 @@
         @show
         @section('scriptsCat')
         @show
+        @section('Chatscript')
+        @show
     </head>    
     <body>
         <div id="wrapper">

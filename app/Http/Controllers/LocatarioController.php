@@ -61,11 +61,11 @@ class LocatarioController extends Controller {
         public function setOption(SetOptionamentRequest $request, $id){
             
             $locatanome=Auth::user()->nome;
-            $locatacognome=Auth::user()->cognnome;
+            $locatacognome=Auth::user()->cognome;
             
             $annuncio=$this->annunci->getAnnuncioById($id);
             
-            $Messaggioption='L&rsquo;utente {{$locatacognome}} $locatanome ha optionato il seguente $annuncio->tipologia, in $annuncio->indirizzo $annuncio->citta  ';
+            $Messaggioption="L'utente ".$locatanome." ".$locatacognome." ha opzionato il seguente ".$annuncio->tipologia.", in ".$annuncio->indirizzo." " .$annuncio->citta."";
             
              $messaggio= new Messaggio();
                 $messaggio->fill($request->validated());
