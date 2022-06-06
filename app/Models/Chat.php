@@ -31,7 +31,7 @@ class Chat {
            $infoutente=User::find($id)->first();
            $listautenti->add($infoutente);
        }
-       Log::info(print_r($listautenti,true));
+    //   Log::info(print_r($listautenti,true));
        
        return $listautenti;
        } 

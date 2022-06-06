@@ -51,7 +51,9 @@ Route::get('/download', function () {
    
  
 
- Route::get('/Chat','UserController@viewChat') -> name('chat')->middleware('can:isLoreLario');  
+ Route::get('/Chat','UserController@viewChat') -> name('chat')->middleware('can:isLoreLario');
+ 
+ Route::post('/Chat','UserController@saveMessage') -> name('chatpost')->middleware('can:isLoreLario');
  
  Route::get('/Chat/{id}','UserController@viewMessage') -> name('chatmessage')->middleware('can:isLoreLario');
  
