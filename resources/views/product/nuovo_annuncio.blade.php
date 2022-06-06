@@ -168,6 +168,10 @@ $(function () {
                                     {{ Form::text('A_numero_camere', '', ['placeholder'=>'es: 3', 'id' => 'A_numero_camere']) }}                           
                                 </div>
                                 <div class="wrap-input">
+                                    {{ Form::label('numero_posti_letto_totali', "N° Posti letto totale nell'appartamento")}}
+                                    {{ Form::text('numero_posti_letto_totali', '', ['placeholder'=>'es: 6']) }}                           
+                                </div>                                
+                                <div class="wrap-input">
                                     {{ Form::label('A_locali_presenti', 'Locali presenti')}}
                                     {{ Form::select('A_locali_presenti[]', array('Studio' => 'Studio', 'Bagno Singolo' => 'Bagno Singolo',
                                                                          'Cucina' => 'Cucina','Sala multiuso' => 'Sala multiuso',

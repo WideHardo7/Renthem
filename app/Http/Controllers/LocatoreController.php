@@ -77,7 +77,7 @@ class LocatoreController extends Controller
         $annuncio->save();
         
         
-        //sposto immaggine nella cartella public/images/NuoviAlloggi
+        //sposto immaggine nella cartella public/images/properties
         if (!is_null($imageName)) {
             $destinationPath = public_path() . '/images/properties';
             $image->move($destinationPath, $imageName);

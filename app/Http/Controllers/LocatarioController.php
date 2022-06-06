@@ -13,6 +13,7 @@ use App\Models\Resources\AnnuncioUsers;
 use Illuminate\Support\Facades\Log;
 use App\User;
 use Auth;
+use App\Http\Requests\datiFiltroRequest;
 
 
 class LocatarioController extends Controller {
@@ -90,11 +91,11 @@ class LocatarioController extends Controller {
     
     
     public function filtro(Request $request) {
-        $params = collect(request()->except('_token'));
+        $params = collect($request->except('_token'));
 
         LOG::INFO(print_r($params,true));
 
-        $variabile = $this->annunci->getAnnunciobyF($params, 6);
+        $variabile = $this->annunci->getAnnunciobyF($params, 6);        
         return view('catalogoalloggi')->with('ads', $variabile);
     }
  }

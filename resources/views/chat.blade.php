@@ -60,21 +60,23 @@
       <!-- PRIMO MESSAGGIO (RICEVUTO) -->
       <div class="row rimuovi">
          <div class="mess-ricevuto">
-            <p id="testomessaggioInChat">MESSAGGIO RICEVUTO prova prova prova prova prova prova prova prova prova prova prova prova prova prova </p>
-            <div id="timeMessagge">13:55 15/05/2022</div>
-         </div>
-         <div class="separatore"></div>
+            <p>MESSAGGIO RICEVUTO prova prova prova prova prova prova prova prova prova prova prova prova prova prova </p>
+            <div>13:55 15/05/2022</div>
+         </div>        
       </div>
 
       <!-- SECONDO MESSAGGIO (INVIATO) -->
       <div class="row rimuovi">
          <div class="mess-inviato">
-            <p id="testomessaggioInChat">MESSAGGIO INVIATO  prova prova prova </p>
-            <div id="timeMessagge">13:55 15/05/2022</div>
-         </div>
-         <div class="separatore"></div>
+            <p>MESSAGGIO INVIATO  prova prova prova </p>
+            <div>13:55 15/05/2022</div>
+         </div>         
       </div>
+      
+      
    </div>
+    
+    
 
    <footer class="zona-scrittura-messaggio">
       <input type="text" id="testomessaggio">
