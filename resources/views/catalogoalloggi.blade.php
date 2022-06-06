@@ -108,7 +108,7 @@ $(function () {
                         {{ Form::label('citta', 'Cittá', ['class' => 'label-input']) }}
                         {{ Form::text('citta', '', ['class' => 'input', 'id' => 'citta', 'placeholder'=>'es: Ancona']) }}<br> 
                                                 
-                        {{ Form::label('data_inizio_permanenza', 'Data inizio permaneza')}}
+                        {{ Form::label('data_inizio_permanenza', 'Data inizio permanenza')}}
                         {{ Form::date('data_inizio_permanenza', \Carbon\Carbon::now()), ['class' => 'input', 'id' => 'data_inizio_permanenza',] }}
                             
                            

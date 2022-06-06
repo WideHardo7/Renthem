@@ -128,6 +128,8 @@ Route::post('/Alloggi/SchedaAlloggio/{Annuncioid}/Opzionamento', 'LocatarioContr
  
  Route::get('/Statistiche', 'AdminController@ViewStats') -> name('viewStats'); 
  
+ Route::post('/Statistiche', 'AdminController@ViewStatsbyFilter') -> name('viewStatsbyfiler');
+ 
 // Route::get('/', controller here ) -> name('homelvl4');   
 
 // Route::get('/admin', 'AdminController@index')->name('admin');

@@ -15,15 +15,15 @@
         <br>
         <h4>Seleziona l'intervallo temporale e la tipologia di annuncio desiderati per visualizzare delle statistiche.</h4>
         <br>
-        {{ Form::open (array(/*'route' => 'editutente',*/ 'class' => 'contact-form', 'id'=>'viewStats' , 'method'=> 'GET')) }}
+        {{ Form::open (array('route' => 'viewStatsbyfiler', 'class' => 'contact-form', 'id'=>'VisualizzaStats' )) }}
         
                 <div class="input-group">
             <div class="input-inline">
-                {{ Form::label ('data-inizio', 'Inizio periodo di riferimento: ')  }}
-                {{ Form::date('data-inizio','',['class' => 'input', 'id' => 'data-inizio']) }}
-                @if ($errors->first('data-inizio'))
+                {{ Form::label ('data_inizio', 'Inizio periodo di riferimento: ')  }}
+                {{ Form::date('data_inizio','',['class' => 'input', 'id' => 'data_inizio']) }}
+                @if ($errors->first('data_inizio'))
                     <ul class="errors">
-                        @foreach ($errors->get('data-inizio') as $message)
+                        @foreach ($errors->get('data_inizio') as $message)
                         <li>{{ $message }}</li>
                         @endforeach
                     </ul>
@@ -33,11 +33,11 @@
         
                 <div class="input-group">
             <div class="input-inline">
-                {{ Form::label ('data-fine', 'Fine periodo di riferimento: ')  }}
-                {{ Form::date('data-fine','',['class' => 'input', 'id' => 'data-fine']) }}
-                @if ($errors->first('data-fine'))
+                {{ Form::label ('data_fine', 'Fine periodo di riferimento: ')  }}
+                {{ Form::date('data_fine','',['class' => 'input', 'id' => 'data_fine']) }}
+                @if ($errors->first('data_fine'))
                     <ul class="errors">
-                        @foreach ($errors->get('data-fine') as $message)
+                        @foreach ($errors->get('data_fine') as $message)
                         <li>{{ $message }}</li>
                         @endforeach
                     </ul>
@@ -54,10 +54,10 @@
                         {{ Form::radio('tipologia', 'Appartamento', ['class' => 'label-input', 'id' => 'Appartamento']) }}
                         {{ Form::label('tipologia', 'Appartamento', ['class' => 'label-input']) }}
                     
-                        {{ Form::radio('tipologia', 'Posto letto', ['class' => 'label-input', 'id' => 'Posto letto']) }}
+                        {{ Form::radio('tipologia', 'Posto Letto', ['class' => 'label-input', 'id' => 'Posto letto']) }}
                         {{ Form::label('tipologia', 'Posto letto', ['class' => 'label-input']) }}   
  
-                        {{ Form::radio('tipologia', 'Tutti', ['class' => 'label-input', 'id' => 'tutti']) }}
+                        {{ Form::radio('tipologia', 'Tutti', ['class' => 'label-input', 'id' => 'Tutti']) }}
                         {{ Form::label('tipologia', 'Tutti', ['class' => 'label-input']) }}  
                 </fieldset> 
         
@@ -65,12 +65,13 @@
         {{ Form::submit('Visualizza statistiche', ['class' => 'form-btn1', 'id'=>'sub-btn']) }} 
         {{ Form::close() }}
         
+        @isset($stats)
         <ul id="risultati-stats">
-            <li>Numero offerte totali: </li>
-            <li>Numero di offerte opzionate: </li>
-            <li>Numero di offerte assegnate: </li>
+            <li>Numero offerte totali: {{$stats["annuncitot"]}} </li>
+            <li>Numero di offerte opzionate: {{$stats["opzionamentitot"]}} </li>
+            <li>Numero di offerte assegnate: {{$stats["annunciassegnatitot"]}} </li>
         </ul>
-        
+        @endisset
     </div>
 
 @endsection
