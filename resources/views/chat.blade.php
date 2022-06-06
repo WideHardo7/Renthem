@@ -72,7 +72,7 @@
 
    <footer class="zona-scrittura-messaggio" id="textbox">
       <input type="text" id="testomessaggio">
-      <input type="button" value="INVIA" onclick="mandamess(2)">
+      <input type="button" value="INVIA" onclick="mandamess()">
    </footer>
 </div>
    

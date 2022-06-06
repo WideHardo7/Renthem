@@ -69,7 +69,8 @@ class userController extends Controller {
             $mess->sender=true;                     
         }
         $mess->save();              
-        return response()->json(['redirect' => route('chat')]);
+        //return response()->json(['redirect' => route('chat')]);
+        return 0;
     }
     
     public function viewMessage($id){

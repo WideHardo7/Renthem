@@ -61,7 +61,11 @@ function mandamess($id){
                     
         },        
         success: function(data){
-            window.location.replace(data.redirect);
+            //window.location.replace(data.redirect);
+            mantieniChat(testo);
+        },
+        error: function(){
+            alert("Non puoi inviare un messaggio se non hai una chat già aperta con un altro utente");
         }
     });
     
@@ -70,4 +74,32 @@ function mandamess($id){
 function cambianome($nome,$cognome,$username){
     $('#chat-parte-destra-header-nome').text($nome+' '+$cognome);
     $("#chat-parte-destra-header-username").text($username);
+}
+
+function mantieniChat($testo){
+     
+     
+
+        function format(cambio){
+            if(cambio < 10)
+             {cambio   = "0"+cambio;}
+            return cambio;
+       }
+
+       const d = new Date();
+       var anno= d.getFullYear();
+       var mese=d.getMonth()+1;
+       var mese=format(mese);
+       var giorno=d.getDate();
+        var giorno=format(giorno);
+       var ora=d.getHours();
+       var ora=format(ora);
+       var minuti=d.getMinutes();
+       var minuti=format(minuti);
+       var secondi=d.getSeconds();
+       var secondi=format(secondi)
+
+       var today= ""+anno+"-"+mese+"-"+giorno+" "+ora+":"+minuti+":"+secondi+"";
+       
+      $("#contenitore-messaggi").append('<div class="row rimuovi"><div class="mess-inviato"><p>'+$testo+'</p><div>'+today+'</div></div></div>');
 }
