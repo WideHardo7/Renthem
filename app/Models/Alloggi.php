@@ -77,8 +77,7 @@ class Alloggi {
 
         if ($params->get('tipologia')) {
             array_push($filtri, ['tipologia', $params->get('tipologia')]);
-        }
-        
+        }       
         
         if ($params->get('citta')) {
             array_push($filtri, ['citta', $params->get('citta')]);
@@ -99,31 +98,47 @@ class Alloggi {
              
              Log::info('qui array locali:::::::::::::::: ',$arlocali);
              Log::info(print_r($strlocali,true));
-        }
-        
-         if($params->get('servizi_inclusi')){
+        }        
+        if($params->get('servizi_inclusi')){
              $arservizi=$params->get('servizi_inclusi');
              $strservizi=implode(',',$arservizi);
              array_push($filtri, ['servizi_inclusi', 'LIKE', '%'.$strservizi.'%']);            
         }
-            
-            
+        if ($params->get('C_numero_posti_letto_in_camera')) {
+            array_push($filtri, ['C_numero_posti_letto_in_camera', $params->get('C_numero_posti_letto_in_camera')]);
+        } 
+         if ($params->get('numero_posti_letto_totali')) {
+            array_push($filtri, ['numero_posti_letto_totali', $params->get('numero_posti_letto_totali')]);
+        }
         
+        if($params->get('min_price')!=null){
+            array_push($filtri, ['importo','>=', $params->get('min_price')]);
+        }
+        if($params->get('max_price')!=null){
+            array_push($filtri, ['importo','<=', $params->get('max_price')]);
+        }
+                   
+        $filtroData=array();       
+        if($params->get('data_inizio_permanenza')!=null){
+            array_push($filtroData, ['data_inizio_disponibilita','<=', $params->get('data_inizio_permanenza')]);       
+        }
+        if($params->get('data_inizio_permanenza')!=null){
+            array_push($filtroData, ['data_fine_disponibilita','>=', $params->get('data_inizio_permanenza')]);       
+        }
         
-        
-               
-        $filtrati = Annuncio::where($filtri)
-                            ->whereDate('data_inizio_disponibilita','<=', $params->get('data_inizio_permanenza'))
-                            ->whereDate('data_fine_disponibilita','>=', $params->get('data_inizio_permanenza'));
+        Log::info(print_r($filtroData,true));
+        $filtrati = Annuncio::where($filtri)                         
+                            ->where($filtroData);
+                        //  ->whereDate('data_inizio_disponibilita','<=', $dataInizioPermanenza);
+                        //  ->whereDate('data_fine_disponibilita','>=', $dataInizioPermanenza);
                                              
                                                      
-        Log::info(print_r($filtri,true));
-        
+        Log::info(print_r($filtri,true));        
         Log::info($filtrati->toSql());       
         Log::info($filtrati->get());
         
-        return $filtrati->paginate(5);
-    }
+        return $filtrati->paginate(20);
+  }
     
     public function insertOptionament($idloca,$idann){
         $u=User::find($idloca);
@@ -133,7 +148,9 @@ class Alloggi {
     
     public function assegnaAlloggio($idlocatario, $idannuncio){
          $u=User::find($idlocatario);
-         //grazie alla relazione moreannunci(), va a prendere,nella tabella annunci_users, la riga contenente 'user_id' del locatore trovato, con la colonna 'annuncio_AnnuncioId'=idannuncio passato e aggiorna la colonna 'assegnato' ad 1
+         //grazie alla relazione moreannunci(), va a prendere,nella tabella annunci_users, 
+         //la riga contenente 'user_id' del locatore trovato, 
+         //con la colonna 'annuncio_AnnuncioId'=idannuncio passato e aggiorna la colonna 'assegnato' ad 1
         $ass=['assegnato' => 1];
         $annnunc=$u->moreannunci()->updateExistingPivot($idannuncio, $ass );
         
