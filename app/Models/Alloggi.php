@@ -77,8 +77,7 @@ class Alloggi {
 
         if ($params->get('tipologia')) {
             array_push($filtri, ['tipologia', $params->get('tipologia')]);
-        }
-        
+        }       
         
         if ($params->get('citta')) {
             array_push($filtri, ['citta', $params->get('citta')]);
@@ -110,19 +109,36 @@ class Alloggi {
         } 
          if ($params->get('numero_posti_letto_totali')) {
             array_push($filtri, ['numero_posti_letto_totali', $params->get('numero_posti_letto_totali')]);
-        } 
-                         
-        $filtrati = Annuncio::where($filtri)
-                            ->whereDate('data_inizio_disponibilita','<=', $params->get('data_inizio_permanenza'))
-                            ->whereDate('data_fine_disponibilita','>=', $params->get('data_inizio_permanenza'));
+        }
+        
+        if($params->get('min_price')!=null){
+            array_push($filtri, ['importo','>=', $params->get('min_price')]);
+        }
+        if($params->get('max_price')!=null){
+            array_push($filtri, ['importo','<=', $params->get('max_price')]);
+        }
+                   
+        $filtroData=array();       
+        if($params->get('data_inizio_permanenza')!=null){
+            array_push($filtroData, ['data_inizio_disponibilita','<=', $params->get('data_inizio_permanenza')]);       
+        }
+        if($params->get('data_inizio_permanenza')!=null){
+            array_push($filtroData, ['data_fine_disponibilita','>=', $params->get('data_inizio_permanenza')]);       
+        }
+        
+        Log::info(print_r($filtroData,true));
+        $filtrati = Annuncio::where($filtri)                         
+                            ->where($filtroData);
+                        //  ->whereDate('data_inizio_disponibilita','<=', $dataInizioPermanenza);
+                        //  ->whereDate('data_fine_disponibilita','>=', $dataInizioPermanenza);
                                              
                                                      
         Log::info(print_r($filtri,true));        
         Log::info($filtrati->toSql());       
         Log::info($filtrati->get());
         
-        return $filtrati->paginate(5);
-    }
+        return $filtrati->paginate(20);
+  }
     
     public function insertOptionament($idloca,$idann){
         $u=User::find($idloca);
