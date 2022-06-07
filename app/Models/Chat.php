@@ -31,9 +31,20 @@ class Chat {
            $infoutente=User::find($id)->first();
            $listautenti->add($infoutente);
        }
-       Log::info(print_r($listautenti,true));
+    //   Log::info(print_r($listautenti,true));
        
        return $listautenti;
        } 
+       
+       public function getMessagebyConversazione($idAuth,$roleAuth,$idricevuto){
+           
+           if($roleAuth=='locatario'){
+               $listamess= Messaggio::where('idlocatario', $idAuth)->where('idlocatore',$idricevuto)->get();
+           }else{
+                $listamess= Messaggio::where('idlocatore', $idAuth)->where('idlocatario',$idricevuto)->get();
+           }
+           
+           return $listamess;
+       }
    }
 

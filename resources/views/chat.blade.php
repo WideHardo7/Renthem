@@ -7,6 +7,12 @@
 <script src="{{ asset('assets/js/Chatjs.js') }}" ></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
+<style>
+    .prova{
+        cursor: pointer;
+    }
+</style>
+
 @endsection
 @section('gestAlloggi')
 
@@ -39,7 +45,7 @@
        @isset($list)
        @foreach($list as $l)
        
-       <a id="chat-disp-cliccabile-scritta" onclick="visualizzamessaggi({!!$l->id!!})">
+       <a id="chat-disp-cliccabile-scritta" class="prova" onclick="visualizzamessaggi({!!$l->id!!},'{!!Auth::user()->role!!}','{!!$l->nome!!}','{!!$l->cognome!!}','{!!$l->username!!}')">
       <div id="chat-disp-cliccabile">
          {{$l->nome}} {{$l->cognome}}
       </div>
@@ -51,36 +57,22 @@
     
    <!-- PARTE DESTRA DELLA FINESTRA DELLA CHAT -->     
 <div class="chat-parte-destra">
-   <header class="chat-parte-destra-header">
-      <div id="chat-parte-destra-header-nome">Lore Lore</div>
-      <div id="chat-parte-destra-header-ruolo">Locatore</div>
+   <header class="chat-parte-destra-header" >
+      <div id="chat-parte-destra-header-nome"></div>
+      <div id="chat-parte-destra-header-username"></div>
    </header>
    <div id="contenitore-messaggi">
 
-      <!-- PRIMO MESSAGGIO (RICEVUTO) -->
-      <div class="row rimuovi">
-         <div class="mess-ricevuto">
-            <p>MESSAGGIO RICEVUTO prova prova prova prova prova prova prova prova prova prova prova prova prova prova </p>
-            <div>13:55 15/05/2022</div>
-         </div>        
-      </div>
-
-      <!-- SECONDO MESSAGGIO (INVIATO) -->
-      <div class="row rimuovi">
-         <div class="mess-inviato">
-            <p>MESSAGGIO INVIATO  prova prova prova </p>
-            <div>13:55 15/05/2022</div>
-         </div>         
-      </div>
+       <div class="rimuovi"><h4>Clicca su un utente a sinistra per visualizzare la conversazione</h4></div>
       
       
    </div>
     
     
 
-   <footer class="zona-scrittura-messaggio">
+   <footer class="zona-scrittura-messaggio" id="textbox">
       <input type="text" id="testomessaggio">
-      <input type="button" value="INVIA">
+      <input type="button" value="INVIA" onclick="mandamess()">
    </footer>
 </div>
    

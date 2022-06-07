@@ -12,7 +12,7 @@ class Alloggi {
     public function getAnnunciobyLocatore($id_locatore) {
         //->annunci è la relazione one to many in cui passato un locatore, restituisce tutti gli annunci a suo nome
         $annunci = User::find($id_locatore)->annunci;
-        Log::info('ANNUNCI ESTRATTI' . $annunci);
+        //Log::info('ANNUNCI ESTRATTI' . $annunci);
         return $annunci;
         /* $annunci = Annuncio::whereHas('IDproprietario', function($query) use($id_locatore) {
           $query->where('IDproprietario',$id_locatore);

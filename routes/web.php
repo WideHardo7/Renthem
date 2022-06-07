@@ -51,7 +51,9 @@ Route::get('/download', function () {
    
  
 
- Route::get('/Chat','UserController@viewChat') -> name('chat')->middleware('can:isLoreLario');  
+ Route::get('/Chat','UserController@viewChat') -> name('chat')->middleware('can:isLoreLario');
+ 
+ Route::post('/Chat','UserController@saveMessage') -> name('chatpost')->middleware('can:isLoreLario');
  
  Route::get('/Chat/{id}','UserController@viewMessage') -> name('chatmessage')->middleware('can:isLoreLario');
  
@@ -127,6 +129,8 @@ Route::post('/Alloggi/SchedaAlloggio/{Annuncioid}/Opzionamento', 'LocatarioContr
  Route::post('/GestioneFaq/{id}', 'AdminController@EliminaFaq') -> name('EliminaFaq');
  
  Route::get('/Statistiche', 'AdminController@ViewStats') -> name('viewStats'); 
+ 
+ Route::post('/Statistiche', 'AdminController@ViewStatsbyFilter') -> name('viewStatsbyfiler');
  
 // Route::get('/', controller here ) -> name('homelvl4');   
 
