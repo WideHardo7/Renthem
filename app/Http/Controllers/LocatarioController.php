@@ -96,7 +96,7 @@ class LocatarioController extends Controller {
         LOG::INFO(print_r($params,true));
 
         $variabile = $this->annunci->getAnnunciobyF($params, 6);        
-        return view('catalogoalloggi')->with('ads', $variabile);
+        return view('catalogoalloggi')->with('ads', $variabile)->withQueryString();
     }
  }
     

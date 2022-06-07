@@ -129,7 +129,7 @@ $(document).ready(function () {
                             {{ Form::text('A_numero_camere', '', ['placeholder'=>'es: 3', 'id' => 'A_numero_camere']) }}<br>                           
                         </div>
                         <div class="wrap-input">
-                            {{ Form::label('numero_posti_letto_totali', 'N° Posti letto totale nell"appartamento')}}
+                            {{ Form::label('numero_posti_letto_totali', "N° Posti letto totale nell'appartamento")}}
                             {{ Form::text('numero_posti_letto_totali', '', ['placeholder'=>'es: 4']) }}<br>                           
                         </div>
                         <div class="wrap-input">
