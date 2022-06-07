@@ -12,8 +12,8 @@
  */
 
 
-// ROUTES LIVELLO 1
-//Route::get('/test','LocatoreController@Returnintrest');
+// ROUTES LIVELLO 1 (PUBBLICO)
+
 
  Route::get('/','PublicController@viewFaqPage' ) -> name('homelvl1');
 
@@ -38,7 +38,7 @@ Route::get('/download', function () {
  
 
 
-// ROUTES IN COMUNE (MAYBE)
+// ROUTES IN COMUNE  TRA UTENTI LOGGATI
     
  Route::get('/Profilo', 'UserController@index') -> name('profilo');
    
@@ -46,11 +46,6 @@ Route::get('/download', function () {
 
  Route::post('/Profilo/Modifica', 'UserController@EditUtente')->name('editutente');
  
- 
-// Route::post('/Profilo/Modifica', controller here) -> name('profilo.store');
-   
- 
-
  Route::get('/Chat','UserController@viewChat') -> name('chat')->middleware('can:isLoreLario');
  
  Route::post('/Chat','UserController@saveMessage') -> name('chatpost')->middleware('can:isLoreLario');
@@ -58,32 +53,22 @@ Route::get('/download', function () {
  Route::get('/Chat/{id}','UserController@viewMessage') -> name('chatmessage')->middleware('can:isLoreLario');
  
 
-// Route::get('/Chat/{UserId}',controller here) -> name(chatutente);
-   
-// Route::post('/Chat/{UserId}',controller here) -> name(chatutente.store); 
- 
+
 
    
 
    
    
 // ROUTES LIVELLO 2   
-Route::get('filtro', 'LocatarioController@filtro') -> name('filtro');
+
 
 Route::get('nuovoAnnuncio', 'LocatoreController@showNuovoAnnuncioForm')->name('nuovoAnnuncio'); 
  
  Route::post('insertAnnuncio', 'LocatoreController@insertAnnuncio')->name('insertAnnuncio');
  
- Route::get('GestioneAlloggi', 'LocatoreController@showAnnunci')->name('viewAnnunci');
-
+Route::get('GestioneAlloggi', 'LocatoreController@showAnnunci')->name('viewAnnunci');
    
-// Route::get('/CreaAnnuncio', controller here) -> name('creaannuncio');
-   
-// Route::post('/CreaAnnuncio', controller here) -> name('creaannuncio.store');
-   
-// Route::get('/GestioneAnnunci', controller here) -> name('gestann');
-   
- Route::get('/GestioneAnnunci/ModificaAnnuncio/{Annuncioid}', 'LocatoreController@ShowFormMod') -> name('modann');
+Route::get('/GestioneAnnunci/ModificaAnnuncio/{Annuncioid}', 'LocatoreController@ShowFormMod') -> name('modann');
 
  Route::post('/GestioneAnnunci/ModificaAnnuncio', 'LocatoreController@PostFormMod') -> name('insertmod');
    
@@ -93,11 +78,7 @@ Route::get('nuovoAnnuncio', 'LocatoreController@showNuovoAnnuncioForm')->name('n
          
  Route::post('/GestioneAnnunci/Assegna/{Annuncioid}&{user_id}', 'LocatoreController@Assegna' ) -> name('assegna');
  
-// Route::get('/GestioneAnnunci/Annuncio/{Annuncioid}/Interessati', controller here) -> name('interessati');
 
-// Route::get('/GestioneAnnunci/Annuncio/{Annuncioid}/Interessati/{UserId}', controller here) -> name('chatinteressato');
-   
-// Route::post('/GestioneAnnunci/Annuncio/{Annuncioid}/Interessati/{UserId}', controller here) -> name('chatinteressato.store');
  
    
    
@@ -112,6 +93,8 @@ Route::get('nuovoAnnuncio', 'LocatoreController@showNuovoAnnuncioForm')->name('n
 Route::post('/Alloggi/SchedaAlloggio/{Annuncioid}/Opzionamento', 'LocatarioController@setOption') -> name('opzionamento');
    
  Route::post('/Alloggi/SchedaAlloggio/{Annuncioid}/Messaggio', 'LocatarioController@sendMessage') -> name('mandamessaggio');
+ 
+ Route::get('filtro', 'LocatarioController@filtro') -> name('filtro');
 
 
 
@@ -132,46 +115,3 @@ Route::post('/Alloggi/SchedaAlloggio/{Annuncioid}/Opzionamento', 'LocatarioContr
  
  Route::post('/Statistiche', 'AdminController@ViewStatsbyFilter') -> name('viewStatsbyfiler');
  
-// Route::get('/', controller here ) -> name('homelvl4');   
-
-// Route::get('/admin', 'AdminController@index')->name('admin');
-        
-// Route::get('/GestioneFaq', controller here) -> name(gestionefaqs);
-
-
-
-
-// Rotte per l'autenticazione
-// Route:get('/Admin/Faqmng, controller here)->name('adminfaq');
-// Rotte per la registrazione
-   
-
-   Route::view('/where', 'where')
-         ->name('where');
-
-  
-    
- 
-
-// Rotte inserite dal comando artisan "ui vue --auth" 
-// Auth::routes();
-// Route::get('/home', 'HomeController@index')->name('home');
-/*
-   Route::get('/selTopCat/{topCatId}/selCat/{catId}', 'PublicController@showCatalog3')
-        ->name('catalog3');
-
-   Route::get('/selTopCat/{topCatId}', 'PublicController@showCatalog2')
-        ->name('catalog2');
-
-   Route::get('/admin/newproduct', 'AdminController@addProduct')
-        ->name('newproduct');
-
-
-   Route::get('/user', 'UserController@index')               forse utilizzabile forse no
-        ->name('user')->middleware('can:isUser');
-
-   Route::post('/admin/newproduct', 'AdminController@storeProduct')
-        ->name('newproduct.store');*/
-// {{Form::close()}}
-//   {{Form::open(array("route"=>["EliminaFaq",'id'=>$faq->FaqId],"id"=>"FaqDel"))}}
- //                           {{Form::hidden('FaqId',$faq->FaqId,['id'=>'faqiddel'])}}

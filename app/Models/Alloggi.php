@@ -19,7 +19,7 @@ class Alloggi {
 
     public function getAnnunciobyPage($paged = 1) {
         return Annuncio::paginate($paged);
-        //return $annunci->paginate($paged);
+        
     }
 
     public function getAllAnnunci() {
@@ -33,10 +33,7 @@ class Alloggi {
     public function sortService($idAnnuncio) {
 
         $alloggio = Annuncio::where('AnnuncioId', $idAnnuncio)->first();
-        /* $servizi= $alloggio->where(function ($query) use ($catId) {
-          $query->whereIn('parId', $catId);)
-
-          } */
+       
     }
      public function showOptionforAnnuncio($idannuncio){
          

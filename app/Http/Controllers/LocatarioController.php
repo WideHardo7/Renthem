@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Catalog;
+
 use App\Models\FaqGetter;
 use App\Models\Alloggi;
 use App\Http\Requests\SendMessageRequest;
@@ -12,6 +12,7 @@ use App\Models\Resources\Messaggio;
 use App\Models\Resources\AnnuncioUsers;
 use Illuminate\Support\Facades\Log;
 use App\User;
+use App\Models\Locatario;
 use Auth;
 use App\Http\Requests\datiFiltroRequest;
 
@@ -32,22 +33,17 @@ class LocatarioController extends Controller {
         
     }
     
-     //metodo filtro
+     
       
         
-        public function insertOpzionamento(){
-            /*take the user id of the locatario and the id of that annuncio opzionato
-              $user=Auth::user()->id;
-             * $annuncioid=;
-             * $user->moreannunci()->attach($annuncioid);             */
-        }
+        
         
         public function sendMessage(SendMessageRequest $request, $id){
             
             $dati= collect(request()->all())->filter(function($request){
                                    return is_string($request)&&!empty($request);
             });
-            Log::info(print_r($dati));
+            //Log::info(print_r($dati));
             //$contenuto= $dati->contenuto;
             
             
@@ -95,7 +91,7 @@ class LocatarioController extends Controller {
     public function filtro(datiFiltroRequest $request) {
         $params = collect($request->except('_token'));
 
-        LOG::INFO(print_r($params,true));
+        //LOG::INFO(print_r($params,true));
 
         $variabile = $this->annunci->getAnnunciobyF($params, 6);        
         return view('catalogoalloggi')->with('ads', $variabile);

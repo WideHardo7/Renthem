@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use App\Models\Catalog;
+
 use App\Models\FaqGetter;
 use App\Models\Alloggi;
 use App\Models\Locatore;
@@ -88,16 +88,12 @@ class LocatoreController extends Controller
        
         public function showAnnunci(){
            $utente= Auth::user()->id;           
-           Log::info('utente id passato'.$utente);          
+           //Log::info('utente id passato'.$utente);          
            $alloggio= $this->alloggi->getAnnunciobyLocatore($utente);
            return view('listaAlloggi')
            ->with('ads', $alloggio);
     }
-    public function showOptionforAnnuncio($idannuncio){
-       // $annuncio=Annuncio::find($idannuncio);
-        //$locatari= $annuncio->moreutenti;
-        //return $locatari;
-    }
+   
     
     public function ShowFormMod($id){
         $alloggio= $this->alloggi->getAnnuncioById($id);
@@ -152,12 +148,9 @@ class LocatoreController extends Controller
     
     public function Assegna($ann, $loca){
         
-       /* log::info('stringa'.$array);
-       $array=explode('&',$stringa);
-        $loca=$array[0];
-        $id=$array[1];*/
-        log::info('loca'.$loca);
-        log::info('id'.$ann);
+       
+        //log::info('loca'.$loca);
+        //log::info('id'.$ann);
         
        
         

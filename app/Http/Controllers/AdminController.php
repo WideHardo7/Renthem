@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
-use App\Models\Resources\Product;
+
 use App\Models\Resources\Faq;
 use Illuminate\Http\Request;
-use App\Models\Catalog;
+
 use App\Models\FaqGetter;
 use Illuminate\Support\Facades\Log;
 use App\Models\Alloggi;
@@ -86,9 +86,7 @@ class AdminController extends Controller {
          return response()->json(['redirect' => route('viewEditFaq')]);
     }
     
-    public function Statistiche(){
-        
-    }
+    
     
     
 }

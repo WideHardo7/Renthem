@@ -26,7 +26,7 @@ class userController extends Controller {
     }
 
     public function index() {
-         //if(Auth::user()->role=='locatario')
+         
         $asseggnati=$this->loca->getOptionbyLocatario((Auth::user()->id));
         return view('profilo')->with('assegnato',$asseggnati);
     }
@@ -61,7 +61,7 @@ class userController extends Controller {
     }
     
     public function saveMessage(Request $request){
-        Log:info('app.requests',['request'=>$request->all()]);
+        //Log:info('app.requests',['request'=>$request->all()]);
         $mess=new Messaggio();
         $user=Auth::user();
         if((Auth::user()->role)=="locatario"){

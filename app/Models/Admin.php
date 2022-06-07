@@ -2,8 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Resources\Category;
-use App\Models\Resources\Product;
+
 use App\Models\Resources\AnnuncioUsers;
 use App\Models\Resources\Annuncio;
 use Illuminate\Support\Facades\Log;
@@ -11,20 +10,11 @@ use Illuminate\Support\Facades\Log;
 
 class Admin {
 
-    public function getProdsCats() {
-        return Category::where('parId', '!=', 0)->get();
-    }
     
     public function getStatistiche($params){
         
-        //dd($params);
-        
-        
-        //statistiche totale offerte di annunci presenti nel sito
+       //statistiche totale offerte di annunci presenti nel sito
         $annunci= Annuncio::all();
-        
-        
-        
         
         //statistiche totale per offerte annunci assehante
         $annunciassegnati=Annuncio::whereIn('assegnato',[true])->get();
