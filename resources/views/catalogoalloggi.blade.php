@@ -153,11 +153,25 @@ $(document).ready(function () {
                         </div>
                         <div class="wrap-input">
                             {{ Form::label('A_numero_camere', 'Numero camere:' )}}
-                            {{ Form::text('A_numero_camere', '', ['placeholder'=>'es: 3', 'id' => 'A_numero_camere']) }}<br>                           
+                            {{ Form::text('A_numero_camere', '', ['placeholder'=>'es: 3', 'id' => 'A_numero_camere']) }}<br>
+                            @if ($errors->first('A_numero_camere'))
+                            <ul class="errors">
+                                @foreach ($errors->get('A_numero_camere') as $message)
+                                <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                            @endif 
                         </div>
                         <div class="wrap-input">
                             {{ Form::label('numero_posti_letto_totali', "N° Posti letto totale nell'appartamento")}}
-                            {{ Form::text('numero_posti_letto_totali', '', ['placeholder'=>'es: 4']) }}<br>                           
+                            {{ Form::text('numero_posti_letto_totali', '', ['placeholder'=>'es: 4']) }}<br>
+                            @if ($errors->first('numero_posti_letto_totali'))
+                            <ul class="errors">
+                                @foreach ($errors->get('numero_posti_letto_totali') as $message)
+                                <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                            @endif
                         </div>
                         <div class="wrap-input">
                             {{ Form::label('A_locali_presenti', 'Locali presenti')}}
@@ -181,15 +195,36 @@ $(document).ready(function () {
                     <div class="desc", id='PostoL' hidden="true">                        
                         <div class="wrap-input">
                             {{ Form::label('dimensione', 'Superficie camera in mq') }}
-                            {{ Form::text('dimensione', '', ['class' => 'input', 'id' => 'dimensione', 'placeholder'=>'es: 16']) }}                           
+                            {{ Form::text('dimensione', '', ['class' => 'input', 'id' => 'dimensione', 'placeholder'=>'es: 16']) }}
+                            @if ($errors->first('dimensione'))
+                            <ul class="errors">
+                                @foreach ($errors->get('dimensione') as $message)
+                                <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                            @endif
                         </div>
                         <div class="wrap-input">
                             {{ Form::label('C_numero_posti_letto_in_camera', 'N° Posti letto nella stessa camera' )}}
-                            {{ Form::text('C_numero_posti_letto_in_camera', '', ['placeholder'=>'es: 2']) }}                           
+                            {{ Form::text('C_numero_posti_letto_in_camera', '', ['placeholder'=>'es: 2']) }}
+                            @if ($errors->first('C_numero_posti_letto_in_camera'))
+                            <ul class="errors">
+                                @foreach ($errors->get('C_numero_posti_letto_in_camera') as $message)
+                                <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                            @endif
                         </div>
                         <div class="wrap-input">
                             {{ Form::label('numero_posti_letto_totali', 'N° Posti letto totale nel alloggio')}}
-                            {{ Form::text('numero_posti_letto_totali', '', ['placeholder'=>'es: 4']) }}<br>                           
+                            {{ Form::text('numero_posti_letto_totali', '', ['placeholder'=>'es: 4']) }}<br>
+                            @if ($errors->first('numero_posti_letto_totali'))
+                            <ul class="errors">
+                                @foreach ($errors->get('numero_posti_letto_totali') as $message)
+                                <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                            @endif
                         </div>                            
                         <div class="wrap-input">
                             {{ Form::label('servizi_inclusi', 'Servizi inclusi')}}
