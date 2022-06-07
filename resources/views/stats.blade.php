@@ -13,7 +13,7 @@
 
 <div class="container">
         <br>
-        <h4>Seleziona l'intervallo temporale e la tipologia di annuncio desiderati per visualizzare delle statistiche.</h4>
+        <h4>Seleziona l'intervallo temporale e la tipologia di alloggio desiderata per visualizzare statistiche relative agli annunci presenti nel sito, gli opzionamenti effettuati e gli assegnamenti fatti.</h4>
         <br>
         {{ Form::open (array('route' => 'viewStatsbyfiler', 'class' => 'contact-form', 'id'=>'VisualizzaStats' )) }}
         

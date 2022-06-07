@@ -207,9 +207,10 @@ $(document).ready(function () {
                                         @endif
 
                                     </div>
-                                    <h4 class="vert">{{$ad->tipologia}}</h4>
+                                   <p><h4 class="vert">{{$ad->tipologia}}</h4></p>
                                     <h5 >{{$ad->citta}}</h5>
-                                    <p class="price">{{$ad->importo}}€</p>
+                                     <h5 > Zona {{$ad->zona_quartiere}}</h5>
+                                    <h6 class="price vert">{{$ad->importo}}€</h6>
                                     <a class="btn btn-primary bottoni_ancore" href="{{route('scheda',[$ad->AnnuncioId])}}">DETTAGLIO</a>
 
                                 </div>
@@ -219,14 +220,7 @@ $(document).ready(function () {
 
 
                             @endisset()
-
-
-
-
-
-
-
-                        </div>
+                       </div>
                         <div class="row">
                             <div class="center">
                                 <div class="pagination">
