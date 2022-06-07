@@ -144,12 +144,12 @@ $(document).ready(function () {
                             {{ Form::label('dimensione', 'Superficie appartamento in mq:') }}
                             {{ Form::text('dimensione', '', ['class' => 'input', 'id' => 'dimensione', 'placeholder'=>'es: 78']) }}<br>
                             @if ($errors->first('dimensione'))
-                    <ul class="errors">
-                        @foreach ($errors->get('dimensione') as $message)
-                        <li>{{ $message }}</li>
-                        @endforeach
-                    </ul>
-                    @endif 
+                            <ul class="errors">
+                                @foreach ($errors->get('dimensione') as $message)
+                                <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                            @endif 
                         </div>
                         <div class="wrap-input">
                             {{ Form::label('A_numero_camere', 'Numero camere:' )}}
@@ -223,6 +223,11 @@ $(document).ready(function () {
                         @endguest
 
                         <div class="row">
+                            
+                            @if($ads->isempty())
+                            <h3>"Nessun risultato trovato in base ai filtri inseriti."</h3>
+                            @endif
+
                             @isset($ads)
                             @foreach ($ads as $ad)
                             <!-- properties -->
