@@ -11,14 +11,12 @@
 $(document).ready(function () {
     $("input[name=tipologia]").on("click", function () {
         var test = $(this).val();
-
         if (test === "Posto letto") {
             test = "PostoL";
             $(".desc").hide();
             $("#" + test).show();
             $("#" + test).children().find($(":input")).prop("disabled", false);
             $("#Appartament").children().find($(":input")).prop("disabled", true);
-
         } else if (test === "Appartamento") {
             test = "Appartament";
             $(".desc").hide();
@@ -29,6 +27,23 @@ $(document).ready(function () {
     });
 });
 
+$(document).ready(function () {
+$valore=$("input[name=tipologia]").val();
+ if ($valore === "Posto letto") {
+    test = "PostoL";
+    $(".desc").hide();
+    $("#" + test).show();
+    $("#" + test).children().find($(":input")).prop("disabled", false);
+    $("#Appartament").children().find($(":input")).prop("disabled", true);}
+ else if($valore==="Appartamento"){
+    test = "Appartament";
+    $(".desc").hide();
+    $("#" + test).show();
+    $("#" + test).children().find($(":input")).prop("disabled", false);
+    $("#PostoL").children().find($(":input")).prop("disabled", true);
+}
+}
+);
 
 $(document).ready(function () {
     $('option').mousedown(function (e) {
@@ -77,7 +92,8 @@ $(document).ready(function () {
             <div class="col-lg-3 col-sm-4" id="filtroDati">                
                 <div class="search-form"><h4><span class="glyphicon glyphicon-search"></span> Cerca per</h4>
                     {{ Form::open(array('route' => 'filtro', 'id'=>'formFiltro', 'method' => 'get')) }}   
-
+                    
+                    {{Form::hidden('tipologia',null)}}
 
                     {{ Form::radio('tipologia', 'Appartamento', false, ['class' => 'label-input', 'id' => 'Appartamento']) }}
                     {{ Form::label('tipologia', 'Appartamento', ['class' => 'label-input']) }}
