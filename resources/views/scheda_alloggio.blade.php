@@ -15,12 +15,16 @@
         option.setAttribute("disabled", "");;
     }
     }
-/*    $(document).ready(function () {
-    $(".prova").on("click", function(e){
-    $(this).find($(".nascosto")).toggle();
-    });
-});*/
+
 </script>
+<script>
+    function alertmessaggio(){
+        alert("Il messaggio è stato inviato correttamente.");
+   return true;
+    }
+
+</script>
+
 <style>
     .prova{
         cursor: pointer;
@@ -108,7 +112,7 @@
               
                      @else
                      
-               <p><h5><ins>Caratteristiche</ins><br><br>
+                     <p><h5><ins><b>Caratteristiche</b></ins><br><br>
                   Superficie Camera: {{$ann->dimensione}} m<sup>2</sup><br>
                   Numero di posti letto complessivi nell'alloggio: {{$ann->numero_posti_letto_totali}}<br> 
                   Numero di posti letto in camera: {{$ann->C_numero_posti_letto_in_camera}}<br></p></h5>
@@ -162,7 +166,7 @@
                </div>
         
         
-            {{ Form::submit('Invia Messaggio', ['class' => 'btn btn-primary', 'id'=>'sub-btn_message']) }} 
+            {{ Form::submit('Invia Messaggio', ['class' => 'btn btn-primary', 'id'=>'sub-btn_message', 'onclick'=>'alertmessaggio()']) }} 
     {{ Form::close() }}
                                 
                <!--  <textarea rows="8" class="form-control" placeholder="Messaggio"></textarea>
