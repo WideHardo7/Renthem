@@ -14,14 +14,7 @@ class Alloggi {
         $annunci = User::find($id_locatore)->annunci;
         //Log::info('ANNUNCI ESTRATTI' . $annunci);
         return $annunci;
-        /* $annunci = Annuncio::whereHas('IDproprietario', function($query) use($id_locatore) {
-          $query->where('IDproprietario',$id_locatore);
-          })
-          ->with("utente")
-          ->get();
-          return $annunci; */
-        //return Annuncio::whereIn('IDproprietario',$id_locatore)->paginate($paged);
-        //return $annunci->paginate($paged);
+        
     }
 
     public function getAnnunciobyPage($paged = 1) {
@@ -158,13 +151,7 @@ class Alloggi {
         
     }
     
-   /* public function assegnaAlloggio($idlocatario, $idannuncio){
-         $locaoption=User::find($idlocatario);
-        $op=$locaoption->moreannunci()->where('annuncio_AnnuncioId',$idannuncio)->first();
-        log:info('op'. $op);
-        return $op;
-        
-    }*/
+   
 
 }
 
