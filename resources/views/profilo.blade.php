@@ -25,10 +25,8 @@
                 <img src="{{asset('images/immagineprofilo.jpg')}}" width="width" height="height" alt="alt"/>
                </div>
         
-    <div class="row">
-        <div class="col-lg-6 col-sm-6">
+    
     <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span><b>Informazioni del profilo utente</b></h4><br>
-        
         
         <h5><p><b>Nome:</b> {{ Auth::user()->nome }}</p></h5>
      
@@ -41,30 +39,6 @@
         <h5><p><b>Email:</b> {{ Auth::user()->email }}</p></h5>
         
         <h5><p><b>Username:</b> {{ Auth::user()->username }}</p></h5>
-        </div>
-            </div>
-        <div class="col-lg-6 col-sm-6">
-            <br> <br> <br> <br>
-            @can('isLocatario')
-            <h3>Alloggi a te assegnati:</h3>
-            @if($assegnato->isempty())
-            <p>Ci dispiace, ma al momento nessun alloggio risulta a te assegnato.</p>
-            @endif
-            
-            @isset($assegnato)
-            @foreach($assegnato as $ass)
-            <p>Congratulazioni l'alloggio {{$ass->tipologia}} in {{$ass->indirizzo}}, {{$ass->citta}} ti è stato assegnato <a style='font-size: 1.5em;  cursor: pointer;' title="Clicca qui per visitare la scheda dell' alloggio" href="{{route('scheda',[$ass->AnnuncioId])}}">&neArr;</a></p>
-            
-            
-            @endforeach
-            
-            @endisset
-            
-            
-            @endcan
-            
-        </div>
-        </div>
         
                 <div class="row">
                     @can('isLoreLario')
@@ -90,9 +64,7 @@
           
                  </div>
         
-
-            
-        
+</div>
 </div>
 
 </div>

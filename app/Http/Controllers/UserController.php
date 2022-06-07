@@ -10,29 +10,22 @@ use App\Models\Chat;
 use App\Models\Resources\Messaggio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use App\Models\Locatario;
-
 
 
 class userController extends Controller {
     
     protected $messaggi;
-    protected  $loca;
 
     public function __construct() {
         $this->middleware('can:isUser');
         $this->messaggi= new Chat();
-        $this->loca=new Locatario();
     }
 
     public function index() {
-         //if(Auth::user()->role=='locatario')
-        $asseggnati=$this->loca->getOptionbyLocatario((Auth::user()->id));
-        return view('profilo')->with('assegnato',$asseggnati);
+        return view('profilo');
     }
 
     public function ViewEditProfilo(){
-       
         return view('product/modifica_profilo');
         
     }    

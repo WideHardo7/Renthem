@@ -20,13 +20,11 @@ class LocatarioController extends Controller {
 
     protected $faqu;
     protected $annunci;
-    protected $loca;
 
     public function __construct() {
 
         $this->faqu = new FaqGetter();
         $this->annunci = new Alloggi();
-        $this->loca= new Locatario;
 
         $this->middleware('can:isLocatario');
         
@@ -100,7 +98,5 @@ class LocatarioController extends Controller {
         $variabile = $this->annunci->getAnnunciobyF($params, 6);        
         return view('catalogoalloggi')->with('ads', $variabile);
     }
-    
-    
  }
     
