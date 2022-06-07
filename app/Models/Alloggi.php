@@ -126,18 +126,18 @@ class Alloggi {
             array_push($filtroData, ['data_fine_disponibilita','>=', $params->get('data_inizio_permanenza')]);       
         }
         
-        Log::info(print_r($filtroData,true));
+      //  Log::info(print_r($filtroData,true));
         $filtrati = Annuncio::where($filtri)                         
                             ->where($filtroData);
                         //  ->whereDate('data_inizio_disponibilita','<=', $dataInizioPermanenza);
                         //  ->whereDate('data_fine_disponibilita','>=', $dataInizioPermanenza);
                                              
                                                      
-        Log::info(print_r($filtri,true));        
-        Log::info($filtrati->toSql());       
-        Log::info($filtrati->get());
+      //  Log::info(print_r($filtri,true));        
+     //   Log::info($filtrati->toSql());       
+     //   Log::info($filtrati->get());
         
-        return $filtrati->paginate(20);
+        return $filtrati->paginate(6);
   }
     
     public function insertOptionament($idloca,$idann){

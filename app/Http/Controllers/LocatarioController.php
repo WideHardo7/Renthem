@@ -90,7 +90,7 @@ class LocatarioController extends Controller {
    
     
     
-    public function filtro(Request $request) {
+    public function filtro(datiFiltroRequest $request) {
         $params = collect($request->except('_token'));
 
         LOG::INFO(print_r($params,true));

@@ -11,14 +11,12 @@
 $(document).ready(function () {
     $("input[name=tipologia]").on("click", function () {
         var test = $(this).val();
-
         if (test === "Posto letto") {
             test = "PostoL";
             $(".desc").hide();
             $("#" + test).show();
             $("#" + test).children().find($(":input")).prop("disabled", false);
             $("#Appartament").children().find($(":input")).prop("disabled", true);
-
         } else if (test === "Appartamento") {
             test = "Appartament";
             $(".desc").hide();
@@ -29,6 +27,23 @@ $(document).ready(function () {
     });
 });
 
+$(document).ready(function () {
+$valore=$("input[name=tipologia]").val();
+ if ($valore === "Posto letto") {
+    test = "PostoL";
+    $(".desc").hide();
+    $("#" + test).show();
+    $("#" + test).children().find($(":input")).prop("disabled", false);
+    $("#Appartament").children().find($(":input")).prop("disabled", true);}
+ else if($valore==="Appartamento"){
+    test = "Appartament";
+    $(".desc").hide();
+    $("#" + test).show();
+    $("#" + test).children().find($(":input")).prop("disabled", false);
+    $("#PostoL").children().find($(":input")).prop("disabled", true);
+}
+}
+);
 
 $(document).ready(function () {
     $('option').mousedown(function (e) {
@@ -48,22 +63,6 @@ $(document).ready(function () {
     });
 }
 );
-
-</script>
-
-<script>/*
- $(function () {
- var actionUrl = "{{ route('insertAnnuncio') }}";
- var formId = 'formAnnuncio';
- $(":input").on('blur', function (event) {
- var formElementId = $(this).attr('id');
- doElemValidation(formElementId, actionUrl, formId);
- });
- $("#formAnnuncio").on('submit', function (event) {
- event.preventDefault();
- doFormValidation(actionUrl, formId);
- });
- });*/
 </script>
 
 <style type="text/css">
@@ -72,7 +71,6 @@ $(document).ready(function () {
     }
 </style>
 @endsection
-
 
 @section('catalogo')
 <!-- banner -->
@@ -94,7 +92,8 @@ $(document).ready(function () {
             <div class="col-lg-3 col-sm-4" id="filtroDati">                
                 <div class="search-form"><h4><span class="glyphicon glyphicon-search"></span> Cerca per</h4>
                     {{ Form::open(array('route' => 'filtro', 'id'=>'formFiltro', 'method' => 'get')) }}   
-
+                    
+                    {{Form::hidden('tipologia',null)}}
 
                     {{ Form::radio('tipologia', 'Appartamento', false, ['class' => 'label-input', 'id' => 'Appartamento']) }}
                     {{ Form::label('tipologia', 'Appartamento', ['class' => 'label-input']) }}
@@ -104,12 +103,33 @@ $(document).ready(function () {
 
                     {{ Form::label('min_price', 'Prezzo min', ['class' => 'label-input']) }}
                     {{ Form::text('min_price', '', ['class' => 'input', 'id' => 'min_price', 'placeholder'=>'es: 0']) }}
+                    @if ($errors->first('min_price'))
+                    <ul class="errors">
+                        @foreach ($errors->get('min_price') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif 
                     {{ Form::label('max_price', 'Prezzo max', ['class' => 'label-input']) }}
                     {{ Form::text('max_price', '', ['class' => 'input', 'id' => 'max_price', 'placeholder'=>'es: 2000']) }}<br>
+                    @if ($errors->first('max_price'))
+                    <ul class="errors">
+                        @foreach ($errors->get('max_price') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif 
 
-                    
+
                     {{ Form::label('citta', 'Cittá', ['class' => 'label-input']) }}
-                    {{ Form::text('citta', '', ['class' => 'input', 'id' => 'citta', 'placeholder'=>'es: Ancona']) }}<br> 
+                    {{ Form::text('citta', '', ['class' => 'input', 'id' => 'citta', 'placeholder'=>'es: Ancona']) }}<br>
+                    @if ($errors->first('citta'))
+                    <ul class="errors">
+                        @foreach ($errors->get('citta') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif 
 
                     {{ Form::label('data_inizio_permanenza', 'Data inizio permaneza')}}
                     {{ Form::date('data_inizio_permanenza', \Carbon\Carbon::now()), ['class' => 'input', 'id' => 'data_inizio_permanenza',] }}
@@ -122,15 +142,36 @@ $(document).ready(function () {
                     <div class='desc', id='Appartament' hidden="true">                 
                         <div class="wrap-input">
                             {{ Form::label('dimensione', 'Superficie appartamento in mq:') }}
-                            {{ Form::text('dimensione', '', ['class' => 'input', 'id' => 'dimensione', 'placeholder'=>'es: 78']) }}<br>                           
+                            {{ Form::text('dimensione', '', ['class' => 'input', 'id' => 'dimensione', 'placeholder'=>'es: 78']) }}<br>
+                            @if ($errors->first('dimensione'))
+                            <ul class="errors">
+                                @foreach ($errors->get('dimensione') as $message)
+                                <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                            @endif 
                         </div>
                         <div class="wrap-input">
                             {{ Form::label('A_numero_camere', 'Numero camere:' )}}
-                            {{ Form::text('A_numero_camere', '', ['placeholder'=>'es: 3', 'id' => 'A_numero_camere']) }}<br>                           
+                            {{ Form::text('A_numero_camere', '', ['placeholder'=>'es: 3', 'id' => 'A_numero_camere']) }}<br>
+                            @if ($errors->first('A_numero_camere'))
+                            <ul class="errors">
+                                @foreach ($errors->get('A_numero_camere') as $message)
+                                <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                            @endif 
                         </div>
                         <div class="wrap-input">
-                            {{ Form::label('numero_posti_letto_totali', 'N° Posti letto totale nell"appartamento')}}
-                            {{ Form::text('numero_posti_letto_totali', '', ['placeholder'=>'es: 4']) }}<br>                           
+                            {{ Form::label('numero_posti_letto_totali', "N° Posti letto totale nell'appartamento")}}
+                            {{ Form::text('numero_posti_letto_totali', '', ['placeholder'=>'es: 4']) }}<br>
+                            @if ($errors->first('numero_posti_letto_totali'))
+                            <ul class="errors">
+                                @foreach ($errors->get('numero_posti_letto_totali') as $message)
+                                <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                            @endif
                         </div>
                         <div class="wrap-input">
                             {{ Form::label('A_locali_presenti', 'Locali presenti')}}
@@ -149,20 +190,41 @@ $(document).ready(function () {
                                                                          'id' => 'servizi_inclusi[]'))}}                                
                         </div></div>
 
-                     <!--inizio form posto letto-->
+                    <!--inizio form posto letto-->
 
                     <div class="desc", id='PostoL' hidden="true">                        
                         <div class="wrap-input">
                             {{ Form::label('dimensione', 'Superficie camera in mq') }}
-                            {{ Form::text('dimensione', '', ['class' => 'input', 'id' => 'dimensione', 'placeholder'=>'es: 16']) }}                           
+                            {{ Form::text('dimensione', '', ['class' => 'input', 'id' => 'dimensione', 'placeholder'=>'es: 16']) }}
+                            @if ($errors->first('dimensione'))
+                            <ul class="errors">
+                                @foreach ($errors->get('dimensione') as $message)
+                                <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                            @endif
                         </div>
                         <div class="wrap-input">
                             {{ Form::label('C_numero_posti_letto_in_camera', 'N° Posti letto nella stessa camera' )}}
-                            {{ Form::text('C_numero_posti_letto_in_camera', '', ['placeholder'=>'es: 2']) }}                           
+                            {{ Form::text('C_numero_posti_letto_in_camera', '', ['placeholder'=>'es: 2']) }}
+                            @if ($errors->first('C_numero_posti_letto_in_camera'))
+                            <ul class="errors">
+                                @foreach ($errors->get('C_numero_posti_letto_in_camera') as $message)
+                                <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                            @endif
                         </div>
                         <div class="wrap-input">
                             {{ Form::label('numero_posti_letto_totali', 'N° Posti letto totale nel alloggio')}}
-                            {{ Form::text('numero_posti_letto_totali', '', ['placeholder'=>'es: 4']) }}<br>                           
+                            {{ Form::text('numero_posti_letto_totali', '', ['placeholder'=>'es: 4']) }}<br>
+                            @if ($errors->first('numero_posti_letto_totali'))
+                            <ul class="errors">
+                                @foreach ($errors->get('numero_posti_letto_totali') as $message)
+                                <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                            @endif
                         </div>                            
                         <div class="wrap-input">
                             {{ Form::label('servizi_inclusi', 'Servizi inclusi')}}
@@ -196,6 +258,11 @@ $(document).ready(function () {
                         @endguest
 
                         <div class="row">
+                            
+                            @if($ads->isempty())
+                            <h3>"Nessun risultato trovato in base ai filtri inseriti."</h3>
+                            @endif
+
                             @isset($ads)
                             @foreach ($ads as $ad)
                             <!-- properties -->
@@ -216,15 +283,14 @@ $(document).ready(function () {
                                 </div>
                             </div>
                             @endforeach
-                            <!--Paginazione-->
-
 
                             @endisset()
-                       </div>
+
+                        </div>
                         <div class="row">
                             <div class="center">
                                 <div class="pagination">
-                                    @include('pagination.paginator', ['paginator' => $ads])
+                                    @include('pagination.paginator', ['paginator' => ($ads->appends($_GET))])
                                 </div>
                             </div> 
                         </div>
