@@ -17,13 +17,7 @@
     }
 
 </script>
-<script>
-    function alertmessaggio(){
-        alert("Il messaggio è stato inviato correttamente.");
-   return true;
-    }
 
-</script>
 
 <style>
     .prova{
@@ -166,7 +160,7 @@
                </div>
         
         
-            {{ Form::submit('Invia Messaggio', ['class' => 'btn btn-primary', 'id'=>'sub-btn_message', 'onclick'=>'alertmessaggio()']) }} 
+            {{ Form::submit('Invia Messaggio', ['class' => 'btn btn-primary', 'id'=>'sub-btn_message' ]) }} 
     {{ Form::close() }}
                                 
                <!--  <textarea rows="8" class="form-control" placeholder="Messaggio"></textarea>
