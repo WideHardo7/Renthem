@@ -137,7 +137,7 @@ class Alloggi {
      //   Log::info($filtrati->toSql());       
      //   Log::info($filtrati->get());
         
-        return $filtrati->paginate(5);
+        return $filtrati->paginate(6);
   }
     
     public function insertOptionament($idloca,$idann){

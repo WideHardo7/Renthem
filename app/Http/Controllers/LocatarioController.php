@@ -90,13 +90,13 @@ class LocatarioController extends Controller {
    
     
     
-    public function filtro(Request $request) {
+    public function filtro(datiFiltroRequest $request) {
         $params = collect($request->except('_token'));
 
         LOG::INFO(print_r($params,true));
 
         $variabile = $this->annunci->getAnnunciobyF($params, 6);        
-        return view('catalogoalloggi')->with('ads', $variabile)->withQueryString();
+        return view('catalogoalloggi')->with('ads', $variabile);
     }
  }
     

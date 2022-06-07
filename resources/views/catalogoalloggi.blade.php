@@ -48,22 +48,6 @@ $(document).ready(function () {
     });
 }
 );
-
-</script>
-
-<script>/*
- $(function () {
- var actionUrl = "{{ route('insertAnnuncio') }}";
- var formId = 'formAnnuncio';
- $(":input").on('blur', function (event) {
- var formElementId = $(this).attr('id');
- doElemValidation(formElementId, actionUrl, formId);
- });
- $("#formAnnuncio").on('submit', function (event) {
- event.preventDefault();
- doFormValidation(actionUrl, formId);
- });
- });*/
 </script>
 
 <style type="text/css">
@@ -72,7 +56,6 @@ $(document).ready(function () {
     }
 </style>
 @endsection
-
 
 @section('catalogo')
 <!-- banner -->
@@ -104,12 +87,33 @@ $(document).ready(function () {
 
                     {{ Form::label('min_price', 'Prezzo min', ['class' => 'label-input']) }}
                     {{ Form::text('min_price', '', ['class' => 'input', 'id' => 'min_price', 'placeholder'=>'es: 0']) }}
+                    @if ($errors->first('min_price'))
+                    <ul class="errors">
+                        @foreach ($errors->get('min_price') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif 
                     {{ Form::label('max_price', 'Prezzo max', ['class' => 'label-input']) }}
                     {{ Form::text('max_price', '', ['class' => 'input', 'id' => 'max_price', 'placeholder'=>'es: 2000']) }}<br>
+                    @if ($errors->first('max_price'))
+                    <ul class="errors">
+                        @foreach ($errors->get('max_price') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif 
 
-                    
+
                     {{ Form::label('citta', 'Cittá', ['class' => 'label-input']) }}
-                    {{ Form::text('citta', '', ['class' => 'input', 'id' => 'citta', 'placeholder'=>'es: Ancona']) }}<br> 
+                    {{ Form::text('citta', '', ['class' => 'input', 'id' => 'citta', 'placeholder'=>'es: Ancona']) }}<br>
+                    @if ($errors->first('citta'))
+                    <ul class="errors">
+                        @foreach ($errors->get('citta') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif 
 
                     {{ Form::label('data_inizio_permanenza', 'Data inizio permaneza')}}
                     {{ Form::date('data_inizio_permanenza', \Carbon\Carbon::now()), ['class' => 'input', 'id' => 'data_inizio_permanenza',] }}
@@ -122,7 +126,14 @@ $(document).ready(function () {
                     <div class='desc', id='Appartament' hidden="true">                 
                         <div class="wrap-input">
                             {{ Form::label('dimensione', 'Superficie appartamento in mq:') }}
-                            {{ Form::text('dimensione', '', ['class' => 'input', 'id' => 'dimensione', 'placeholder'=>'es: 78']) }}<br>                           
+                            {{ Form::text('dimensione', '', ['class' => 'input', 'id' => 'dimensione', 'placeholder'=>'es: 78']) }}<br>
+                            @if ($errors->first('dimensione'))
+                    <ul class="errors">
+                        @foreach ($errors->get('dimensione') as $message)
+                        <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                    @endif 
                         </div>
                         <div class="wrap-input">
                             {{ Form::label('A_numero_camere', 'Numero camere:' )}}
@@ -149,7 +160,7 @@ $(document).ready(function () {
                                                                          'id' => 'servizi_inclusi[]'))}}                                
                         </div></div>
 
-                     <!--inizio form posto letto-->
+                    <!--inizio form posto letto-->
 
                     <div class="desc", id='PostoL' hidden="true">                        
                         <div class="wrap-input">
@@ -215,22 +226,14 @@ $(document).ready(function () {
                                 </div>
                             </div>
                             @endforeach
-                            <!--Paginazione-->
-
 
                             @endisset()
-
-
-
-
-
-
 
                         </div>
                         <div class="row">
                             <div class="center">
                                 <div class="pagination">
-                                    @include('pagination.paginator', ['paginator' => $ads])
+                                    @include('pagination.paginator', ['paginator' => ($ads->appends($_GET))])
                                 </div>
                             </div> 
                         </div>
