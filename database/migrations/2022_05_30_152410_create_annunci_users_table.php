@@ -21,7 +21,7 @@ class CreateAnnunciUsersTable extends Migration
             $table->boolean('assegnato');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('annuncio_AnnuncioId')->references('AnnuncioId')->on('annunci');
+            $table->foreign('annuncio_AnnuncioId')->references('AnnuncioId')->on('annunci')->onDelete('cascade');
         });
     }
 
