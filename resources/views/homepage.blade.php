@@ -11,11 +11,7 @@
     var hfaq= document.getElementById(faqrispid);
     hfaq.hidden= (hfaq.hidden)? false:true;
     }
-/*    $(document).ready(function () {
-    $(".prova").on("click", function(e){
-    $(this).find($(".nascosto")).toggle();
-    });
-});*/
+
 </script>
 <style>
     .prova{
@@ -83,15 +79,19 @@
             per la pubblicazione e la ricerca di annunci immobiliari designati per studenti universitari.<br> 
             La documentazione del progetto è disponibile <a href="{{ route('doc') }}"><b>qui</b></a>.</big><br></p>
         <h3><b>Note d'uso</b></h3>
-        <p><big>In questo sito è possibile visualizzare annunci per l'affitto di appartamenti o posti letto per studenti,
-        ed effettuando il log-in è possibile mettere in affitto tali alloggi, oppure opzionarli mettendosi successivamente 
-        in contatto con i rispettivi proprietari. La ricerca dell'alloggio ideale è facilitata, grazie anche ad un filtraggio
-        che i vari utenti loggati come studenti possono usufruire.</big><br></p>
+        <p><big>In questo sito è possibile visualizzare annunci per l'affitto di appartamenti o posti letto per studenti universitari.
+         Effettuando il log-in si entra in possesso di funzionalità aggiuntive, che permettono di: mettere in affitto alloggi, opzionarli e chiedere informazioni, 
+         tramite l'utilizzo di un sistema di messaggistica interna. 
+        Queste funzionalità variano in base alla registrazione effettuata, se come gestore o studente, infatti il gestore potrà inserire, modificare o eliminare offerte di alloggi, rispondere
+        a quesiti proposti da studenti ed infine assegnare i suoi alloggi; mentre gli studenti potranno visionare, filtrare e opzionare le proposte di alloggio, con la possibilità di comunicare 
+        con il  gestore dell'alloggio desiderato.</big><br></p>
         
             <h3><b>Contatti</b></h3>
       <p><big>Per informazioni sul sito, sulla pubblicazione degli annunci e altre info:<br><br> 
             Elisa Pace: <b>elisa.pace@affitti.it</b> <br> 
-        Leonardo Pescetti: <b>leonardo.pescetti@affitti.it</b> </big><br></p>
+            Leonardo Pescetti: <b>leonardo.pescetti@affitti.it</b> <br>
+            Luca Marziliano: <b>luca.marziliano@affitti.it</b> <br>
+            Viorel Saran: <b>viorel.saran@affitti.it</b> <br> </big><br></p>
       </div>
       <div class="col-lg-6 col-sm-9", id="faq">                
         <h3><b>FAQ</b></h3>
